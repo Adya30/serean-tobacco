@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth overflow-x-hidden w-full">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <meta name="description" content="@yield('meta_description', 'Serean Tobacco - Sentra Jasa Pengolahan dan Perdagangan Tembakau Pilihan Nusantara.')">
+    <title>@yield('title', 'Serean Tobacco — Jasa & Tembakau Nusantara')</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="{{ asset('logo.png') }}">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- FontAwesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- AOS (Animate On Scroll) CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" integrity="sha512-1cK78a1o+ht2JcaW6g8UXYtfeUzVC01S9LBk64UlsOXgzGYQKREIjTLzdYXRF63oCXBKQg89P00oRd+EQ8fIEg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            espresso: '#3C220F',
+                            dark: '#261509',
+                            gold: '#B07B27',
+                            goldHover: '#98661C',
+                            surface: '#FAF8F5',
+                            card: '#FFFFFF',
+                            border: '#EDE7E1',
+                            muted: '#6E6259',
+                        }
+                    },
+                    fontFamily: {
+                        serif: ['"Playfair Display"', 'Georgia', 'serif'],
+                        sans: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        html, body {
+            max-width: 100%;
+            overflow-x: hidden;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #FAF8F5;
+            color: #261509;
+        }
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+    @stack('styles')
+</head>
+<body class="bg-brand-surface text-brand-dark antialiased overflow-x-hidden min-h-screen flex flex-col relative">
+
+    <!-- Subtle Repeating Small Tobacco Pattern (Kecil-Kecil, Banyak, & Samar) -->
+    <div class="fixed inset-0 pointer-events-none z-0 overflow-hidden select-none opacity-[0.03]" aria-hidden="true">
+        <svg class="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+                <pattern id="tobacco-leaf-pattern" width="60" height="60" patternUnits="userSpaceOnUse" patternTransform="rotate(20)">
+                    <g transform="translate(10, 6) scale(0.2)" fill="none" stroke="#3C220F" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M50 5 C75 35, 82 85, 50 155 C18 85, 25 35, 50 5 Z" fill="#3C220F" fill-opacity="0.25"></path>
+                        <path d="M50 15 L50 150 M50 45 L70 32 M50 70 L75 55 M50 95 L72 80 M50 120 L65 108 M50 45 L30 32 M50 70 L25 55 M50 95 L28 80 M50 120 L35 108"></path>
+                    </g>
+                    <g transform="translate(40, 36) scale(0.16) rotate(-35 50 80)" fill="none" stroke="#3C220F" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M50 5 C75 35, 82 85, 50 155 C18 85, 25 35, 50 5 Z" fill="#3C220F" fill-opacity="0.25"></path>
+                        <path d="M50 15 L50 150 M50 45 L70 32 M50 70 L75 55 M50 95 L72 80 M50 120 L65 108 M50 45 L30 32 M50 70 L25 55 M50 95 L28 80 M50 120 L35 108"></path>
+                    </g>
+                </pattern>
+            </defs>
+            <rect width="100%" height="100%" fill="url(#tobacco-leaf-pattern)" />
+        </svg>
+    </div>
+
+    <!-- Navbar Component -->
+    <x-navbar />
+
+    <!-- Main Content Yield -->
+    <main class="flex-grow w-full overflow-x-hidden relative z-10">
+        @yield('content')
+    </main>
+
+    <!-- Footer: Navigasi, Deskripsi Singkat, & Social Media -->
+    <footer class="w-full bg-brand-dark text-stone-300 pt-16 pb-12 border-t border-brand-border relative z-10 text-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-10 pb-12 border-b border-white/10">
+
+                <!-- Col 1: Logo, Deskripsi Singkat & Social Media -->
+                <div class="md:col-span-6 space-y-4">
+                    <div class="flex items-center gap-3">
+                        <img src="{{ asset('logo.png') }}" alt="Logo Serean Tobacco" class="h-11 w-auto object-contain bg-white rounded-xl p-1">
+                        <div class="flex flex-col">
+                            <span class="font-serif font-bold text-lg sm:text-xl text-white leading-none">
+                                Serean Tobacco
+                            </span>
+                            <span class="text-xs text-stone-400 tracking-wider uppercase mt-1">
+                                Sentra Tembakau Nusantara
+                            </span>
+                        </div>
+                    </div>
+
+                    <p class="text-stone-300 text-sm sm:text-base leading-relaxed max-w-lg">
+                        Sentra pengolahan dan perdagangan daun tembakau pilihan Nusantara. Menyediakan perajangan presisi, pengeringan teratur, dan kemitraan panen transparan dari sentra Temanggung dan nusantara.
+                    </p>
+
+                    <!-- Social Media & Contact Links -->
+                    <div class="flex items-center gap-3 pt-2">
+                        <a href="mailto:kemitraan@sereantobacco.co.id" class="w-10 h-10 rounded-full bg-white/10 hover:bg-brand-gold hover:text-white flex items-center justify-center transition-colors text-stone-200" aria-label="Email">
+                            <i class="fa-solid fa-envelope text-base"></i>
+                        </a>
+                        <a href="https://instagram.com" target="_blank" class="w-10 h-10 rounded-full bg-white/10 hover:bg-brand-gold hover:text-white flex items-center justify-center transition-colors text-stone-200" aria-label="Instagram">
+                            <i class="fa-brands fa-instagram text-base"></i>
+                        </a>
+                        <a href="https://facebook.com" target="_blank" class="w-10 h-10 rounded-full bg-white/10 hover:bg-brand-gold hover:text-white flex items-center justify-center transition-colors text-stone-200" aria-label="Facebook">
+                            <i class="fa-brands fa-facebook-f text-base"></i>
+                        </a>
+                        <a href="https://youtube.com" target="_blank" class="w-10 h-10 rounded-full bg-white/10 hover:bg-brand-gold hover:text-white flex items-center justify-center transition-colors text-stone-200" aria-label="YouTube">
+                            <i class="fa-brands fa-youtube text-base"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Col 2: Navigasi Cepat -->
+                <div class="md:col-span-3 space-y-4">
+                    <h4 class="font-serif font-bold text-base sm:text-lg text-white">Navigasi Halaman</h4>
+                    <ul class="space-y-2.5 text-stone-300 text-sm sm:text-base">
+                        <li><a href="#beranda" class="hover:text-brand-gold transition-colors">Beranda</a></li>
+                        <li><a href="#tentang" class="hover:text-brand-gold transition-colors">Tentang Kami</a></li>
+                        <li><a href="#produk" class="hover:text-brand-gold transition-colors">Produk Tembakau</a></li>
+                        <li><a href="#testimoni" class="hover:text-brand-gold transition-colors">Testimoni Mitra</a></li>
+                        <li><a href="#kontak" class="hover:text-brand-gold transition-colors">Kontak &amp; Pemesanan</a></li>
+                    </ul>
+                </div>
+
+                <!-- Col 3: Lokasi & Kontak -->
+                <div class="md:col-span-3 space-y-4">
+                    <h4 class="font-serif font-bold text-base sm:text-lg text-white">Kantor &amp; Sentra</h4>
+                    <div class="space-y-2.5 text-stone-300 text-sm sm:text-base">
+                        <p class="leading-relaxed">Jl. Raya Temanggung - Parakan KM 4, Temanggung, Jawa Tengah</p>
+                        <p>kemitraan@sereantobacco.co.id</p>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Bottom Copyright -->
+            <div class="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left text-stone-400 text-xs sm:text-sm">
+                <p>© 2026 Serean Tobacco. Seluruh Hak Cipta Dilindungi.</p>
+                <p>Temanggung • Jawa Tengah • Indonesia</p>
+            </div>
+
+        </div>
+    </footer>
+
+    <!-- Modal Login -->
+    <div id="loginModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm hidden" role="dialog" aria-modal="true">
+        <div class="relative w-full max-w-sm max-h-[90vh] overflow-y-auto bg-white rounded-2xl shadow-xl border border-brand-border p-5 sm:p-6" id="loginModalBox">
+
+            <button type="button" onclick="closeLoginModal()" class="absolute top-4 right-4 text-stone-400 hover:text-brand-espresso text-sm p-1" aria-label="Tutup">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+            <div class="text-center mb-4 sm:mb-5">
+                <h3 class="font-serif text-lg sm:text-xl font-bold text-brand-espresso">Masuk Portal Mitra</h3>
+                <p class="text-xs text-brand-muted mt-0.5">Akses petani, distributor, dan pengelola</p>
+            </div>
+
+            <form onsubmit="handleLogin(event)" class="space-y-3">
+                <div>
+                    <label for="email" class="block text-xs font-medium text-brand-espresso mb-1">Email / ID Mitra</label>
+                    <input type="text" id="email" required placeholder="mitra@sereantobacco.co.id" class="w-full px-3 py-2 text-xs rounded-xl border border-brand-border focus:outline-none focus:border-brand-gold">
+                </div>
+
+                <div>
+                    <label for="password" class="block text-xs font-medium text-brand-espresso mb-1">Kata Sandi</label>
+                    <input type="password" id="password" required placeholder="••••••••" class="w-full px-3 py-2 text-xs rounded-xl border border-brand-border focus:outline-none focus:border-brand-gold">
+                </div>
+
+                <button type="submit" class="w-full py-2.5 rounded-full bg-brand-espresso text-white text-xs font-semibold hover:bg-brand-dark transition-colors">
+                    Masuk
+                </button>
+
+                <p id="loginNotice" class="text-[11px] text-emerald-700 text-center hidden">
+                    Berhasil masuk. Mengalihkan...
+                </p>
+            </form>
+
+        </div>
+    </div>
+
+    <!-- AOS JS & Initializer -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js" integrity="sha512-A7AYk1fGKX6S2SsHywmPkrnzTZHrgiVT7GcQkLGDe2ev0aWb8zejytzS8wjo7PGEXKqJOrjQ4oORtnimIRZBtw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            if (typeof AOS !== 'undefined') {
+                AOS.init({
+                    duration: 700,
+                    easing: 'ease-out-cubic',
+                    once: true,
+                    offset: 50
+                });
+            }
+        });
+    </script>
+
+    <!-- Layout Common Scripts -->
+    <script>
+        // Mobile menu toggle
+        const toggleBtn = document.getElementById('mobile-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileIcon = document.getElementById('mobile-icon');
+
+        if (toggleBtn && mobileMenu) {
+            toggleBtn.addEventListener('click', () => {
+                const isClosed = mobileMenu.classList.contains('hidden');
+                mobileMenu.classList.toggle('hidden');
+                mobileIcon.classList.toggle('fa-bars', !isClosed);
+                mobileIcon.classList.toggle('fa-xmark', isClosed);
+            });
+
+            document.querySelectorAll('.mobile-link').forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.add('hidden');
+                    mobileIcon.classList.add('fa-bars');
+                    mobileIcon.classList.remove('fa-xmark');
+                });
+            });
+        }
+
+        // Modal Login Handlers
+        const loginModal = document.getElementById('loginModal');
+
+        function openLoginModal() {
+            if (loginModal) loginModal.classList.remove('hidden');
+        }
+
+        function closeLoginModal() {
+            if (loginModal) loginModal.classList.add('hidden');
+        }
+
+        if (loginModal) {
+            loginModal.addEventListener('click', (e) => {
+                if (e.target === loginModal) closeLoginModal();
+            });
+        }
+
+        function handleLogin(e) {
+            e.preventDefault();
+            const notice = document.getElementById('loginNotice');
+            if (notice) {
+                notice.classList.remove('hidden');
+                setTimeout(() => {
+                    closeLoginModal();
+                    notice.classList.add('hidden');
+                }, 1000);
+            }
+        }
+    </script>
+    @stack('scripts')
+</body>
+</html>
