@@ -5,35 +5,35 @@
 
 @section('content')
 
-    
+
     <section id="beranda" class="w-full min-h-[100dvh] lg:h-[100dvh] lg:max-h-screen flex flex-col justify-between pt-20 sm:pt-24 lg:pt-20 border-b border-brand-border relative overflow-hidden">
 
-        
+
         <div class="absolute inset-0 z-0 overflow-hidden pointer-events-none select-none">
             <div id="hero-bg-track" class="flex w-[300%] h-full transition-transform duration-1000 ease-in-out">
-                
+
                 <div class="w-1/3 h-full bg-cover bg-center shrink-0" style="background-image: url('{{ asset('images/hero/daun-tembakau.jpg') }}');"></div>
-                
+
                 <div class="w-1/3 h-full bg-cover bg-center shrink-0" style="background-image: url('{{ asset('images/hero/panen-tembakau-emas.jpg') }}');"></div>
-                
+
                 <div class="w-1/3 h-full bg-cover bg-center shrink-0" style="background-image: url('{{ asset('images/hero/proses-tembakau.jpg') }}');"></div>
             </div>
 
-            
+
             <div class="absolute inset-0 bg-gradient-to-r from-brand-surface/90 via-brand-surface/75 to-brand-surface/60"></div>
             <div class="absolute inset-0 bg-brand-espresso/15"></div>
         </div>
 
-        
+
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 my-auto w-full relative z-10 py-3 sm:py-4">
             <div class="grid grid-cols-1 md:grid-cols-12 items-center gap-5 sm:gap-6 lg:gap-10">
 
-                
+
                 <div class="md:col-span-7 text-center md:text-left order-2 md:order-1" data-aos="fade-up" data-aos-duration="700">
 
                     <div class="relative min-h-[190px] sm:min-h-[195px] md:min-h-[210px]">
 
-                        
+
                         <div id="hero-text-0" class="hero-text-slide transition-all duration-700 opacity-100 translate-y-0 absolute inset-0 space-y-2 sm:space-y-3 flex flex-col items-center md:items-start">
                             <div class="flex items-center gap-2 text-brand-gold pb-1 select-none pointer-events-none">
                                 <svg class="w-32 sm:w-40 h-4 text-brand-gold" viewBox="0 0 160 16" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -52,7 +52,7 @@
                             </p>
                         </div>
 
-                        
+
                         <div id="hero-text-1" class="hero-text-slide transition-all duration-700 opacity-0 translate-y-3 pointer-events-none absolute inset-0 space-y-2 sm:space-y-3 flex flex-col items-center md:items-start">
                             <div class="flex items-center gap-2 text-brand-gold pb-1 select-none pointer-events-none">
                                 <svg class="w-32 sm:w-40 h-4 text-brand-gold" viewBox="0 0 160 16" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -67,11 +67,11 @@
                             </h1>
 
                             <p class="text-xs sm:text-sm md:text-base text-brand-muted leading-relaxed max-w-xl mx-auto md:mx-0">
-                                Menghubungkan ratusan kelompok tani lokal dengan sistem grading jujur, timbangan akurat, serta kepastian pembayaran tunai transparan dan adil.
+                                Menghubungkan ratusan kelompok tani lokal dengan sistem grading jujur, timbangan akurat, serta kepastian pembayaran tunai transparan dan adil
                             </p>
                         </div>
 
-                        
+
                         <div id="hero-text-2" class="hero-text-slide transition-all duration-700 opacity-0 translate-y-3 pointer-events-none absolute inset-0 space-y-2 sm:space-y-3 flex flex-col items-center md:items-start">
                             <div class="flex items-center gap-2 text-brand-gold pb-1 select-none pointer-events-none">
                                 <svg class="w-32 sm:w-40 h-4 text-brand-gold" viewBox="0 0 160 16" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -82,11 +82,11 @@
                             </div>
 
                             <h1 class="font-serif text-xl sm:text-2xl md:text-3xl lg:text-[38px] font-extrabold text-[#1a0f07] leading-snug tracking-tight">
-                                Perajangan Halus &amp; Pengeringan Curing 12–14%.
+                                Perajangan Halus &amp; Pengeringan Curing 12 - 14%
                             </h1>
 
                             <p class="text-xs sm:text-sm md:text-base text-brand-muted leading-relaxed max-w-xl mx-auto md:mx-0">
-                                Pengeringan teratur menjaga getah murni tembakau pegunungan, siap memenuhi standar bahan baku lintingan hingga cerutu berkualitas ekspor.
+                                Pengeringan teratur menjaga getah murni tembakau pegunungan, siap memenuhi standar bahan baku lintingan hingga cerutu berkualitas ekspor
                             </p>
                         </div>
 
@@ -103,7 +103,7 @@
                     </div>
                 </div>
 
-                
+
                 <div class="md:col-span-5 flex justify-center order-1 md:order-2" data-aos="zoom-in" data-aos-duration="700" data-aos-delay="150">
                     <div class="w-36 sm:w-48 md:w-60 lg:w-72 aspect-square rounded-2xl sm:rounded-3xl bg-white/95 backdrop-blur-md border-2 border-brand-border shadow-xl p-4 sm:p-7 flex flex-col items-center justify-center text-center group">
                         <img src="{{ asset('logo.png') }}" alt="Serean Tobacco" class="max-w-[85%] max-h-[75%] object-contain transition-transform duration-500 group-hover:scale-105">
@@ -117,9 +117,9 @@
             </div>
         </div>
 
-        
+
         <div class="w-full shrink-0 relative z-20 mt-3 sm:mt-5 lg:mt-6">
-            
+
             <div class="relative w-full flex items-center justify-center -mb-2.5 z-30 pointer-events-none">
                 <div class="max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-center gap-2 sm:gap-3">
                     <div class="h-[1px] flex-1 bg-gradient-to-r from-transparent via-brand-gold/60 to-brand-gold"></div>
@@ -133,7 +133,7 @@
                 </div>
             </div>
 
-            
+
             <div class="w-full bg-[#2a170e] text-white border-y border-brand-gold/40 shadow-xl py-2.5 sm:py-3.5 lg:py-4 relative overflow-hidden">
                 <div class="absolute inset-0 opacity-[0.06] bg-[radial-gradient(#d4a359_1px,transparent_1px)] [background-size:16px_16px]"></div>
 
@@ -164,11 +164,11 @@
         </div>
     </section>
 
-    
+
     <section id="tentang" class="w-full py-20 sm:py-28 lg:py-32 border-b border-brand-border bg-white relative">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
 
-            
+
             <div class="max-w-3xl mb-12 sm:mb-16" data-aos="fade-up">
                 <span class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-surface border border-brand-border text-xs sm:text-sm font-semibold text-brand-gold uppercase tracking-wider mb-3 shadow-sm">
                     <i class="fa-solid fa-leaf text-xs"></i>
@@ -179,14 +179,14 @@
                 </h2>
             </div>
 
-            
+
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
 
-                
+
                 <div class="lg:col-span-5" data-aos="fade-right" data-aos-duration="700">
                     <div class="relative group">
 
-                        
+
                         <div class="absolute -top-4 -right-3 sm:-right-5 z-20 bg-white/95 border border-brand-border/90 rounded-2xl shadow-xl p-3 sm:p-4 flex items-center gap-3 backdrop-blur-md transition-transform duration-300 group-hover:-translate-y-1">
                             <div class="w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-amber-50 border border-brand-gold/30 flex items-center justify-center text-brand-gold text-lg shrink-0 shadow-sm">
                                 <i class="fa-solid fa-award"></i>
@@ -197,12 +197,12 @@
                             </div>
                         </div>
 
-                        
+
                         <div class="relative rounded-3xl overflow-hidden border-2 border-brand-border shadow-xl aspect-[4/3] max-h-[360px] sm:max-h-[380px] bg-stone-100">
                             <img src="{{ asset('images/hero/daun-tembakau.jpg') }}" alt="Daun Tembakau Asli Temanggung" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
                             <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent"></div>
 
-                            
+
                             <div class="absolute bottom-0 inset-x-0 p-4 sm:p-5 text-white">
                                 <span class="px-2.5 py-0.5 rounded-full bg-brand-gold text-brand-dark text-[10px] sm:text-[11px] font-bold uppercase tracking-wider inline-block mb-1 shadow">
                                     Grade Pilihan
@@ -215,7 +215,7 @@
                     </div>
                 </div>
 
-                
+
                 <div class="lg:col-span-7 space-y-6" data-aos="fade-left" data-aos-duration="700" data-aos-delay="100">
 
                     <div class="space-y-4 text-sm sm:text-base lg:text-lg text-brand-muted leading-relaxed">
@@ -224,10 +224,10 @@
                         </p>
                     </div>
 
-                    
+
                     <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-2">
 
-                        
+
                         <div class="p-5 rounded-2xl bg-brand-surface border border-brand-border shadow-sm hover:border-brand-gold hover:shadow-md transition-all duration-200 group">
                             <div class="w-12 h-12 rounded-xl bg-white border border-brand-border flex items-center justify-center text-brand-gold mb-3 text-lg group-hover:bg-brand-espresso group-hover:text-brand-gold transition-colors shadow-sm">
                                 <i class="fa-solid fa-scissors"></i>
@@ -236,7 +236,7 @@
                             <p class="text-xs text-brand-muted leading-relaxed">Potongan seragam dari halus (0.6mm) hingga sedang, menjaga hisapan lintingan halus tanpa debu.</p>
                         </div>
 
-                        
+
                         <div class="p-5 rounded-2xl bg-brand-surface border border-brand-border shadow-sm hover:border-brand-gold hover:shadow-md transition-all duration-200 group">
                             <div class="w-12 h-12 rounded-xl bg-white border border-brand-border flex items-center justify-center text-brand-gold mb-3 text-lg group-hover:bg-brand-espresso group-hover:text-brand-gold transition-colors shadow-sm">
                                 <i class="fa-solid fa-sun"></i>
@@ -245,7 +245,7 @@
                             <p class="text-xs text-brand-muted leading-relaxed">Pengeringan terukur di atas anyaman bambu widig, menjaga getah asli dan kadar air stabil 12–14%.</p>
                         </div>
 
-                        
+
                         <div class="p-5 rounded-2xl bg-brand-surface border border-brand-border shadow-sm hover:border-brand-gold hover:shadow-md transition-all duration-200 group">
                             <div class="w-12 h-12 rounded-xl bg-white border border-brand-border flex items-center justify-center text-brand-gold mb-3 text-lg group-hover:bg-brand-espresso group-hover:text-brand-gold transition-colors shadow-sm">
                                 <i class="fa-solid fa-box-archive"></i>
@@ -256,7 +256,7 @@
 
                     </div>
 
-                    
+
                     <div class="flex flex-wrap items-center gap-y-2 gap-x-6 pt-3 text-xs sm:text-sm font-semibold text-brand-espresso border-t border-brand-border/70">
                         <span class="inline-flex items-center gap-1.5">
                             <i class="fa-solid fa-circle-check text-brand-gold"></i>
@@ -278,11 +278,11 @@
         </div>
     </section>
 
-    
+
     <section id="produk" class="w-full py-20 sm:py-28 lg:py-32 border-b border-brand-border bg-white relative">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
 
-            
+
             <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-8 sm:mb-10" data-aos="fade-up">
                 <div>
                     <span class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-surface border border-brand-border text-xs sm:text-sm font-semibold text-brand-gold uppercase tracking-wider mb-2 shadow-sm">
@@ -306,10 +306,10 @@
                 </div>
             </div>
 
-            
+
             <div id="product-scroll-track" class="flex gap-6 overflow-x-auto scroll-smooth snap-x snap-mandatory py-4 no-scrollbar">
 
-                
+
                 <div id="prod-card-0" class="w-full sm:w-[calc((100%-1.5rem)/2)] lg:w-[calc((100%-3rem)/3)] shrink-0 snap-start p-5 sm:p-6 rounded-3xl border border-brand-border bg-brand-surface flex flex-col justify-between hover:border-brand-gold hover:shadow-xl transition-all duration-300 group">
                     <div>
                         <div class="relative w-full aspect-[16/10] rounded-2xl overflow-hidden mb-4 bg-stone-100 shadow-inner">
@@ -338,7 +338,7 @@
                     </div>
                 </div>
 
-                
+
                 <div id="prod-card-1" class="w-full sm:w-[calc((100%-1.5rem)/2)] lg:w-[calc((100%-3rem)/3)] shrink-0 snap-start p-5 sm:p-6 rounded-3xl border border-brand-border bg-brand-surface flex flex-col justify-between hover:border-brand-gold hover:shadow-xl transition-all duration-300 group">
                     <div>
                         <div class="relative w-full aspect-[16/10] rounded-2xl overflow-hidden mb-4 bg-stone-100 shadow-inner">
@@ -367,7 +367,7 @@
                     </div>
                 </div>
 
-                
+
                 <div id="prod-card-2" class="w-full sm:w-[calc((100%-1.5rem)/2)] lg:w-[calc((100%-3rem)/3)] shrink-0 snap-start p-5 sm:p-6 rounded-3xl border border-brand-border bg-brand-surface flex flex-col justify-between hover:border-brand-gold hover:shadow-xl transition-all duration-300 group">
                     <div>
                         <div class="relative w-full aspect-[16/10] rounded-2xl overflow-hidden mb-4 bg-stone-100 shadow-inner">
@@ -396,7 +396,7 @@
                     </div>
                 </div>
 
-                
+
                 <div id="prod-card-3" class="w-full sm:w-[calc((100%-1.5rem)/2)] lg:w-[calc((100%-3rem)/3)] shrink-0 snap-start p-5 sm:p-6 rounded-3xl border border-brand-border bg-brand-surface flex flex-col justify-between hover:border-brand-gold hover:shadow-xl transition-all duration-300 group">
                     <div>
                         <div class="relative w-full aspect-[16/10] rounded-2xl overflow-hidden mb-4 bg-stone-100 shadow-inner">
@@ -425,7 +425,7 @@
                     </div>
                 </div>
 
-                
+
                 <div id="prod-card-4" class="w-full sm:w-[calc((100%-1.5rem)/2)] lg:w-[calc((100%-3rem)/3)] shrink-0 snap-start p-5 sm:p-6 rounded-3xl border border-brand-border bg-brand-surface flex flex-col justify-between hover:border-brand-gold hover:shadow-xl transition-all duration-300 group">
                     <div>
                         <div class="relative w-full aspect-[16/10] rounded-2xl overflow-hidden mb-4 bg-stone-100 shadow-inner">
@@ -456,7 +456,7 @@
 
             </div>
 
-            
+
             <div class="flex items-center justify-center gap-2 mt-6 sm:mt-8">
                 <button type="button" onclick="scrollProductToIndex(0)" id="prod-dot-0" class="prod-indicator w-8 h-2.5 rounded-full bg-brand-gold transition-all duration-300" aria-label="Tampilan 1"></button>
                 <button type="button" onclick="scrollProductToIndex(1)" id="prod-dot-1" class="prod-indicator w-2.5 h-2.5 rounded-full bg-brand-espresso/20 hover:bg-brand-gold/60 transition-all duration-300" aria-label="Tampilan 2"></button>
@@ -466,7 +466,7 @@
         </div>
     </section>
 
-    
+
     <section id="testimoni" class="w-full py-20 sm:py-28 lg:py-32 border-b border-brand-border relative">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
 
@@ -544,11 +544,11 @@
         </div>
     </section>
 
-    
+
     <section id="faq" class="w-full py-16 sm:py-24 bg-white relative">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
 
-            
+
             <div class="text-center mb-10 sm:mb-14" data-aos="fade-up">
                 <span class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-surface border border-brand-border text-xs sm:text-sm font-semibold text-brand-gold uppercase tracking-wider mb-3 shadow-sm">
                     <i class="fa-solid fa-circle-question text-xs"></i>
@@ -562,10 +562,10 @@
                 </p>
             </div>
 
-            
+
             <div class="space-y-4 sm:space-y-5" data-aos="fade-up" data-aos-delay="100">
 
-                
+
                 <div class="faq-item rounded-3xl border border-brand-border bg-brand-surface overflow-hidden shadow-sm hover:border-brand-gold hover:shadow-md transition-all duration-300">
                     <button type="button" onclick="toggleFaq(0)" class="w-full py-5 sm:py-6 px-6 sm:px-8 flex items-center justify-between text-left gap-4 font-serif font-extrabold text-base sm:text-lg md:text-xl text-[#1a0f07] hover:text-brand-gold transition-colors focus:outline-none">
                         <span>Berapa batas minimal pemesanan tembakau di Serean Tobacco?</span>
@@ -578,7 +578,7 @@
                     </div>
                 </div>
 
-                
+
                 <div class="faq-item rounded-3xl border border-brand-border bg-brand-surface overflow-hidden shadow-sm hover:border-brand-gold hover:shadow-md transition-all duration-300">
                     <button type="button" onclick="toggleFaq(1)" class="w-full py-5 sm:py-6 px-6 sm:px-8 flex items-center justify-between text-left gap-4 font-serif font-extrabold text-base sm:text-lg md:text-xl text-[#1a0f07] hover:text-brand-gold transition-colors focus:outline-none">
                         <span>Bagaimana jaminan mutu dan kadar air 12–14% saat pengiriman?</span>
@@ -591,7 +591,7 @@
                     </div>
                 </div>
 
-                
+
                 <div class="faq-item rounded-3xl border border-brand-border bg-brand-surface overflow-hidden shadow-sm hover:border-brand-gold hover:shadow-md transition-all duration-300">
                     <button type="button" onclick="toggleFaq(2)" class="w-full py-5 sm:py-6 px-6 sm:px-8 flex items-center justify-between text-left gap-4 font-serif font-extrabold text-base sm:text-lg md:text-xl text-[#1a0f07] hover:text-brand-gold transition-colors focus:outline-none">
                         <span>Apakah bisa meminta paket sampel mutu (tester) terlebih dahulu?</span>
@@ -604,7 +604,7 @@
                     </div>
                 </div>
 
-                
+
                 <div class="faq-item rounded-3xl border border-brand-border bg-brand-surface overflow-hidden shadow-sm hover:border-brand-gold hover:shadow-md transition-all duration-300">
                     <button type="button" onclick="toggleFaq(3)" class="w-full py-5 sm:py-6 px-6 sm:px-8 flex items-center justify-between text-left gap-4 font-serif font-extrabold text-base sm:text-lg md:text-xl text-[#1a0f07] hover:text-brand-gold transition-colors focus:outline-none">
                         <span>Varietas tembakau apa saja yang selalu tersedia di gudang?</span>
@@ -617,7 +617,7 @@
                     </div>
                 </div>
 
-                
+
                 <div class="faq-item rounded-3xl border border-brand-border bg-brand-surface overflow-hidden shadow-sm hover:border-brand-gold hover:shadow-md transition-all duration-300">
                     <button type="button" onclick="toggleFaq(4)" class="w-full py-5 sm:py-6 px-6 sm:px-8 flex items-center justify-between text-left gap-4 font-serif font-extrabold text-base sm:text-lg md:text-xl text-[#1a0f07] hover:text-brand-gold transition-colors focus:outline-none">
                         <span>Ekspedisi apa yang digunakan untuk pengiriman ke luar pulau Jawa?</span>
@@ -630,7 +630,7 @@
                     </div>
                 </div>
 
-                
+
                 <div class="faq-item rounded-3xl border border-brand-border bg-brand-surface overflow-hidden shadow-sm hover:border-brand-gold hover:shadow-md transition-all duration-300">
                     <button type="button" onclick="toggleFaq(5)" class="w-full py-5 sm:py-6 px-6 sm:px-8 flex items-center justify-between text-left gap-4 font-serif font-extrabold text-base sm:text-lg md:text-xl text-[#1a0f07] hover:text-brand-gold transition-colors focus:outline-none">
                         <span>Bagaimana cara melakukan pemesanan atau konsultasi langsung?</span>
