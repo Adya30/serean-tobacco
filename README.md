@@ -1,58 +1,228 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
-
 <p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
+  <img src="public/logo.png" alt="Serean Tobacco Logo" width="160">
 </p>
 
-## About Laravel
+<h1 align="center">Serean Tobacco — Sentra Tembakau Nusantara</h1>
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+<p align="center">
+  Platform web resmi <strong>Serean Tobacco</strong>, penyedia jasa pengolahan (perajangan & pengeringan) serta perdagangan daun tembakau berkualitas pilihan dari sentra lereng Gunung Sumbing, Temanggung, dan berbagai daerah Nusantara.
+</p>
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+<p align="center">
+  <img src="https://img.shields.io/badge/Laravel-13.x-FF2D20?style=for-the-badge&logo=laravel&logoColor=white" alt="Laravel 13">
+  <img src="https://img.shields.io/badge/PHP-%3E%3D8.3-777BB4?style=for-the-badge&logo=php&logoColor=white" alt="PHP 8.3+">
+  <img src="https://img.shields.io/badge/Tailwind_CSS-v4-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white" alt="Tailwind CSS v4">
+  <img src="https://img.shields.io/badge/Vite-8.x-646CFF?style=for-the-badge&logo=vite&logoColor=white" alt="Vite 8">
+  <img src="https://img.shields.io/badge/Pest_PHP-5.x-9333EA?style=for-the-badge&logo=pest&logoColor=white" alt="Pest PHP">
+</p>
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+---
 
-## Learning Laravel
+## 📋 Daftar Isi
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+1. [Tech Stack yang Digunakan](#-tech-stack-yang-digunakan)
+2. [Halaman & Fitur Utama](#-halaman--fitur-utama)
+3. [Prasyarat Sistem (Prerequisites)](#-prasyarat-sistem-prerequisites)
+4. [Panduan Instalasi (Mulai dari Awal Clone)](#-panduan-instalasi-mulai-dari-awal-clone)
+5. [Menjalankan Aplikasi](#-menjalankan-aplikasi)
+6. [Pengujian & Format Kode](#-pengujian--format-kode)
+7. [Struktur Direktori](#-struktur-direktori)
+8. [Lisensi](#-lisensi)
 
-In addition, [Laracasts](https://laracasts.com) contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+---
 
-You can also watch bite-sized lessons with real-world projects on [Laravel Learn](https://laravel.com/learn), where you will be guided through building a Laravel application from scratch while learning PHP fundamentals.
+## 🛠 Tech Stack yang Digunakan
 
-## Agentic Development
+### **Backend**
+- **Framework**: [Laravel 13](https://laravel.com/)
+- **Bahasa Pemrograman**: [PHP 8.3+](https://www.php.net/) (Support hingga PHP 8.6)
+- **Database**: [SQLite](https://www.sqlite.org/) (Default bawaan yang ringan & siap pakai) / Mendukung [MySQL](https://www.mysql.com/) & [PostgreSQL](https://www.postgresql.org/)
+- **Testing Suite**: [Pest PHP 5.x](https://pestphp.com/) (Feature & Unit testing)
+- **Code Formatter**: [Laravel Pint](https://laravel.com/docs/pint) (Standar styling PSR-12 & Laravel)
 
-Laravel's predictable structure and conventions make it ideal for AI coding agents like Claude Code, Cursor, and GitHub Copilot. Install [Laravel Boost](https://laravel.com/docs/ai) to supercharge your AI workflow:
+### **Frontend**
+- **Templating Engine**: Laravel Blade
+- **CSS Framework**: [Tailwind CSS v4](https://tailwindcss.com/) dengan `@tailwindcss/vite`
+- **Build Tool / Bundler**: [Vite 8](https://vite.dev/) & `laravel-vite-plugin`
+- **Animasi & Interaksi**:
+  - [AOS (Animate On Scroll)](https://michalsnik.github.io/aos/) untuk efek transisi scroll halus
+  - Hero Background Auto-Slider (Sinkronisasi gambar panen & narasi setiap 5 detik)
+  - Horizontal Product Carousel (Menampilkan pas 3 produk per view tanpa terpotong)
+- **Ikonografi & Tipografi**:
+  - [Font Awesome 6 (Free Solid, Brands)](https://fontawesome.com/)
+  - Google Fonts (Lora untuk judul bernuansa otentik tembakau & Plus Jakarta Sans untuk teks isi yang modern)
 
+---
+
+## 🌿 Halaman & Fitur Utama
+
+| Rute / URL | Halaman | Deskripsi |
+| :--- | :--- | :--- |
+| `/` | **Beranda (Landing Page)** | Hero section adaptif mobile dengan logo permanen, statistik 3-kolom standar mutu (Kadar air 12–14%, 25+ Varietas, Timbangan 100%), cuplikan Tentang Kami, carousel katalog 3 produk, testimoni customer, dan bagian Tanya Jawab (FAQ) interaktif dengan dropdown accordion. |
+| `/tentang` | **Tentang Kami** | Filosofi Lereng Gunung Sumbing & Sindoro, 4 pilar mutu tembakau murni bebas kimia, dan 4 tahapan alur pascapanen (*Petik, Rajang, Jemur Curing, Grading*). |
+| `/produk` | **Katalog Produk** | Tab filter kategori varietas (*Semua, Temanggung & Sumbing, Jawa Timur, Grade Eksklusif*), kartu spesifikasi rinci (karakter rasa, kadar air, potongan rajang, harga mulai), dan tombol pesan otomatis terintegrasi. |
+| `/kontak` | **Kontak Kami** | Direktori kontak resmi per baris (Desa Kalisari, Banyuglugur, Situbondo, WhatsApp Resmi 0878-5532-0286 Rajif Fakhri / Feri, Email Kemitraan) tanpa form yang rumit, lengkap dengan tombol direct chat WhatsApp & Google Maps. |
+
+---
+
+## 💻 Prasyarat Sistem (Prerequisites)
+
+Sebelum menginstal proyek, pastikan perangkat Anda telah terpasang:
+
+1. **PHP**: Versi **8.3** atau yang lebih baru (disarankan PHP 8.4+).
+   - Ekstensi PHP yang wajib aktif: `pdo`, `pdo_sqlite` (atau `pdo_mysql`), `mbstring`, `openssl`, `tokenizer`, `xml`, `ctype`, `curl`, `fileinfo`.
+2. **Composer**: Versi **2.x** ([Unduh Composer](https://getcomposer.org/)).
+3. **Node.js**: Versi **18.x** atau **20.x+** dan **npm** ([Unduh Node.js](https://nodejs.org/)).
+4. **Git**: Untuk melakukan kloning repository ([Unduh Git](https://git-scm.com/)).
+
+---
+
+## 🚀 Panduan Instalasi (Mulai dari Awal Clone)
+
+Ikuti langkah-langkah berikut secara berurutan untuk menjalankan proyek di komputer lokal:
+
+### 1. Kloning Repository
+Buka terminal (Git Bash, Command Prompt, atau PowerShell) dan jalankan:
 ```bash
-composer require laravel/boost --dev
-
-php artisan boost:install
+git clone https://github.com/username/serean-tobacco.git
+cd serean-tobacco
 ```
 
-Boost provides your agent 15+ tools and skills that help agents build Laravel applications while following best practices.
+### 2. Install Dependensi PHP (Composer)
+Jalankan perintah berikut untuk mengunduh semua library dan framework Laravel:
+```bash
+composer install
+```
 
-## Contributing
+### 3. Konfigurasi File Lingkungan (`.env`)
+Salin file contoh `.env.example` menjadi `.env`:
+- **Di Linux / macOS / Git Bash**:
+  ```bash
+  cp .env.example .env
+  ```
+- **Di Windows PowerShell**:
+  ```powershell
+  copy .env.example .env
+  ```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+### 4. Generate Application Encryption Key
+Buat kunci enkripsi aplikasi Laravel:
+```bash
+php artisan key:generate
+```
 
-## Code of Conduct
+### 5. Setup Database & Jalankan Migrasi
+Secara default, aplikasi menggunakan database **SQLite**. Pastikan file database telah tersedia lalu jalankan migrasi tabel:
+- **Di Linux / macOS / Git Bash**:
+  ```bash
+  touch database/database.sqlite
+  php artisan migrate
+  ```
+- **Di Windows PowerShell**:
+  ```powershell
+  if (!(Test-Path database\database.sqlite)) { New-Item database\database.sqlite -ItemType File }
+  php artisan migrate
+  ```
+> *Catatan: Jika ingin menggunakan MySQL, ubah konfigurasi `DB_CONNECTION=mysql` dan sesuaikan nama database serta password pada file `.env`.*
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+### 6. Install Dependensi Frontend (npm)
+Install seluruh paket JavaScript, Tailwind CSS v4, dan Vite:
+```bash
+npm install
+```
 
-## Security Vulnerabilities
+### 7. Kompilasi Aset Frontend
+Lakukan build aset statis (CSS & JS):
+```bash
+# Untuk kompilasi production:
+npm run build
+```
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+---
 
-## License
+## 🏃 Menjalankan Aplikasi
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Anda dapat menjalankan server pengembangan lokal dengan salah satu cara berikut:
+
+### Cara 1: Menggunakan Perintah All-in-One (Rekomendasi)
+Menjalankan PHP server dan Vite dev server secara bersamaan dalam satu terminal:
+```bash
+composer run dev
+```
+
+### Cara 2: Menjalankan Secara Terpisah
+- **Terminal 1** (Server Backend Laravel):
+  ```bash
+  php artisan serve
+  ```
+- **Terminal 2** (Vite Dev Server untuk Hot Reload):
+  ```bash
+  npm run dev
+  ```
+
+Buka browser Anda dan akses aplikasi di:
+```
+http://127.0.0.1:8000
+```
+
+---
+
+## 🧪 Pengujian & Format Kode
+
+### 1. Menjalankan Automated Tests (Pest PHP)
+Proyek ini dilengkapi dengan pengujian otomatis untuk memastikan seluruh rute halaman mengembalikan kode status HTTP 200 OK:
+```bash
+php artisan test
+```
+atau langsung melalui binary Pest:
+```bash
+vendor/bin/pest
+```
+
+### 2. Memeriksa & Merapikan Format Kode (Laravel Pint)
+Format seluruh kode PHP agar sesuai standar bersih Laravel:
+```bash
+vendor/bin/pint
+```
+
+---
+
+## 📁 Struktur Direktori Penting
+
+```text
+serean-tobacco/
+├── app/                        # Logika inti aplikasi Laravel
+├── database/                   # Migrasi skema database & SQLite file
+│   └── database.sqlite
+├── public/                     # Aset publik (logo.png, gambar produk, hero)
+│   ├── images/
+│   │   ├── hero/               # Foto daun tembakau, panen, curing
+│   │   ├── products/           # Foto varietas tembakau (Virginia, Sumbing, dll.)
+│   │   └── testimonials/       # Foto avatar customer
+│   └── logo.png                # Logo resmi Serean Tobacco
+├── resources/
+│   ├── css/                    # Konfigurasi Tailwind CSS v4
+│   ├── js/                     # Skrip JavaScript frontend
+│   └── views/                  # Template Blade aplikasi
+│       ├── components/
+│       │   └── navbar.blade.php    # Komponen navbar responsif
+│       ├── layouts/
+│       │   └── app.blade.php       # Layout induk utama & footer
+│       ├── landing.blade.php       # Halaman Beranda
+│       ├── tentang.blade.php       # Halaman Tentang Kami
+│       ├── produk.blade.php        # Halaman Katalog Produk
+│       └── kontak.blade.php        # Halaman Kontak & Pemesanan
+├── routes/
+│   └── web.php                 # Pendaftaran rute URL (/ , /tentang, /produk, /kontak)
+├── tests/
+│   └── Feature/                # Pengujian Pest untuk seluruh halaman
+├── composer.json               # Konfigurasi dependensi PHP
+├── package.json                # Konfigurasi dependensi npm & Tailwind v4
+└── vite.config.js              # Konfigurasi bundler Vite 8
+```
+
+---
+
+## 📄 Lisensi
+
+Proyek ini dibangun untuk **Serean Tobacco — Desa Kalisari, Kec. Banyuglugur, Kab. Situbondo, Jawa Timur**. Seluruh aset dan hak cipta dilindungi undang-undang. Framework Laravel dilisensikan di bawah [MIT license](https://opensource.org/licenses/MIT).
