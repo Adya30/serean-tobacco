@@ -39,6 +39,8 @@
     </script>
     <style>
         body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        .no-scrollbar::-webkit-scrollbar { display: none !important; width: 0 !important; height: 0 !important; }
+        .no-scrollbar { -ms-overflow-style: none !important; scrollbar-width: none !important; }
     </style>
 </head>
 <body class="h-full flex overflow-hidden bg-brand-surface text-brand-dark antialiased">
@@ -50,7 +52,9 @@
                     <img src="{{ asset('logo.png') }}" alt="Logo" class="h-9 w-auto bg-white rounded-lg p-0.5">
                     <div>
                         <span class="font-serif font-bold text-base text-white leading-tight block">Serean Tobacco</span>
-                        <span class="text-[10px] text-brand-gold uppercase tracking-wider font-semibold">Panel Kemitraan</span>
+                        <span class="text-[10px] text-brand-gold uppercase tracking-wider font-semibold">
+                            {{ Auth::user()->isPetani() ? 'Sentra Petani' : 'Sentra Tembakau' }}
+                        </span>
                     </div>
                 </a>
                 <button onclick="toggleSidebar()" class="lg:hidden text-white/70 hover:text-white p-1">
@@ -61,8 +65,47 @@
             <nav class="px-4 py-4 space-y-1.5 text-xs font-semibold">
                 <a href="{{ route('dashboard') }}" class="flex items-center gap-3 px-3.5 py-2.5 rounded-xl transition-colors {{ request()->routeIs('dashboard') ? 'bg-brand-gold text-white shadow-sm' : 'text-white/75 hover:bg-white/10 hover:text-white' }}">
                     <i class="fa-solid fa-gauge-high w-4 text-center"></i>
-                    <span>Ringkasan Dashboard</span>
+                    <span>Dashboard</span>
                 </a>
+
+                @if (Auth::user()->isAdmin())
+                    <a href="{{ route('dashboard.stok') }}" class="flex items-center gap-3 px-3.5 py-2.5 rounded-xl transition-colors {{ request()->routeIs('dashboard.stok*') ? 'bg-brand-gold text-white shadow-sm' : 'text-white/75 hover:bg-white/10 hover:text-white' }}">
+                        <i class="fa-solid fa-boxes-stacked w-4 text-center"></i>
+                        <span>Pencatatan Stok</span>
+                    </a>
+
+                    <a href="{{ route('dashboard.katalog') }}" class="flex items-center gap-3 px-3.5 py-2.5 rounded-xl transition-colors {{ request()->routeIs('dashboard.katalog*') ? 'bg-brand-gold text-white shadow-sm' : 'text-white/75 hover:bg-white/10 hover:text-white' }}">
+                        <i class="fa-solid fa-layer-group w-4 text-center"></i>
+                        <span>Katalog Barang</span>
+                    </a>
+
+                    <a href="{{ route('dashboard.transaksi') }}" class="flex items-center gap-3 px-3.5 py-2.5 rounded-xl transition-colors {{ request()->routeIs('dashboard.transaksi*') ? 'bg-brand-gold text-white shadow-sm' : 'text-white/75 hover:bg-white/10 hover:text-white' }}">
+                        <i class="fa-solid fa-truck-fast w-4 text-center"></i>
+                        <span>Transaksi &amp; Distribusi</span>
+                    </a>
+                @endif
+
+                <a href="{{ route('dashboard.jadwal') }}" class="flex items-center gap-3 px-3.5 py-2.5 rounded-xl transition-colors {{ request()->routeIs('dashboard.jadwal*') ? 'bg-brand-gold text-white shadow-sm' : 'text-white/75 hover:bg-white/10 hover:text-white' }}">
+                    <i class="fa-solid fa-calendar-check w-4 text-center"></i>
+                    <span>Jadwal Tanam</span>
+                </a>
+
+                <a href="{{ route('dashboard.panen') }}" class="flex items-center gap-3 px-3.5 py-2.5 rounded-xl transition-colors {{ request()->routeIs('dashboard.panen*') ? 'bg-brand-gold text-white shadow-sm' : 'text-white/75 hover:bg-white/10 hover:text-white' }}">
+                    <i class="fa-solid fa-wheat-awn w-4 text-center"></i>
+                    <span>Hasil Panen</span>
+                </a>
+
+                <a href="{{ route('dashboard.rekomendasi-tanam') }}" class="flex items-center gap-3 px-3.5 py-2.5 rounded-xl transition-colors {{ request()->routeIs('dashboard.rekomendasi-tanam*') ? 'bg-brand-gold text-white shadow-sm' : 'text-white/75 hover:bg-white/10 hover:text-white' }}">
+                    <i class="fa-solid fa-seedling w-4 text-center"></i>
+                    <span>Rekomendasi Tanam</span>
+                </a>
+
+                @if (Auth::user()->isAdmin())
+                    <a href="{{ route('dashboard.petani') }}" class="flex items-center gap-3 px-3.5 py-2.5 rounded-xl transition-colors {{ request()->routeIs('dashboard.petani*') ? 'bg-brand-gold text-white shadow-sm' : 'text-white/75 hover:bg-white/10 hover:text-white' }}">
+                        <i class="fa-solid fa-users-gear w-4 text-center"></i>
+                        <span>Kelola Petani</span>
+                    </a>
+                @endif
             </nav>
         </div>
 
@@ -78,7 +121,7 @@
     </aside>
 
     <div class="flex-1 flex flex-col h-full overflow-hidden">
-        <header class="h-16 bg-white border-b border-brand-border flex items-center justify-between px-4 sm:px-8 z-10">
+        <header class="h-16 bg-white border-b border-brand-border flex items-center justify-between px-4 sm:px-8 relative">
             <div class="flex items-center gap-3">
                 <button onclick="toggleSidebar()" class="lg:hidden p-2 text-brand-dark hover:bg-stone-100 rounded-lg">
                     <i class="fa-solid fa-bars text-lg"></i>
@@ -88,12 +131,92 @@
                 </h1>
             </div>
 
+            @php
+                $notifSchedules = \App\Models\PlantingSchedule::when(Auth::user()->isPetani(), function ($q) {
+                    return $q->where('user_id', Auth::id());
+                })->where('phase', '!=', 'selesai')->orderBy('estimated_harvest_date', 'asc')->get();
+
+                $notifItems = [];
+                foreach ($notifSchedules as $ns) {
+                    $d = $ns->daysToHarvest();
+                    if ($d >= 0 && $d <= 14) {
+                        $notifItems[] = [
+                            'title' => 'Panen ' . $ns->variety . ' Dekat',
+                            'desc' => 'Tersisa ' . $d . ' hari lagi menuju panen di ' . $ns->location . '.',
+                            'badge' => 'Panen',
+                            'badgeColor' => 'bg-amber-100 text-amber-800',
+                            'icon' => 'fa-solid fa-hourglass-half text-amber-600',
+                        ];
+                    } elseif ($ns->phase === 'pemeliharaan') {
+                        $notifItems[] = [
+                            'title' => 'Fase Pemeliharaan: ' . $ns->variety,
+                            'desc' => 'Waktunya pendangiran, pemupukan susulan, dan wiwil pucuk.',
+                            'badge' => 'Perawatan',
+                            'badgeColor' => 'bg-emerald-100 text-emerald-800',
+                            'icon' => 'fa-solid fa-leaf text-emerald-600',
+                        ];
+                    } elseif ($ns->phase === 'persemaian') {
+                        $notifItems[] = [
+                            'title' => 'Persemaian Bibit: ' . $ns->variety,
+                            'desc' => 'Cek kelembapan naungan dan penyiraman pagi/sore secara rutin.',
+                            'badge' => 'Semai',
+                            'badgeColor' => 'bg-sky-100 text-sky-800',
+                            'icon' => 'fa-solid fa-seedling text-sky-600',
+                        ];
+                    }
+                }
+            @endphp
+
             <div class="flex items-center gap-3">
                 <div class="relative">
-                    <button type="button" class="w-9 h-9 rounded-full border border-brand-border bg-brand-surface text-brand-muted hover:text-brand-espresso hover:border-brand-gold transition-colors flex items-center justify-center relative cursor-pointer" aria-label="Notifikasi">
-                        <i class="fa-regular fa-bell text-sm"></i>
-                        <span class="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-brand-gold"></span>
+                    <button id="btnNotif" type="button" onclick="toggleNotifications()" class="relative w-9 h-9 rounded-full text-stone-500 hover:text-stone-800 hover:bg-stone-100 transition-colors flex items-center justify-center cursor-pointer" aria-label="Notifikasi">
+                        <i class="fa-regular fa-bell text-lg"></i>
+                        @if (count($notifItems) > 0)
+                            <span class="absolute top-1 right-1 w-2.5 h-2.5 bg-red-500 rounded-full ring-2 ring-white"></span>
+                        @endif
                     </button>
+
+                    <div id="dropdownNotif" class="hidden absolute right-0 mt-3 w-80 sm:w-96 rounded-2xl bg-white border border-brand-border shadow-2xl p-4 z-50 space-y-3">
+                        <div class="flex items-center justify-between border-b border-brand-border pb-2.5">
+                            <div class="flex items-center gap-2">
+                                <i class="fa-solid fa-bell text-brand-gold text-sm"></i>
+                                <h3 class="font-serif font-bold text-sm text-brand-espresso">Notifikasi Jadwal Tanam</h3>
+                            </div>
+                            <span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-amber-50 text-brand-gold border border-brand-gold/30">
+                                {{ count($notifItems) }} Pengingat
+                            </span>
+                        </div>
+
+                        <div class="max-h-72 overflow-y-auto space-y-2.5 no-scrollbar text-xs">
+                            @forelse ($notifItems as $ni)
+                                <div class="p-3 rounded-xl bg-brand-surface border border-brand-border flex items-start gap-3 hover:border-brand-gold/50 transition-colors">
+                                    <div class="w-8 h-8 rounded-lg bg-white border border-brand-border flex items-center justify-center shrink-0 text-sm">
+                                        <i class="{{ $ni['icon'] }}"></i>
+                                    </div>
+                                    <div class="flex-1 min-w-0">
+                                        <div class="flex items-center justify-between gap-1 mb-0.5">
+                                            <h4 class="font-bold text-brand-espresso truncate text-xs">{{ $ni['title'] }}</h4>
+                                            <span class="px-1.5 py-0.2 rounded text-[9px] font-bold {{ $ni['badgeColor'] }} shrink-0">
+                                                {{ $ni['badge'] }}
+                                            </span>
+                                        </div>
+                                        <p class="text-[11px] text-brand-muted leading-relaxed">{{ $ni['desc'] }}</p>
+                                    </div>
+                                </div>
+                            @empty
+                                <div class="p-6 text-center text-brand-muted text-xs">
+                                    <i class="fa-regular fa-calendar-check text-2xl text-stone-300 block mb-2"></i>
+                                    Tidak ada jadwal tanam yang mendesak saat ini.
+                                </div>
+                            @endforelse
+                        </div>
+
+                        <div class="pt-2 border-t border-brand-border">
+                            <a href="{{ route('dashboard.jadwal') }}" class="block w-full py-2 text-center rounded-xl bg-brand-surface hover:bg-stone-100 text-brand-espresso text-xs font-bold transition-colors">
+                                Lihat Semua Jadwal Tanam &rarr;
+                            </a>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="h-5 w-[1px] bg-brand-border"></div>
@@ -128,6 +251,8 @@
 
     <div id="sidebar-backdrop" onclick="toggleSidebar()" class="fixed inset-0 bg-black/50 z-20 hidden lg:hidden"></div>
 
+    @stack('modals')
+
     <script>
         function toggleSidebar() {
             const sidebar = document.getElementById('sidebar');
@@ -135,6 +260,19 @@
             sidebar.classList.toggle('-translate-x-full');
             backdrop.classList.toggle('hidden');
         }
+
+        function toggleNotifications() {
+            const dd = document.getElementById('dropdownNotif');
+            dd.classList.toggle('hidden');
+        }
+
+        document.addEventListener('click', function(e) {
+            const btn = document.getElementById('btnNotif');
+            const dd = document.getElementById('dropdownNotif');
+            if (btn && dd && !btn.contains(e.target) && !dd.contains(e.target)) {
+                dd.classList.add('hidden');
+            }
+        });
     </script>
 </body>
 </html>

@@ -8,21 +8,14 @@ use Symfony\Component\HttpFoundation\Response;
 
 class SecurityHeaders
 {
-    /**
-     * Handle an incoming request and attach essential security headers.
-     *
-     * @param  Closure(Request): (Response)  $next
-     */
     public function handle(Request $request, Closure $next): Response
     {
-        // Cloudflare IP Support: Restore genuine client IP when behind Cloudflare proxy
         if ($cfConnectingIp = $request->header('CF-Connecting-IP')) {
             $request->server->set('REMOTE_ADDR', $cfConnectingIp);
         }
 
         $response = $next($request);
 
-        // Security headers protection
         $response->headers->set('X-Frame-Options', 'SAMEORIGIN');
         $response->headers->set('X-Content-Type-Options', 'nosniff');
         $response->headers->set('X-XSS-Protection', '1; mode=block');

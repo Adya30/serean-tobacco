@@ -35,24 +35,28 @@ class CartController extends Controller
 
     public function add(Request $request): RedirectResponse
     {
+        if (! Auth::check()) {
+            session()->put('url.intended', route('produk'));
+
+            return redirect()->route('login')->with('error', 'Silakan masuk atau daftar akun terlebih dahulu untuk memesan produk tembakau.');
+        }
+
         $request->validate([
             'product_id' => ['required', 'exists:products,id'],
             'quantity_kg' => ['nullable', 'integer', 'min:1'],
+        ], [
+            'product_id.required' => 'Produk tembakau wajib dipilih.',
+            'product_id.exists' => 'Produk tembakau yang dipilih tidak ditemukan.',
+            'quantity_kg.integer' => 'Jumlah kuantitas harus berupa angka bulat.',
+            'quantity_kg.min' => 'Jumlah pesanan minimal 1 Kg.',
         ]);
 
         $userId = Auth::id();
-        $sessionId = session()->getId();
         $productId = $request->input('product_id');
         $qty = (int) $request->input('quantity_kg', 1);
 
         $cartItem = CartItem::where('product_id', $productId)
-            ->where(function ($query) use ($userId, $sessionId) {
-                if ($userId) {
-                    $query->where('user_id', $userId);
-                } else {
-                    $query->where('session_id', $sessionId);
-                }
-            })
+            ->where('user_id', $userId)
             ->first();
 
         if ($cartItem) {
@@ -60,7 +64,7 @@ class CartController extends Controller
         } else {
             CartItem::create([
                 'user_id' => $userId,
-                'session_id' => $userId ? null : $sessionId,
+                'session_id' => null,
                 'product_id' => $productId,
                 'quantity_kg' => $qty,
             ]);
@@ -75,6 +79,10 @@ class CartController extends Controller
 
         $request->validate([
             'quantity_kg' => ['required', 'integer', 'min:1'],
+        ], [
+            'quantity_kg.required' => 'Jumlah kuantitas wajib diisi.',
+            'quantity_kg.integer' => 'Jumlah kuantitas harus berupa angka bulat.',
+            'quantity_kg.min' => 'Jumlah pesanan minimal 1 Kg.',
         ]);
 
         $cartItem->update([
@@ -93,9 +101,6 @@ class CartController extends Controller
         return back()->with('status', 'Item tembakau berhasil dihapus dari keranjang.');
     }
 
-    /**
-     * Authorize that the current session or authenticated user owns the cart item.
-     */
     protected function authorizeCartItem(CartItem $cartItem): void
     {
         $userId = Auth::id();

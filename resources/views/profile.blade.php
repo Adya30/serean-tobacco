@@ -39,38 +39,85 @@
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div class="bg-white p-6 sm:p-8 rounded-3xl border border-brand-border shadow-sm space-y-4">
-                    <h2 class="font-serif font-bold text-lg text-brand-espresso border-b border-brand-border pb-3">
-                        Informasi Pribadi
-                    </h2>
-
-                    <form action="{{ route('profile.update') }}" method="POST" class="space-y-4 text-xs">
-                        @csrf
-                        @method('PUT')
-
-                        <div>
-                            <label class="block font-bold text-brand-espresso mb-1">Nama Lengkap</label>
-                            <input type="text" name="name" value="{{ old('name', $user->name) }}" required class="w-full px-3.5 py-2.5 rounded-xl border border-brand-border focus:border-brand-gold focus:outline-none text-sm">
-                        </div>
-
-                        <div>
-                            <label class="block font-bold text-brand-espresso mb-1">Email</label>
-                            <input type="email" name="email" value="{{ old('email', $user->email) }}" required class="w-full px-3.5 py-2.5 rounded-xl border border-brand-border focus:border-brand-gold focus:outline-none text-sm">
-                        </div>
-
-                        <div>
-                            <label class="block font-bold text-brand-espresso mb-1">Nomor WhatsApp</label>
-                            <input type="tel" name="phone" value="{{ old('phone', $user->phone) }}" placeholder="08..." class="w-full px-3.5 py-2.5 rounded-xl border border-brand-border focus:border-brand-gold focus:outline-none text-sm">
-                        </div>
-
-                        <div>
-                            <label class="block font-bold text-brand-espresso mb-1">Alamat Pengiriman</label>
-                            <textarea name="address" rows="3" placeholder="Alamat lengkap penerimaan tembakau" class="w-full px-3.5 py-2.5 rounded-xl border border-brand-border focus:border-brand-gold focus:outline-none text-sm">{{ old('address', $user->address) }}</textarea>
-                        </div>
-
-                        <button type="submit" class="w-full py-3 rounded-xl bg-brand-espresso text-white font-serif font-bold text-xs hover:bg-brand-dark transition-colors cursor-pointer">
-                            Simpan Perubahan
+                    <div class="flex items-center justify-between border-b border-brand-border pb-3">
+                        <h2 class="font-serif font-bold text-lg text-brand-espresso">
+                            Informasi Pribadi
+                        </h2>
+                        <button id="btnCustomerEdit" type="button" onclick="toggleCustomerProfile(true)" class="px-3.5 py-1.5 rounded-full border border-brand-border hover:border-brand-gold bg-brand-surface text-brand-espresso text-xs font-bold transition-all inline-flex items-center gap-1.5 cursor-pointer shadow-xs">
+                            <i class="fa-regular fa-pen-to-square text-[11px] text-brand-gold"></i>
+                            <span>Ubah Profil</span>
                         </button>
-                    </form>
+                    </div>
+
+                    <div id="customerProfileView" class="{{ ($errors->has('name') || $errors->has('email') || $errors->has('phone') || $errors->has('address')) ? 'hidden' : 'block' }} space-y-3.5 text-xs">
+                        <div class="p-3.5 rounded-2xl bg-brand-surface border border-brand-border">
+                            <span class="text-[10px] text-brand-muted uppercase font-bold block mb-1">Nama Lengkap</span>
+                            <span class="font-serif font-bold text-sm text-brand-espresso block">{{ $user->name }}</span>
+                        </div>
+
+                        <div class="p-3.5 rounded-2xl bg-brand-surface border border-brand-border">
+                            <span class="text-[10px] text-brand-muted uppercase font-bold block mb-1">Alamat Email</span>
+                            <span class="font-mono text-xs text-brand-espresso block">{{ $user->email }}</span>
+                        </div>
+
+                        <div class="p-3.5 rounded-2xl bg-brand-surface border border-brand-border">
+                            <span class="text-[10px] text-brand-muted uppercase font-bold block mb-1">Nomor WhatsApp / Telepon</span>
+                            <span class="font-medium text-xs text-brand-espresso block">{{ $user->phone ?? 'Belum ditambahkan' }}</span>
+                        </div>
+
+                        <div class="p-3.5 rounded-2xl bg-brand-surface border border-brand-border">
+                            <span class="text-[10px] text-brand-muted uppercase font-bold block mb-1">Alamat Pengiriman Utama</span>
+                            <span class="font-medium text-xs text-brand-espresso block leading-relaxed">{{ $user->address ?? 'Belum ada alamat pengiriman tercatat.' }}</span>
+                        </div>
+                    </div>
+
+                    <div id="customerProfileEdit" class="{{ ($errors->has('name') || $errors->has('email') || $errors->has('phone') || $errors->has('address')) ? 'block' : 'hidden' }}">
+                        <form action="{{ route('profile.update') }}" method="POST" class="space-y-4 text-xs">
+                            @csrf
+                            @method('PUT')
+
+                            <div>
+                                <label class="block font-bold text-brand-espresso mb-1">Nama Lengkap <span class="text-red-500">*</span></label>
+                                <input type="text" name="name" value="{{ old('name', $user->name) }}" required class="w-full px-3.5 py-2.5 rounded-xl border border-brand-border focus:border-brand-gold focus:outline-none text-sm">
+                                @error('name')
+                                    <span class="text-red-600 text-[11px] mt-1 block">{{ $message }}</span>
+                                @enderror
+                            </div>
+
+                            <div>
+                                <label class="block font-bold text-brand-espresso mb-1">Email <span class="text-red-500">*</span></label>
+                                <input type="email" name="email" value="{{ old('email', $user->email) }}" required class="w-full px-3.5 py-2.5 rounded-xl border border-brand-border focus:border-brand-gold focus:outline-none text-sm">
+                                @error('email')
+                                    <span class="text-red-600 text-[11px] mt-1 block">{{ $message }}</span>
+                                @enderror
+                            </div>
+
+                            <div>
+                                <label class="block font-bold text-brand-espresso mb-1">Nomor WhatsApp</label>
+                                <input type="tel" name="phone" value="{{ old('phone', $user->phone) }}" placeholder="08..." class="w-full px-3.5 py-2.5 rounded-xl border border-brand-border focus:border-brand-gold focus:outline-none text-sm">
+                                @error('phone')
+                                    <span class="text-red-600 text-[11px] mt-1 block">{{ $message }}</span>
+                                @enderror
+                            </div>
+
+                            <div>
+                                <label class="block font-bold text-brand-espresso mb-1">Alamat Pengiriman</label>
+                                <textarea name="address" rows="3" placeholder="Alamat lengkap penerimaan tembakau" class="w-full px-3.5 py-2.5 rounded-xl border border-brand-border focus:border-brand-gold focus:outline-none text-sm">{{ old('address', $user->address) }}</textarea>
+                                @error('address')
+                                    <span class="text-red-600 text-[11px] mt-1 block">{{ $message }}</span>
+                                @enderror
+                            </div>
+
+                            <div class="flex items-center gap-2 pt-1">
+                                <button type="submit" class="flex-1 py-2.5 rounded-xl bg-brand-espresso text-white font-serif font-bold text-xs hover:bg-brand-dark transition-colors cursor-pointer">
+                                    Simpan Perubahan
+                                </button>
+                                <button type="button" onclick="toggleCustomerProfile(false)" class="px-4 py-2.5 rounded-xl border border-brand-border text-brand-muted hover:bg-stone-50 font-semibold cursor-pointer text-xs">
+                                    Batal
+                                </button>
+                            </div>
+                        </form>
+                    </div>
                 </div>
 
                 <div class="bg-white p-6 sm:p-8 rounded-3xl border border-brand-border shadow-sm space-y-4">
@@ -83,18 +130,16 @@
                         @method('PUT')
 
                         <div>
-                            <label class="block font-bold text-brand-espresso mb-1">Kata Sandi Saat Ini</label>
-                            <input type="password" name="current_password" required placeholder="••••••••" class="w-full px-3.5 py-2.5 rounded-xl border border-brand-border focus:border-brand-gold focus:outline-none text-sm">
+                            <label class="block font-bold text-brand-espresso mb-1">Kata Sandi Baru <span class="text-red-500">*</span></label>
+                            <input type="password" name="password" required placeholder="Minimal 6 karakter" class="w-full px-3.5 py-2.5 rounded-xl border border-brand-border focus:border-brand-gold focus:outline-none text-sm">
+                            @error('password')
+                                <span class="text-red-600 text-[11px] mt-1 block">{{ $message }}</span>
+                            @enderror
                         </div>
 
                         <div>
-                            <label class="block font-bold text-brand-espresso mb-1">Kata Sandi Baru</label>
-                            <input type="password" name="password" required placeholder="••••••••" class="w-full px-3.5 py-2.5 rounded-xl border border-brand-border focus:border-brand-gold focus:outline-none text-sm">
-                        </div>
-
-                        <div>
-                            <label class="block font-bold text-brand-espresso mb-1">Konfirmasi Kata Sandi</label>
-                            <input type="password" name="password_confirmation" required placeholder="••••••••" class="w-full px-3.5 py-2.5 rounded-xl border border-brand-border focus:border-brand-gold focus:outline-none text-sm">
+                            <label class="block font-bold text-brand-espresso mb-1">Konfirmasi Kata Sandi <span class="text-red-500">*</span></label>
+                            <input type="password" name="password_confirmation" required placeholder="Ulangi kata sandi baru" class="w-full px-3.5 py-2.5 rounded-xl border border-brand-border focus:border-brand-gold focus:outline-none text-sm">
                         </div>
 
                         <button type="submit" class="w-full py-3 rounded-xl bg-brand-espresso text-white font-serif font-bold text-xs hover:bg-brand-dark transition-colors cursor-pointer">
@@ -103,6 +148,28 @@
                     </form>
                 </div>
             </div>
+
+            <script>
+                function toggleCustomerProfile(showEdit) {
+                    const viewEl = document.getElementById('customerProfileView');
+                    const editEl = document.getElementById('customerProfileEdit');
+                    const btn = document.getElementById('btnCustomerEdit');
+
+                    if (showEdit) {
+                        viewEl.classList.add('hidden');
+                        viewEl.classList.remove('block');
+                        editEl.classList.remove('hidden');
+                        editEl.classList.add('block');
+                        btn.classList.add('hidden');
+                    } else {
+                        editEl.classList.add('hidden');
+                        editEl.classList.remove('block');
+                        viewEl.classList.remove('hidden');
+                        viewEl.classList.add('block');
+                        btn.classList.remove('hidden');
+                    }
+                }
+            </script>
 
         </div>
     </div>

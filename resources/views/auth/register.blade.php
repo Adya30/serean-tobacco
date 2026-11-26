@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Pendaftaran Akun Kemitraan Serean Tobacco - Sentra Tembakau Pilihan Nusantara.">
+    <meta name="description" content="Pendaftaran Akun Pelanggan Serean Tobacco - Sentra Tembakau Pilihan Nusantara.">
     <title>Daftar Akun — Serean Tobacco</title>
 
     
@@ -98,7 +98,7 @@
                     Serean Tobacco
                 </h1>
                 <p class="text-brand-gold font-medium text-sm mt-1.5 tracking-wide">
-                    Kemitraan Hulu ke Hilir Nusantara
+                    Sentra Tembakau Pilihan Nusantara
                 </p>
 
                 <p class="text-white/70 text-sm leading-relaxed mt-4 max-w-sm mx-auto">
@@ -138,7 +138,7 @@
                         Daftar Akun Baru
                     </h2>
                     <p class="text-brand-muted text-xs sm:text-sm mt-1.5">
-                        Mulai langkah kemitraan tembakau pilihan bersama Serean Tobacco.
+                        Daftarkan akun untuk mulai memesan tembakau pilihan bersama Serean Tobacco.
                     </p>
                 </div>
 

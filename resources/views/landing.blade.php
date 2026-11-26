@@ -6,7 +6,7 @@
 @section('content')
 
 
-    <section id="beranda" class="w-full min-h-[100dvh] lg:h-[100dvh] lg:max-h-screen flex flex-col justify-between pt-20 sm:pt-24 lg:pt-20 border-b border-brand-border relative overflow-hidden">
+    <section id="beranda" class="w-full min-h-[100dvh] flex flex-col justify-between pt-20 sm:pt-24 lg:pt-24 border-b border-brand-border relative overflow-hidden">
 
 
         <div class="absolute inset-0 z-0 overflow-hidden pointer-events-none select-none">
@@ -25,17 +25,16 @@
         </div>
 
 
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 my-auto w-full relative z-10 py-3 sm:py-4">
-            <div class="grid grid-cols-1 md:grid-cols-12 items-center gap-5 sm:gap-6 lg:gap-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 my-auto w-full relative z-10 py-5 sm:py-8 lg:py-10">
+            <div class="grid grid-cols-1 md:grid-cols-12 items-center gap-6 sm:gap-8 lg:gap-12">
 
 
                 <div class="md:col-span-7 text-center md:text-left order-2 md:order-1" data-aos="fade-up" data-aos-duration="700">
 
-                    <div class="relative min-h-[190px] sm:min-h-[195px] md:min-h-[210px]">
+                    <div class="relative min-h-[220px] sm:min-h-[235px] md:min-h-[250px] lg:min-h-[270px]">
 
-
-                        <div id="hero-text-0" class="hero-text-slide transition-all duration-700 opacity-100 translate-y-0 absolute inset-0 space-y-2 sm:space-y-3 flex flex-col items-center md:items-start">
-                            <div class="flex items-center gap-2 text-brand-gold pb-1 select-none pointer-events-none">
+                        <div id="hero-text-0" class="hero-text-slide transition-all duration-700 opacity-100 translate-y-0 absolute inset-0 flex flex-col items-center md:items-start justify-center">
+                            <div class="flex items-center gap-2 text-brand-gold mb-3 sm:mb-4 select-none pointer-events-none">
                                 <svg class="w-32 sm:w-40 h-4 text-brand-gold" viewBox="0 0 160 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M5 8 C 25 15, 45 1, 65 8" stroke="#B07B27" stroke-width="2" stroke-linecap="round"/>
                                     <circle cx="80" cy="8" r="3" fill="#B07B27"/>
@@ -43,18 +42,18 @@
                                 </svg>
                             </div>
 
-                            <h1 class="font-serif text-xl sm:text-2xl md:text-3xl lg:text-[38px] font-extrabold text-[#1a0f07] leading-snug tracking-tight">
+                            <h1 class="font-serif text-2xl sm:text-3xl md:text-[32px] lg:text-[38px] font-extrabold text-[#1a0f07] leading-[1.38] sm:leading-[1.4] lg:leading-[1.42] tracking-tight mb-4 sm:mb-5">
                                 Kualitas Tembakau Pilihan dengan Pengolahan Presisi.
                             </h1>
 
-                            <p class="text-xs sm:text-sm md:text-base text-brand-muted leading-relaxed max-w-xl mx-auto md:mx-0">
+                            <p class="text-xs sm:text-sm md:text-[15px] text-brand-muted leading-[1.8] sm:leading-[1.9] max-w-xl mx-auto md:mx-0">
                                 Penyedia terpercaya tembakau berkualitas pilihan nusantara. Daun tembakau kering siap pakai dari sentra Temanggung dan berbagai daerah dengan aroma khas dan getah alami terjaga.
                             </p>
                         </div>
 
 
-                        <div id="hero-text-1" class="hero-text-slide transition-all duration-700 opacity-0 translate-y-3 pointer-events-none absolute inset-0 space-y-2 sm:space-y-3 flex flex-col items-center md:items-start">
-                            <div class="flex items-center gap-2 text-brand-gold pb-1 select-none pointer-events-none">
+                        <div id="hero-text-1" class="hero-text-slide transition-all duration-700 opacity-0 translate-y-3 pointer-events-none absolute inset-0 flex flex-col items-center md:items-start justify-center">
+                            <div class="flex items-center gap-2 text-brand-gold mb-3 sm:mb-4 select-none pointer-events-none">
                                 <svg class="w-32 sm:w-40 h-4 text-brand-gold" viewBox="0 0 160 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M5 8 C 25 15, 45 1, 65 8" stroke="#B07B27" stroke-width="2" stroke-linecap="round"/>
                                     <circle cx="80" cy="8" r="3" fill="#B07B27"/>
@@ -62,18 +61,18 @@
                                 </svg>
                             </div>
 
-                            <h1 class="font-serif text-xl sm:text-2xl md:text-3xl lg:text-[38px] font-extrabold text-[#1a0f07] leading-snug tracking-tight">
-                                Panen Terbaik dari Tangan Petani Nusantara.
+                            <h1 class="font-serif text-2xl sm:text-3xl md:text-[32px] lg:text-[38px] font-extrabold text-[#1a0f07] leading-[1.38] sm:leading-[1.4] lg:leading-[1.42] tracking-tight mb-4 sm:mb-5">
+                                Panen Terbaik dari Tangan Petani Nusantara
                             </h1>
 
-                            <p class="text-xs sm:text-sm md:text-base text-brand-muted leading-relaxed max-w-xl mx-auto md:mx-0">
+                            <p class="text-xs sm:text-sm md:text-[15px] text-brand-muted leading-[1.8] sm:leading-[1.9] max-w-xl mx-auto md:mx-0">
                                 Menghubungkan ratusan kelompok tani lokal dengan sistem grading jujur, timbangan akurat, serta kepastian pembayaran tunai transparan dan adil
                             </p>
                         </div>
 
 
-                        <div id="hero-text-2" class="hero-text-slide transition-all duration-700 opacity-0 translate-y-3 pointer-events-none absolute inset-0 space-y-2 sm:space-y-3 flex flex-col items-center md:items-start">
-                            <div class="flex items-center gap-2 text-brand-gold pb-1 select-none pointer-events-none">
+                        <div id="hero-text-2" class="hero-text-slide transition-all duration-700 opacity-0 translate-y-3 pointer-events-none absolute inset-0 flex flex-col items-center md:items-start justify-center">
+                            <div class="flex items-center gap-2 text-brand-gold mb-3 sm:mb-4 select-none pointer-events-none">
                                 <svg class="w-32 sm:w-40 h-4 text-brand-gold" viewBox="0 0 160 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M5 8 C 25 15, 45 1, 65 8" stroke="#B07B27" stroke-width="2" stroke-linecap="round"/>
                                     <circle cx="80" cy="8" r="3" fill="#B07B27"/>
@@ -81,23 +80,23 @@
                                 </svg>
                             </div>
 
-                            <h1 class="font-serif text-xl sm:text-2xl md:text-3xl lg:text-[38px] font-extrabold text-[#1a0f07] leading-snug tracking-tight">
+                            <h1 class="font-serif text-2xl sm:text-3xl md:text-[32px] lg:text-[38px] font-extrabold text-[#1a0f07] leading-[1.38] sm:leading-[1.4] lg:leading-[1.42] tracking-tight mb-4 sm:mb-5">
                                 Perajangan Halus &amp; Pengeringan Curing 12 - 14%
                             </h1>
 
-                            <p class="text-xs sm:text-sm md:text-base text-brand-muted leading-relaxed max-w-xl mx-auto md:mx-0">
+                            <p class="text-xs sm:text-sm md:text-[15px] text-brand-muted leading-[1.8] sm:leading-[1.9] max-w-xl mx-auto md:mx-0">
                                 Pengeringan teratur menjaga getah murni tembakau pegunungan, siap memenuhi standar bahan baku lintingan hingga cerutu berkualitas ekspor
                             </p>
                         </div>
 
                     </div>
 
-                    <div class="flex items-center justify-center md:justify-start gap-2.5 sm:gap-3 pt-3 sm:pt-4">
-                        <a href="{{ route('produk') }}" class="px-4 sm:px-6 py-2.5 sm:py-3 rounded-full bg-brand-espresso text-white text-xs sm:text-sm font-semibold hover:bg-brand-dark transition-all duration-200 inline-flex items-center gap-2 shadow-sm hover:shadow">
+                    <div class="flex items-center justify-center md:justify-start gap-2.5 sm:gap-3 pt-5 sm:pt-6">
+                        <a href="{{ route('produk') }}" class="px-5 sm:px-6 py-2.5 sm:py-3 rounded-full bg-brand-espresso text-white text-xs sm:text-sm font-semibold hover:bg-brand-dark transition-all duration-200 inline-flex items-center gap-2 shadow-sm hover:shadow">
                             <span>Lihat Produk</span>
                             <i class="fa-solid fa-arrow-right text-[10px] text-brand-gold"></i>
                         </a>
-                        <a href="{{ route('kontak') }}" class="px-4 sm:px-6 py-2.5 sm:py-3 rounded-full bg-white text-brand-espresso border border-brand-border text-xs sm:text-sm font-semibold hover:border-brand-gold hover:bg-stone-50 transition-all duration-200 shadow-sm">
+                        <a href="{{ route('kontak') }}" class="px-5 sm:px-6 py-2.5 sm:py-3 rounded-full bg-white text-brand-espresso border border-brand-border text-xs sm:text-sm font-semibold hover:border-brand-gold hover:bg-stone-50 transition-all duration-200 shadow-sm">
                             Hubungi Kami
                         </a>
                     </div>
@@ -309,146 +308,113 @@
 
             <div id="product-scroll-track" class="flex gap-6 overflow-x-auto scroll-smooth snap-x snap-mandatory py-4 no-scrollbar">
 
-
                 <div id="prod-card-0" class="w-full sm:w-[calc((100%-1.5rem)/2)] lg:w-[calc((100%-3rem)/3)] shrink-0 snap-start p-5 sm:p-6 rounded-3xl border border-brand-border bg-brand-surface flex flex-col justify-between hover:border-brand-gold hover:shadow-xl transition-all duration-300 group">
                     <div>
                         <div class="relative w-full aspect-[16/10] rounded-2xl overflow-hidden mb-4 bg-stone-100 shadow-inner">
-                            <img src="{{ asset('images/products/virginia-flue-cured.jpg') }}" alt="Virginia Flue-Cured" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+                            <img src="{{ asset('images/hero/daun-tembakau.jpg') }}" alt="Tembakau Opot" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
                             <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent"></div>
                             <span class="absolute top-2.5 left-2.5 px-2.5 py-0.5 rounded-full bg-white/90 backdrop-blur-sm text-[10px] font-bold text-brand-gold uppercase tracking-wider shadow">
-                                Temanggung
+                                Besuki &amp; Jember
                             </span>
                             <span class="absolute bottom-2.5 right-2.5 px-2 py-0.5 rounded-full bg-brand-dark/80 backdrop-blur-sm text-[10px] font-medium text-white shadow">
-                                Stok Ready
+                                Grade CW &amp; Super
                             </span>
                         </div>
-                        <h3 class="font-serif font-bold text-lg sm:text-xl text-brand-espresso mb-1.5">Virginia Flue-Cured</h3>
+                        <h3 class="font-serif font-bold text-lg sm:text-xl text-brand-espresso mb-1.5">Tembakau Opot (Besuki Na-Oogst)</h3>
                         <p class="text-xs sm:text-sm text-brand-muted leading-relaxed mb-5">
-                            Warna kuning keemasan berkilau, aroma manis lembut alami, favorit untuk racikan lintingan harian.
+                            Daun lentur berurat sangat halus dengan warna cokelat kemerahan rata, aroma gurih legendaris pilihan pabrik cerutu dan rokok ekspor.
                         </p>
                     </div>
                     <div class="pt-3.5 border-t border-brand-border flex items-center justify-between">
                         <div>
                             <span class="text-[10px] text-brand-muted block uppercase tracking-wider">Harga Mulai</span>
-                            <span class="font-bold text-sm sm:text-base text-brand-espresso">Rp 185.000<span class="text-xs font-normal text-brand-muted">/kg</span></span>
+                            <span class="font-bold text-sm sm:text-base text-brand-espresso">Rp 55.000<span class="text-xs font-normal text-brand-muted">/kg</span></span>
                         </div>
-                        <button type="button" onclick="selectProduct('Virginia Flue-Cured')" class="px-4 py-2 rounded-full bg-brand-espresso text-white text-xs font-semibold hover:bg-brand-dark transition-colors shadow-sm">
+                        <button type="button" onclick="selectProduct('Tembakau Opot (Besuki Na-Oogst)')" class="px-4 py-2 rounded-full bg-brand-espresso text-white text-xs font-semibold hover:bg-brand-dark transition-colors shadow-sm">
                             Pesan
                         </button>
                     </div>
                 </div>
-
 
                 <div id="prod-card-1" class="w-full sm:w-[calc((100%-1.5rem)/2)] lg:w-[calc((100%-3rem)/3)] shrink-0 snap-start p-5 sm:p-6 rounded-3xl border border-brand-border bg-brand-surface flex flex-col justify-between hover:border-brand-gold hover:shadow-xl transition-all duration-300 group">
                     <div>
                         <div class="relative w-full aspect-[16/10] rounded-2xl overflow-hidden mb-4 bg-stone-100 shadow-inner">
-                            <img src="{{ asset('images/products/temanggung-dark.jpg') }}" alt="Temanggung Dark" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+                            <img src="{{ asset('images/hero/panen-tembakau-emas.jpg') }}" alt="Tembakau Samporis" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
                             <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent"></div>
                             <span class="absolute top-2.5 left-2.5 px-2.5 py-0.5 rounded-full bg-white/90 backdrop-blur-sm text-[10px] font-bold text-brand-gold uppercase tracking-wider shadow">
-                                Lereng Sumbing
+                                Situbondo
                             </span>
                             <span class="absolute bottom-2.5 right-2.5 px-2 py-0.5 rounded-full bg-brand-dark/80 backdrop-blur-sm text-[10px] font-medium text-white shadow">
-                                Stok Ready
+                                Grade CW &amp; Gudangan
                             </span>
                         </div>
-                        <h3 class="font-serif font-bold text-lg sm:text-xl text-brand-espresso mb-1.5">Temanggung Dark</h3>
+                        <h3 class="font-serif font-bold text-lg sm:text-xl text-brand-espresso mb-1.5">Tembakau Samporis</h3>
                         <p class="text-xs sm:text-sm text-brand-muted leading-relaxed mb-5">
-                            Karakter rasa mantap dan gurih pekat hasil fermentasi getah daun tembakau lereng pegunungan tinggi.
+                            Rajangan halus dengan getah alami seimbang, pembakaran stabil dan minim panas, sangat digemari penikmat tingwe nusantara.
                         </p>
                     </div>
                     <div class="pt-3.5 border-t border-brand-border flex items-center justify-between">
                         <div>
                             <span class="text-[10px] text-brand-muted block uppercase tracking-wider">Harga Mulai</span>
-                            <span class="font-bold text-sm sm:text-base text-brand-espresso">Rp 230.000<span class="text-xs font-normal text-brand-muted">/kg</span></span>
+                            <span class="font-bold text-sm sm:text-base text-brand-espresso">Rp 49.000<span class="text-xs font-normal text-brand-muted">/kg</span></span>
                         </div>
-                        <button type="button" onclick="selectProduct('Temanggung Dark')" class="px-4 py-2 rounded-full bg-brand-espresso text-white text-xs font-semibold hover:bg-brand-dark transition-colors shadow-sm">
+                        <button type="button" onclick="selectProduct('Tembakau Samporis')" class="px-4 py-2 rounded-full bg-brand-espresso text-white text-xs font-semibold hover:bg-brand-dark transition-colors shadow-sm">
                             Pesan
                         </button>
                     </div>
                 </div>
-
 
                 <div id="prod-card-2" class="w-full sm:w-[calc((100%-1.5rem)/2)] lg:w-[calc((100%-3rem)/3)] shrink-0 snap-start p-5 sm:p-6 rounded-3xl border border-brand-border bg-brand-surface flex flex-col justify-between hover:border-brand-gold hover:shadow-xl transition-all duration-300 group">
                     <div>
                         <div class="relative w-full aspect-[16/10] rounded-2xl overflow-hidden mb-4 bg-stone-100 shadow-inner">
-                            <img src="{{ asset('images/products/besuki-na-oogst.jpg') }}" alt="Besuki Na-Oogst" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+                            <img src="{{ asset('images/products/temanggung-dark.jpg') }}" alt="Tembakau Marakot" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
                             <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent"></div>
                             <span class="absolute top-2.5 left-2.5 px-2.5 py-0.5 rounded-full bg-white/90 backdrop-blur-sm text-[10px] font-bold text-brand-gold uppercase tracking-wider shadow">
-                                Jember
+                                Jawa Timur
                             </span>
                             <span class="absolute bottom-2.5 right-2.5 px-2 py-0.5 rounded-full bg-brand-dark/80 backdrop-blur-sm text-[10px] font-medium text-white shadow">
-                                Ekspor Grade
+                                Rajang Halus
                             </span>
                         </div>
-                        <h3 class="font-serif font-bold text-lg sm:text-xl text-brand-espresso mb-1.5">Besuki Na-Oogst</h3>
+                        <h3 class="font-serif font-bold text-lg sm:text-xl text-brand-espresso mb-1.5">Tembakau Marakot</h3>
                         <p class="text-xs sm:text-sm text-brand-muted leading-relaxed mb-5">
-                            Daun lentur berurat sangat halus, standar utama untuk pembungkus cerutu dan rokok kualitas ekspor.
+                            Aroma kuat dan rasa gurih berbobot dengan curing tradisional terkontrol, warna daun kuning kecokelatan yang pekat.
                         </p>
                     </div>
                     <div class="pt-3.5 border-t border-brand-border flex items-center justify-between">
                         <div>
                             <span class="text-[10px] text-brand-muted block uppercase tracking-wider">Harga Mulai</span>
-                            <span class="font-bold text-sm sm:text-base text-brand-espresso">Rp 260.000<span class="text-xs font-normal text-brand-muted">/kg</span></span>
+                            <span class="font-bold text-sm sm:text-base text-brand-espresso">Rp 47.000<span class="text-xs font-normal text-brand-muted">/kg</span></span>
                         </div>
-                        <button type="button" onclick="selectProduct('Besuki Na-Oogst')" class="px-4 py-2 rounded-full bg-brand-espresso text-white text-xs font-semibold hover:bg-brand-dark transition-colors shadow-sm">
+                        <button type="button" onclick="selectProduct('Tembakau Marakot')" class="px-4 py-2 rounded-full bg-brand-espresso text-white text-xs font-semibold hover:bg-brand-dark transition-colors shadow-sm">
                             Pesan
                         </button>
                     </div>
                 </div>
-
 
                 <div id="prod-card-3" class="w-full sm:w-[calc((100%-1.5rem)/2)] lg:w-[calc((100%-3rem)/3)] shrink-0 snap-start p-5 sm:p-6 rounded-3xl border border-brand-border bg-brand-surface flex flex-col justify-between hover:border-brand-gold hover:shadow-xl transition-all duration-300 group">
                     <div>
                         <div class="relative w-full aspect-[16/10] rounded-2xl overflow-hidden mb-4 bg-stone-100 shadow-inner">
-                            <img src="{{ asset('images/products/kasturi-madura.jpg') }}" alt="Kasturi Madura" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
-                            <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent"></div>
-                            <span class="absolute top-2.5 left-2.5 px-2.5 py-0.5 rounded-full bg-white/90 backdrop-blur-sm text-[10px] font-bold text-brand-gold uppercase tracking-wider shadow">
-                                Madura
-                            </span>
-                            <span class="absolute bottom-2.5 right-2.5 px-2 py-0.5 rounded-full bg-brand-dark/80 backdrop-blur-sm text-[10px] font-medium text-white shadow">
-                                Stok Ready
-                            </span>
-                        </div>
-                        <h3 class="font-serif font-bold text-lg sm:text-xl text-brand-espresso mb-1.5">Kasturi Madura</h3>
-                        <p class="text-xs sm:text-sm text-brand-muted leading-relaxed mb-5">
-                            Sensasi aroma gurih legendaris dengan pembakaran seimbang, awet disimpan tanpa perubahan rasa.
-                        </p>
-                    </div>
-                    <div class="pt-3.5 border-t border-brand-border flex items-center justify-between">
-                        <div>
-                            <span class="text-[10px] text-brand-muted block uppercase tracking-wider">Harga Mulai</span>
-                            <span class="font-bold text-sm sm:text-base text-brand-espresso">Rp 175.000<span class="text-xs font-normal text-brand-muted">/kg</span></span>
-                        </div>
-                        <button type="button" onclick="selectProduct('Kasturi Madura')" class="px-4 py-2 rounded-full bg-brand-espresso text-white text-xs font-semibold hover:bg-brand-dark transition-colors shadow-sm">
-                            Pesan
-                        </button>
-                    </div>
-                </div>
-
-
-                <div id="prod-card-4" class="w-full sm:w-[calc((100%-1.5rem)/2)] lg:w-[calc((100%-3rem)/3)] shrink-0 snap-start p-5 sm:p-6 rounded-3xl border border-brand-border bg-brand-surface flex flex-col justify-between hover:border-brand-gold hover:shadow-xl transition-all duration-300 group">
-                    <div>
-                        <div class="relative w-full aspect-[16/10] rounded-2xl overflow-hidden mb-4 bg-stone-100 shadow-inner">
-                            <img src="{{ asset('images/hero/daun-tembakau.jpg') }}" alt="Srintil Super Temanggung" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+                            <img src="{{ asset('images/products/virginia-flue-cured.jpg') }}" alt="Tembakau Baleno" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
                             <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent"></div>
                             <span class="absolute top-2.5 left-2.5 px-2.5 py-0.5 rounded-full bg-brand-gold text-brand-dark text-[10px] font-bold uppercase tracking-wider shadow">
-                                Kasta Tertinggi
+                                Best Seller
                             </span>
                             <span class="absolute bottom-2.5 right-2.5 px-2 py-0.5 rounded-full bg-brand-dark/80 backdrop-blur-sm text-[10px] font-medium text-white shadow">
-                                Limited
+                                Grade AB-1
                             </span>
                         </div>
-                        <h3 class="font-serif font-bold text-lg sm:text-xl text-brand-espresso mb-1.5">Srintil Super Temanggung</h3>
+                        <h3 class="font-serif font-bold text-lg sm:text-xl text-brand-espresso mb-1.5">Tembakau Baleno</h3>
                         <p class="text-xs sm:text-sm text-brand-muted leading-relaxed mb-5">
-                            Kasta tertinggi tembakau Temanggung lereng Sumbing dengan getah resin alami pekat beraroma khas surgawi.
+                            Varietas primadona petani Situbondo dengan potongan rajangan seragam, tarikan sangat lembut dan asap bersih tanpa residu tajam.
                         </p>
                     </div>
                     <div class="pt-3.5 border-t border-brand-border flex items-center justify-between">
                         <div>
                             <span class="text-[10px] text-brand-muted block uppercase tracking-wider">Harga Mulai</span>
-                            <span class="font-bold text-sm sm:text-base text-brand-gold">Rp 450.000<span class="text-xs font-normal text-brand-muted">/kg</span></span>
+                            <span class="font-bold text-sm sm:text-base text-brand-espresso">Rp 45.000<span class="text-xs font-normal text-brand-muted">/kg</span></span>
                         </div>
-                        <button type="button" onclick="selectProduct('Srintil Super Temanggung')" class="px-4 py-2 rounded-full bg-brand-espresso text-white text-xs font-semibold hover:bg-brand-dark transition-colors shadow-sm">
+                        <button type="button" onclick="selectProduct('Tembakau Baleno')" class="px-4 py-2 rounded-full bg-brand-espresso text-white text-xs font-semibold hover:bg-brand-dark transition-colors shadow-sm">
                             Pesan
                         </button>
                     </div>
@@ -461,6 +427,7 @@
                 <button type="button" onclick="scrollProductToIndex(0)" id="prod-dot-0" class="prod-indicator w-8 h-2.5 rounded-full bg-brand-gold transition-all duration-300" aria-label="Tampilan 1"></button>
                 <button type="button" onclick="scrollProductToIndex(1)" id="prod-dot-1" class="prod-indicator w-2.5 h-2.5 rounded-full bg-brand-espresso/20 hover:bg-brand-gold/60 transition-all duration-300" aria-label="Tampilan 2"></button>
                 <button type="button" onclick="scrollProductToIndex(2)" id="prod-dot-2" class="prod-indicator w-2.5 h-2.5 rounded-full bg-brand-espresso/20 hover:bg-brand-gold/60 transition-all duration-300" aria-label="Tampilan 3"></button>
+                <button type="button" onclick="scrollProductToIndex(3)" id="prod-dot-3" class="prod-indicator w-2.5 h-2.5 rounded-full bg-brand-espresso/20 hover:bg-brand-gold/60 transition-all duration-300" aria-label="Tampilan 4"></button>
             </div>
 
         </div>

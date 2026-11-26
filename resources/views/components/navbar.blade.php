@@ -43,7 +43,7 @@
                             <div class="px-4 py-2 border-b border-stone-100">
                                 <p class="text-xs font-bold text-brand-espresso truncate">{{ Auth::user()->name }}</p>
                                 <span class="text-[10px] text-brand-gold uppercase tracking-wider font-semibold">
-                                    {{ Auth::user()->isAdmin() ? 'Administrator' : (Auth::user()->isPetani() ? 'Petani Mitra' : 'Customer') }}
+                                    {{ Auth::user()->isAdmin() ? 'Administrator' : (Auth::user()->isPetani() ? 'Petani' : 'Customer') }}
                                 </span>
                             </div>
 
@@ -58,6 +58,13 @@
                                 <i class="fa-solid fa-user-gear text-brand-gold text-xs"></i>
                                 <span>Profil Saya</span>
                             </a>
+
+                            @if (Auth::user()->isCustomer())
+                                <a href="{{ route('customer.transaksi') }}" class="flex items-center gap-2.5 px-4 py-2 text-xs font-semibold text-brand-espresso hover:bg-stone-50 hover:text-brand-gold transition-colors">
+                                    <i class="fa-solid fa-receipt text-brand-gold text-xs"></i>
+                                    <span>Riwayat Pesanan</span>
+                                </a>
+                            @endif
 
                             <a href="{{ route('keranjang') }}" class="flex items-center gap-2.5 px-4 py-2 text-xs font-semibold text-brand-espresso hover:bg-stone-50 hover:text-brand-gold transition-colors">
                                 <i class="fa-solid fa-cart-shopping text-brand-gold text-xs"></i>
@@ -125,6 +132,11 @@
                 <a href="{{ route('profile') }}" class="mobile-link block text-base font-semibold {{ request()->routeIs('profile') ? 'text-brand-gold font-bold' : 'text-brand-espresso' }} py-2 border-b border-stone-100">
                     <i class="fa-solid fa-user-gear text-brand-gold mr-2.5 text-sm"></i> Profil Saya ({{ Auth::user()->name }})
                 </a>
+                @if (Auth::user()->isCustomer())
+                    <a href="{{ route('customer.transaksi') }}" class="mobile-link block text-base font-semibold {{ request()->routeIs('customer.transaksi*') ? 'text-brand-gold font-bold' : 'text-brand-espresso' }} py-2 border-b border-stone-100">
+                        <i class="fa-solid fa-receipt text-brand-gold mr-2.5 text-sm"></i> Riwayat Pesanan
+                    </a>
+                @endif
                 <form action="{{ route('logout') }}" method="POST" class="pt-2">
                     @csrf
                     <button type="submit" class="w-full text-left text-base font-bold text-red-600 py-2 flex items-center">

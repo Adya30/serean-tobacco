@@ -2,13 +2,13 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\CustomerTransactionController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProfileController;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
-// Halaman Publik
 Route::get('/', function () {
     $products = Product::where('is_active', true)->take(6)->get();
 
@@ -34,7 +34,6 @@ Route::post('/keranjang/tambah', [CartController::class, 'add'])->name('keranjan
 Route::put('/keranjang/{cartItem}', [CartController::class, 'update'])->name('keranjang.update');
 Route::delete('/keranjang/{cartItem}', [CartController::class, 'remove'])->name('keranjang.remove');
 
-// Autentikasi Tamu (Dilindungi Rate Limiting Anti-Bruteforce)
 Route::middleware('guest')->group(function () {
     Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
     Route::post('/login', [AuthController::class, 'login'])->middleware('throttle:5,1');
@@ -53,24 +52,49 @@ Route::middleware('guest')->group(function () {
     })->middleware('throttle:5,1');
 });
 
-// Logout (Hanya User Login)
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
-// Area Terproteksi Login
 Route::middleware('auth')->group(function () {
-    // Profil Pengguna (Semua Akun)
     Route::get('/profile', [ProfileController::class, 'show'])->name('profile');
     Route::put('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::put('/profile/password', [ProfileController::class, 'updatePassword'])->name('profile.password');
 
-    // Dashboard Manajemen Sentra (Hanya Admin & Petani)
     Route::middleware('role:admin,petani')->group(function () {
         Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+        Route::get('/dashboard/stok', [DashboardController::class, 'stokIndex'])->name('dashboard.stok');
+        Route::get('/dashboard/katalog', [DashboardController::class, 'katalogIndex'])->name('dashboard.katalog');
+        Route::get('/dashboard/transaksi', [DashboardController::class, 'transaksiIndex'])->name('dashboard.transaksi');
+        Route::get('/dashboard/panen', [DashboardController::class, 'panenIndex'])->name('dashboard.panen');
+        Route::post('/dashboard/panen', [DashboardController::class, 'storePanen'])->name('dashboard.panen.store');
+        Route::get('/dashboard/rekomendasi-tanam', [DashboardController::class, 'rekomendasiTanamIndex'])->name('dashboard.rekomendasi-tanam');
+        Route::get('/dashboard/jadwal-tanam', [DashboardController::class, 'jadwalIndex'])->name('dashboard.jadwal');
+        Route::post('/dashboard/jadwal-tanam', [DashboardController::class, 'storeJadwal'])->name('dashboard.jadwal.store');
+        Route::put('/dashboard/jadwal-tanam/{jadwal}', [DashboardController::class, 'updateJadwal'])->name('dashboard.jadwal.update');
+        Route::delete('/dashboard/jadwal-tanam/{jadwal}', [DashboardController::class, 'deleteJadwal'])->name('dashboard.jadwal.delete');
+        Route::get('/dashboard/petani', [DashboardController::class, 'petaniIndex'])->name('dashboard.petani');
     });
 
-    // Manajemen Petani (Hanya Admin)
     Route::middleware('role:admin')->group(function () {
         Route::post('/dashboard/petani', [DashboardController::class, 'storePetani'])->name('dashboard.petani.store');
+        Route::put('/dashboard/petani/{petani}', [DashboardController::class, 'updatePetani'])->name('dashboard.petani.update');
         Route::delete('/dashboard/petani/{petani}', [DashboardController::class, 'deletePetani'])->name('dashboard.petani.delete');
+
+        Route::post('/dashboard/stok', [DashboardController::class, 'storeStok'])->name('dashboard.stok.store');
+        Route::put('/dashboard/stok/{product}', [DashboardController::class, 'updateStok'])->name('dashboard.stok.update');
+        Route::delete('/dashboard/stok/{product}', [DashboardController::class, 'deleteStok'])->name('dashboard.stok.delete');
+
+        Route::post('/dashboard/katalog', [DashboardController::class, 'storeKatalog'])->name('dashboard.katalog.store');
+        Route::put('/dashboard/katalog/{product}', [DashboardController::class, 'updateKatalog'])->name('dashboard.katalog.update');
+
+        Route::put('/dashboard/transaksi/{transaction}', [DashboardController::class, 'updateTransaksi'])->name('dashboard.transaksi.update');
+    });
+
+    Route::middleware('role:customer')->group(function () {
+        Route::redirect('/customer/dashboard', '/')->name('customer.dashboard');
+        Route::get('/customer/transaksi', [CustomerTransactionController::class, 'index'])->name('customer.transaksi');
+        Route::post('/customer/transaksi', [CustomerTransactionController::class, 'store'])->name('customer.transaksi.store');
+        Route::get('/customer/transaksi/{transaction}', [CustomerTransactionController::class, 'show'])->name('customer.transaksi.show');
+        Route::put('/customer/transaksi/{transaction}', [CustomerTransactionController::class, 'update'])->name('customer.transaksi.update');
+        Route::put('/customer/transaksi/{transaction}/batal', [CustomerTransactionController::class, 'cancel'])->name('customer.transaksi.cancel');
     });
 });
