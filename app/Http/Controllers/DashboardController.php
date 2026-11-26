@@ -70,7 +70,7 @@ class DashboardController extends Controller
                 }
             }
 
-            return view('dashboard.index', compact(
+            return view('petani.index', compact(
                 'user',
                 'userSchedules',
                 'userHarvests',
@@ -142,7 +142,7 @@ class DashboardController extends Controller
             'total_transaksi' => Transaction::count(),
         ];
 
-        return view('dashboard.index', compact('user', 'petanis', 'stats', 'topTembakau', 'recentTransactions', 'recentHarvests'));
+        return view('admin.index', compact('user', 'petanis', 'stats', 'topTembakau', 'recentTransactions', 'recentHarvests'));
     }
 
     public function stokIndex(): View|RedirectResponse
@@ -155,7 +155,7 @@ class DashboardController extends Controller
         $products = Product::orderBy('created_at', 'desc')->get();
         $totalStokKg = (int) $products->sum('stock_kg');
 
-        return view('dashboard.stok', compact('user', 'products', 'totalStokKg'));
+        return view('admin.stok', compact('user', 'products', 'totalStokKg'));
     }
 
     public function storeStok(Request $request): RedirectResponse
@@ -255,7 +255,7 @@ class DashboardController extends Controller
 
         $products = Product::orderBy('created_at', 'desc')->get();
 
-        return view('dashboard.katalog', compact('user', 'products'));
+        return view('admin.katalog', compact('user', 'products'));
     }
 
     public function storeKatalog(Request $request): RedirectResponse
@@ -376,7 +376,7 @@ class DashboardController extends Controller
         $pickUpCount = $transactions->where('fleet_type', 'pick_up')->count();
         $tambahanArmadaCount = $transactions->where('fleet_type', 'tambahan_armada')->count();
 
-        return view('dashboard.transaksi', compact('user', 'transactions', 'totalTonaseKg', 'pickUpCount', 'tambahanArmadaCount'));
+        return view('admin.transaksi', compact('user', 'transactions', 'totalTonaseKg', 'pickUpCount', 'tambahanArmadaCount'));
     }
 
     public function updateTransaksi(Request $request, Transaction $transaction): RedirectResponse
@@ -416,7 +416,7 @@ class DashboardController extends Controller
 
         $totalPanenKg = (int) $harvests->sum('harvest_weight_kg');
 
-        return view('dashboard.panen', compact('user', 'harvests', 'totalPanenKg'));
+        return view('petani.panen', compact('user', 'harvests', 'totalPanenKg'));
     }
 
     public function storePanen(Request $request): RedirectResponse
@@ -474,7 +474,7 @@ class DashboardController extends Controller
             return redirect()->route('home');
         }
 
-        return view('dashboard.rekomendasi_tanam', compact('user'));
+        return view('petani.rekomendasi_tanam', compact('user'));
     }
 
     public function jadwalIndex(): View|RedirectResponse
@@ -501,7 +501,7 @@ class DashboardController extends Controller
             return $item->isHarvestSoon();
         })->count();
 
-        return view('dashboard.jadwal_tanam', compact(
+        return view('petani.jadwal_tanam', compact(
             'user',
             'schedules',
             'totalJadwalAktif',
@@ -639,7 +639,7 @@ class DashboardController extends Controller
 
         $petanis = User::where('role', 'petani')->orderBy('created_at', 'desc')->get();
 
-        return view('dashboard.petani', compact('user', 'petanis'));
+        return view('admin.petani', compact('user', 'petanis'));
     }
 
     public function storePetani(Request $request): RedirectResponse

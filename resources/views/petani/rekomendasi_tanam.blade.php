@@ -1,4 +1,4 @@
-@extends('dashboard.layout')
+@extends('layouts.dashboard')
 
 @section('title', 'Rekomendasi Tanam Tembakau — Serean Tobacco')
 @section('page_title', 'Rekomendasi Tanam Tembakau')

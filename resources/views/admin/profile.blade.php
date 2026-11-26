@@ -1,4 +1,4 @@
-@extends('dashboard.layout')
+@extends('layouts.dashboard')
 
 @section('title', 'Profil Pengguna')
 @section('page_title', 'Pengaturan Profil Akun')

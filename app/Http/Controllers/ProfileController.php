@@ -15,7 +15,7 @@ class ProfileController extends Controller
         $user = Auth::user();
 
         if ($user->isAdmin() || $user->isPetani()) {
-            return view('dashboard.profile', compact('user'));
+            return view('admin.profile', compact('user'));
         }
 
         return view('profile', compact('user'));
