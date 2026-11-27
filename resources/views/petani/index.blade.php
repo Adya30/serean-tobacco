@@ -12,10 +12,10 @@
                     <i class="fa-solid fa-wheat-awn text-[10px]"></i>
                     <span>Sentra Petani Serean</span>
                 </span>
-                <h2 class="font-serif font-extrabold text-2xl sm:text-3xl text-white tracking-tight">
+                <h2 class="font-serif font-bold text-lg sm:text-xl text-white tracking-tight">
                     Selamat Datang, {{ Auth::user()->name }}
                 </h2>
-                <p class="text-stone-300 text-xs sm:text-sm">
+                <p class="text-stone-300 text-xs">
                     Pantau jadwal musim tanam, laporkan hasil panen, dan periksa panduan budidaya tembakau Anda.
                 </p>
             </div>
@@ -35,7 +35,7 @@
         <div class="p-5 rounded-2xl bg-white border border-brand-border shadow-sm flex items-center justify-between">
             <div>
                 <span class="text-xs text-brand-muted block font-medium">Akumulasi Panen Disetor</span>
-                <span class="font-serif font-extrabold text-2xl text-emerald-700 mt-1 block">{{ number_format($totalPanenKg) }} Kg</span>
+                <span class="font-serif font-extrabold text-lg sm:text-xl text-emerald-700 mt-1 block">{{ number_format($totalPanenKg) }} Kg</span>
             </div>
             <div class="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-700 flex items-center justify-center text-base">
                 <i class="fa-solid fa-wheat-awn"></i>
@@ -45,7 +45,7 @@
         <div class="p-5 rounded-2xl bg-white border border-brand-border shadow-sm flex items-center justify-between">
             <div>
                 <span class="text-xs text-brand-muted block font-medium">Jadwal Tanam Aktif</span>
-                <span class="font-serif font-extrabold text-2xl text-brand-espresso mt-1 block">{{ $activeSchedules->count() }} Jadwal</span>
+                <span class="font-serif font-extrabold text-lg sm:text-xl text-brand-espresso mt-1 block">{{ $activeSchedules->count() }} Jadwal</span>
             </div>
             <div class="w-10 h-10 rounded-xl bg-sky-50 text-sky-700 flex items-center justify-center text-base">
                 <i class="fa-solid fa-calendar-days"></i>
@@ -55,7 +55,7 @@
         <div class="p-5 rounded-2xl bg-white border border-brand-border shadow-sm flex items-center justify-between">
             <div>
                 <span class="text-xs text-brand-muted block font-medium">Total Luas Lahan</span>
-                <span class="font-serif font-extrabold text-2xl text-brand-espresso mt-1 block">{{ number_format($totalLuasLahan, 2) }} Ha</span>
+                <span class="font-serif font-extrabold text-lg sm:text-xl text-brand-espresso mt-1 block">{{ number_format($totalLuasLahan, 2) }} Ha</span>
             </div>
             <div class="w-10 h-10 rounded-xl bg-amber-50 text-brand-gold flex items-center justify-center text-base">
                 <i class="fa-solid fa-map-location-dot"></i>
@@ -65,7 +65,7 @@
         <div class="p-5 rounded-2xl bg-white border border-brand-border shadow-sm flex items-center justify-between">
             <div>
                 <span class="text-xs text-brand-muted block font-medium">Estimasi Target Panen</span>
-                <span class="font-serif font-extrabold text-2xl text-brand-gold mt-1 block">{{ number_format($targetTonaseKg) }} Kg</span>
+                <span class="font-serif font-extrabold text-lg sm:text-xl text-brand-gold mt-1 block">{{ number_format($targetTonaseKg) }} Kg</span>
             </div>
             <div class="w-10 h-10 rounded-xl bg-amber-50 text-amber-700 flex items-center justify-center text-base">
                 <i class="fa-solid fa-chart-pie"></i>
@@ -164,7 +164,7 @@
 
             <div class="pt-2 border-t border-brand-border">
                 <a href="{{ route('dashboard.rekomendasi-tanam') }}" class="w-full py-2.5 px-4 rounded-xl bg-amber-50 hover:bg-amber-100 text-brand-espresso text-xs font-bold flex items-center justify-center gap-2 transition-colors border border-brand-gold/30">
-                    <i class="fa-solid fa-seedling text-brand-gold"></i>
+                    <i class="fa-solid fa-seedling text-amber-500"></i>
                     <span>Buka Rekomendasi Tanam Tembakau</span>
                 </a>
             </div>

@@ -21,7 +21,7 @@
         <div class="p-5 rounded-2xl bg-white border border-brand-border shadow-sm flex items-center justify-between">
             <div>
                 <span class="text-xs text-brand-muted block font-medium">Jadwal Tanam Aktif</span>
-                <span class="font-serif font-extrabold text-2xl text-brand-espresso mt-1 block">{{ $totalJadwalAktif }} Jadwal</span>
+                <span class="font-serif font-extrabold text-lg sm:text-xl text-brand-espresso mt-1 block">{{ $totalJadwalAktif }} Jadwal</span>
             </div>
             <div class="w-10 h-10 rounded-xl bg-sky-50 text-sky-700 flex items-center justify-center text-base">
                 <i class="fa-solid fa-calendar-check"></i>
@@ -31,7 +31,7 @@
         <div class="p-5 rounded-2xl bg-white border border-brand-border shadow-sm flex items-center justify-between">
             <div>
                 <span class="text-xs text-brand-muted block font-medium">Total Luas Lahan</span>
-                <span class="font-serif font-extrabold text-2xl text-brand-espresso mt-1 block">{{ number_format($totalLuasHa, 2) }} Ha</span>
+                <span class="font-serif font-extrabold text-lg sm:text-xl text-brand-espresso mt-1 block">{{ number_format($totalLuasHa, 2) }} Ha</span>
             </div>
             <div class="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-700 flex items-center justify-center text-base">
                 <i class="fa-solid fa-map-location-dot"></i>
@@ -41,7 +41,7 @@
         <div class="p-5 rounded-2xl bg-white border border-brand-border shadow-sm flex items-center justify-between">
             <div>
                 <span class="text-xs text-brand-muted block font-medium">Target Hasil Panen</span>
-                <span class="font-serif font-extrabold text-2xl text-brand-espresso mt-1 block">{{ number_format($totalTargetKg) }} Kg</span>
+                <span class="font-serif font-extrabold text-lg sm:text-xl text-brand-espresso mt-1 block">{{ number_format($totalTargetKg) }} Kg</span>
             </div>
             <div class="w-10 h-10 rounded-xl bg-amber-50 text-brand-gold flex items-center justify-center text-base">
                 <i class="fa-solid fa-wheat-awn"></i>
@@ -51,7 +51,7 @@
         <div class="p-5 rounded-2xl bg-white border border-brand-border shadow-sm flex items-center justify-between">
             <div>
                 <span class="text-xs text-brand-muted block font-medium">Menjelang Panen (&le;14 Hari)</span>
-                <span class="font-serif font-extrabold text-2xl text-amber-700 mt-1 block">{{ $jadwalPanenDekat }} Jadwal</span>
+                <span class="font-serif font-extrabold text-lg sm:text-xl text-amber-700 mt-1 block">{{ $jadwalPanenDekat }} Jadwal</span>
             </div>
             <div class="w-10 h-10 rounded-xl bg-amber-50 text-amber-600 flex items-center justify-center text-base">
                 <i class="fa-solid fa-hourglass-half"></i>
@@ -136,36 +136,36 @@
         </div>
 
         <div class="hidden lg:block overflow-x-auto no-scrollbar">
-            <table class="w-full text-left text-xs min-w-[800px]">
+            <table class="w-full text-left text-xs">
                 <thead class="bg-brand-surface border-b border-brand-border text-brand-muted font-bold uppercase tracking-wider text-[11px]">
                     <tr>
-                        <th class="py-3.5 px-5 sm:px-6">Varietas &amp; Petani</th>
-                        <th class="py-3.5 px-5 sm:px-6">Lokasi &amp; Luas Lahan</th>
-                        <th class="py-3.5 px-5 sm:px-6">Tanggal Tanam</th>
-                        <th class="py-3.5 px-5 sm:px-6">Estimasi Panen</th>
-                        <th class="py-3.5 px-5 sm:px-6 text-center">Target Tonase</th>
-                        <th class="py-3.5 px-5 sm:px-6 text-center">Fase Budidaya</th>
-                        <th class="py-3.5 px-5 sm:px-6 text-right">Aksi</th>
+                        <th class="py-3 px-3 sm:px-4">Varietas &amp; Petani</th>
+                        <th class="py-3 px-3 sm:px-4">Lokasi &amp; Luas Lahan</th>
+                        <th class="py-3 px-3 sm:px-4">Tanggal Tanam</th>
+                        <th class="py-3 px-3 sm:px-4">Estimasi Panen</th>
+                        <th class="py-3 px-3 sm:px-4 text-center">Target Tonase</th>
+                        <th class="py-3 px-3 sm:px-4 text-center">Fase Budidaya</th>
+                        <th class="py-3 px-3 sm:px-4 text-right">Aksi</th>
                     </tr>
                 </thead>
                 <tbody class="divide-y divide-brand-border">
                     @forelse ($schedules as $j)
                         <tr class="hover:bg-brand-surface/60 transition-colors">
-                            <td class="py-4 px-5 sm:px-6">
+                            <td class="py-3.5 px-3 sm:px-4">
                                 <span class="font-serif font-bold text-sm text-brand-espresso block">{{ $j->variety }}</span>
                                 <span class="text-[11px] text-brand-muted block mt-0.5">{{ $j->farmer_name }}</span>
                                 @if ($j->notes)
                                     <span class="text-[10px] text-stone-400 italic block mt-0.5">{{ Str::limit($j->notes, 40) }}</span>
                                 @endif
                             </td>
-                            <td class="py-4 px-5 sm:px-6">
+                            <td class="py-3.5 px-3 sm:px-4">
                                 <span class="font-medium text-stone-800 block">{{ $j->location }}</span>
                                 <span class="text-[11px] text-brand-gold font-bold">{{ $j->land_area_ha }} Hektar</span>
                             </td>
-                            <td class="py-4 px-5 sm:px-6 whitespace-nowrap">
+                            <td class="py-3.5 px-3 sm:px-4 whitespace-nowrap">
                                 <span class="font-medium text-stone-700">{{ date('d M Y', strtotime($j->planting_date)) }}</span>
                             </td>
-                            <td class="py-4 px-5 sm:px-6 whitespace-nowrap">
+                            <td class="py-3.5 px-3 sm:px-4 whitespace-nowrap">
                                 <div>
                                     <span class="font-bold text-brand-espresso block">{{ date('d M Y', strtotime($j->estimated_harvest_date)) }}</span>
                                     @php
@@ -182,24 +182,23 @@
                                     @endif
                                 </div>
                             </td>
-                            <td class="py-4 px-5 sm:px-6 text-center font-serif font-bold text-sm text-emerald-700 whitespace-nowrap">
+                            <td class="py-3.5 px-3 sm:px-4 text-center font-serif font-bold text-sm text-emerald-700 whitespace-nowrap">
                                 {{ number_format($j->target_yield_kg) }} Kg
                             </td>
-                            <td class="py-4 px-5 sm:px-6 text-center whitespace-nowrap">
+                            <td class="py-3.5 px-3 sm:px-4 text-center whitespace-nowrap">
                                 <span class="px-2.5 py-1 rounded-full text-[10px] font-bold border {{ $j->phaseBadge() }}">
                                     {{ $j->phaseLabel() }}
                                 </span>
                             </td>
-                            <td class="py-4 px-5 sm:px-6 text-right whitespace-nowrap">
+                            <td class="py-3.5 px-3 sm:px-4 text-right whitespace-nowrap">
                                 <div class="inline-flex items-center gap-1.5">
-                                    <button type="button" onclick="openModalEditJadwal({{ json_encode($j) }})" class="px-3 py-1.5 rounded-lg border border-brand-border bg-brand-surface hover:bg-stone-100 text-brand-espresso text-xs font-bold transition-colors cursor-pointer inline-flex items-center gap-1">
-                                        <i class="fa-regular fa-pen-to-square text-[11px]"></i>
-                                        <span>Ubah</span>
+                                    <button type="button" onclick="openModalEditJadwal({{ json_encode($j) }})" class="w-8 h-8 rounded-full border border-amber-200 bg-amber-50 hover:bg-amber-100 text-amber-600 transition-colors cursor-pointer inline-flex items-center justify-center" title="Ubah Jadwal">
+                                        <i class="fa-regular fa-pen-to-square text-xs"></i>
                                     </button>
                                     <form action="{{ route('dashboard.jadwal.delete', $j->id) }}" method="POST" onsubmit="return confirm('Apakah Anda yakin ingin menghapus jadwal tanam ini?');">
                                         @csrf
                                         @method('DELETE')
-                                        <button type="submit" class="p-1.5 text-stone-400 hover:text-red-600 rounded-lg hover:bg-red-50 transition-colors cursor-pointer" title="Hapus Jadwal">
+                                        <button type="submit" class="w-8 h-8 rounded-full border border-red-200 bg-red-50 hover:bg-red-100 text-red-600 transition-colors cursor-pointer inline-flex items-center justify-center" title="Hapus Jadwal">
                                             <i class="fa-regular fa-trash-can text-xs"></i>
                                         </button>
                                     </form>

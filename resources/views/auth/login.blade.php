@@ -102,7 +102,7 @@
                 </p>
 
                 <p class="text-white/70 text-sm leading-relaxed mt-4 max-w-sm mx-auto">
-                    Kualitas rajangan terbaik dan kemitraan terpercaya dari hulu hingga hilir tembakau Nusantara.
+                    Kualitas rajangan terbaik dan layanan terpercaya dari hulu hingga hilir tembakau Nusantara.
                 </p>
             </div>
 

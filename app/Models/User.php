@@ -27,6 +27,7 @@ class User extends Authenticatable
         'kecamatan',
         'desa',
         'farm_location',
+        'profile_photo',
         'status',
     ];
 
@@ -56,6 +57,11 @@ class User extends Authenticatable
     public function isCustomer(): bool
     {
         return $this->role === 'customer';
+    }
+
+    public function profilePhotoUrl(): ?string
+    {
+        return $this->profile_photo ? asset('storage/'.$this->profile_photo) : null;
     }
 
     public function transactions(): HasMany

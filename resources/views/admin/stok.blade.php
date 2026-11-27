@@ -18,7 +18,7 @@
         <div class="p-5 rounded-2xl bg-white border border-brand-border shadow-sm flex items-center justify-between">
             <div>
                 <span class="text-xs text-brand-muted block font-medium">Akumulasi Stok Gudang</span>
-                <span class="font-serif font-extrabold text-2xl text-brand-espresso mt-1 block">{{ number_format($totalStokKg) }} Kg</span>
+                <span class="font-serif font-extrabold text-lg sm:text-xl text-brand-espresso mt-1 block">{{ number_format($totalStokKg) }} Kg</span>
             </div>
             <div class="w-10 h-10 rounded-xl bg-amber-50 text-brand-gold flex items-center justify-center text-base">
                 <i class="fa-solid fa-boxes-stacked"></i>
@@ -28,7 +28,7 @@
         <div class="p-5 rounded-2xl bg-white border border-brand-border shadow-sm flex items-center justify-between">
             <div>
                 <span class="text-xs text-brand-muted block font-medium">Varietas Terdaftar</span>
-                <span class="font-serif font-extrabold text-2xl text-brand-espresso mt-1 block">{{ $products->count() }} Item Batch</span>
+                <span class="font-serif font-extrabold text-lg sm:text-xl text-brand-espresso mt-1 block">{{ $products->count() }} Item Batch</span>
             </div>
             <div class="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-700 flex items-center justify-center text-base">
                 <i class="fa-solid fa-leaf"></i>
@@ -37,11 +37,11 @@
 
         <div class="p-5 rounded-2xl bg-white border border-brand-border shadow-sm flex items-center justify-between">
             <div>
-                <span class="text-xs text-brand-muted block font-medium">Kadar Air Standar</span>
-                <span class="font-serif font-extrabold text-2xl text-brand-espresso mt-1 block">12–14%</span>
+                <span class="text-xs text-brand-muted block font-medium">Jenis Rajangan</span>
+                <span class="font-serif font-extrabold text-lg sm:text-xl text-brand-espresso mt-1 block">Halus &amp; Kasar</span>
             </div>
             <div class="w-10 h-10 rounded-xl bg-amber-50 text-brand-gold flex items-center justify-center text-base">
-                <i class="fa-solid fa-droplet"></i>
+                <i class="fa-solid fa-scissors"></i>
             </div>
         </div>
     </div>
@@ -76,20 +76,20 @@
                     </div>
 
                     <div class="flex items-center justify-between text-[11px] text-stone-500 pt-1">
-                        <span><i class="fa-solid fa-droplet text-brand-gold mr-1 text-[10px]"></i>{{ $product->moisture_content ?? '12–14%' }}</span>
+                        <span><i class="fa-solid fa-scissors text-brand-gold mr-1 text-[10px]"></i>{{ $product->moisture_content ?? 'Rajang Halus' }}</span>
                         <span class="truncate max-w-[180px]">{{ $product->origin }}</span>
                     </div>
 
                     @if (Auth::user()->isAdmin())
                         <div class="flex items-center justify-end gap-2 pt-2 border-t border-brand-border/60">
-                            <button type="button" onclick="openEditStokModal({{ json_encode($product) }})" class="px-3 py-1.5 rounded-full border border-brand-border hover:border-brand-gold hover:bg-amber-50 text-brand-espresso text-xs font-semibold transition-colors inline-flex items-center gap-1.5 cursor-pointer">
+                            <button type="button" onclick="openEditStokModal({{ json_encode($product) }})" class="px-3 py-1.5 rounded-full border border-amber-200 bg-amber-50 hover:bg-amber-100 text-amber-600 text-xs font-semibold transition-colors inline-flex items-center gap-1.5 cursor-pointer">
                                 <i class="fa-regular fa-pen-to-square text-[10px]"></i>
                                 <span>Ubah</span>
                             </button>
                             <form action="{{ route('dashboard.stok.delete', $product->id) }}" method="POST" onsubmit="return confirm('Apakah Anda yakin ingin menghapus catatan stok ini?')">
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit" class="px-3 py-1.5 rounded-full border border-red-200 hover:bg-red-50 text-red-600 text-xs font-semibold transition-colors inline-flex items-center gap-1.5 cursor-pointer">
+                                <button type="submit" class="px-3 py-1.5 rounded-full border border-red-200 bg-red-50 hover:bg-red-100 text-red-600 text-xs font-semibold transition-colors inline-flex items-center gap-1.5 cursor-pointer">
                                     <i class="fa-regular fa-trash-can text-[10px]"></i>
                                     <span>Hapus</span>
                                 </button>
@@ -105,58 +105,58 @@
         </div>
 
         <div class="hidden sm:block overflow-x-auto no-scrollbar">
-            <table class="w-full text-left text-xs min-w-[700px]">
+            <table class="w-full text-left text-xs">
                 <thead class="bg-brand-surface border-b border-brand-border text-brand-muted font-bold uppercase tracking-wider text-[11px]">
                     <tr>
-                        <th class="py-3.5 px-5 sm:px-6">Nama Tembakau &amp; Varietas</th>
-                        <th class="py-3.5 px-5 sm:px-6 whitespace-nowrap">Grade</th>
-                        <th class="py-3.5 px-5 sm:px-6 text-center whitespace-nowrap">Stok Riil (Kg)</th>
-                        <th class="py-3.5 px-5 sm:px-6 text-center whitespace-nowrap">Kadar Air</th>
-                        <th class="py-3.5 px-5 sm:px-6">Asal / Gudang</th>
-                        <th class="py-3.5 px-5 sm:px-6 text-right whitespace-nowrap">Harga Jual / Kg</th>
+                        <th class="py-3 px-3 sm:px-4">Nama Tembakau &amp; Varietas</th>
+                        <th class="py-3 px-3 sm:px-4 whitespace-nowrap">Grade</th>
+                        <th class="py-3 px-3 sm:px-4 text-center whitespace-nowrap">Stok Riil (Kg)</th>
+                        <th class="py-3 px-3 sm:px-4 text-center whitespace-nowrap">Jenis Rajangan</th>
+                        <th class="py-3 px-3 sm:px-4">Asal / Gudang</th>
+                        <th class="py-3 px-3 sm:px-4 text-right whitespace-nowrap">Harga Jual / Kg</th>
                         @if (Auth::user()->isAdmin())
-                            <th class="py-3.5 px-5 sm:px-6 text-center whitespace-nowrap">Aksi</th>
+                            <th class="py-3 px-3 sm:px-4 text-center whitespace-nowrap">Aksi</th>
                         @endif
                     </tr>
                 </thead>
                 <tbody class="divide-y divide-brand-border">
                     @forelse ($products as $product)
                         <tr class="hover:bg-brand-surface/60 transition-colors">
-                            <td class="py-4 px-5 sm:px-6">
+                            <td class="py-3.5 px-3 sm:px-4">
                                 <div>
                                     <span class="font-serif font-bold text-sm text-brand-espresso block">{{ $product->name }}</span>
                                     <span class="text-[11px] text-brand-muted">{{ $product->variety }}</span>
                                 </div>
                             </td>
-                            <td class="py-4 px-5 sm:px-6 whitespace-nowrap">
+                            <td class="py-3.5 px-3 sm:px-4 whitespace-nowrap">
                                 <span class="inline-flex items-center justify-center px-3 py-1 rounded-full text-xs font-bold bg-amber-50/90 border border-brand-gold/35 text-brand-espresso whitespace-nowrap shadow-2xs">
                                     {{ $product->grade ?? 'CW' }}
                                 </span>
                             </td>
-                            <td class="py-4 px-5 sm:px-6 text-center">
+                            <td class="py-3.5 px-3 sm:px-4 text-center">
                                 <span class="font-serif font-bold text-sm {{ $product->stock_kg > 100 ? 'text-emerald-700' : 'text-amber-600' }}">
                                     {{ number_format($product->stock_kg) }} Kg
                                 </span>
                             </td>
-                            <td class="py-4 px-5 sm:px-6 text-center font-mono text-stone-600">
-                                {{ $product->moisture_content ?? '12–14%' }}
+                            <td class="py-3.5 px-3 sm:px-4 text-center text-stone-600 whitespace-nowrap">
+                                {{ $product->moisture_content ?? 'Rajang Halus' }}
                             </td>
-                            <td class="py-4 px-5 sm:px-6 text-stone-600">
+                            <td class="py-3.5 px-3 sm:px-4 text-stone-600">
                                 {{ $product->origin }}
                             </td>
-                            <td class="py-4 px-5 sm:px-6 text-right font-serif font-bold text-brand-espresso">
+                            <td class="py-3.5 px-3 sm:px-4 text-right font-serif font-bold text-brand-espresso">
                                 Rp {{ number_format($product->price_per_kg, 0, ',', '.') }}
                             </td>
                             @if (Auth::user()->isAdmin())
-                                <td class="py-4 px-5 sm:px-6 text-center">
+                                <td class="py-3.5 px-3 sm:px-4 text-center">
                                     <div class="flex items-center justify-center gap-1.5">
-                                        <button type="button" onclick="openEditStokModal({{ json_encode($product) }})" class="w-8 h-8 rounded-full border border-brand-border hover:border-brand-gold hover:bg-amber-50 text-stone-500 hover:text-brand-espresso transition-colors inline-flex items-center justify-center cursor-pointer" title="Ubah Data Stok">
+                                        <button type="button" onclick="openEditStokModal({{ json_encode($product) }})" class="w-8 h-8 rounded-full border border-amber-200 bg-amber-50 hover:bg-amber-100 text-amber-600 transition-colors inline-flex items-center justify-center cursor-pointer" title="Ubah Data Stok">
                                             <i class="fa-regular fa-pen-to-square text-xs"></i>
                                         </button>
                                         <form action="{{ route('dashboard.stok.delete', $product->id) }}" method="POST" onsubmit="return confirm('Apakah Anda yakin ingin menghapus catatan stok ini?')">
                                             @csrf
                                             @method('DELETE')
-                                            <button type="submit" class="w-8 h-8 rounded-full border border-brand-border hover:border-red-300 hover:bg-red-50 text-stone-400 hover:text-red-600 transition-colors inline-flex items-center justify-center cursor-pointer" title="Hapus Stok">
+                                            <button type="submit" class="w-8 h-8 rounded-full border border-red-200 bg-red-50 hover:bg-red-100 text-red-600 transition-colors inline-flex items-center justify-center cursor-pointer" title="Hapus Stok">
                                                 <i class="fa-regular fa-trash-can text-xs"></i>
                                             </button>
                                         </form>
@@ -236,8 +236,11 @@
                             <input type="number" name="stock_kg" required min="0" placeholder="500" class="w-full px-3.5 py-2.5 rounded-xl border border-brand-border bg-brand-surface focus:bg-white focus:outline-none focus:border-brand-gold text-sm transition-colors">
                         </div>
                         <div>
-                            <label class="block font-semibold text-brand-espresso mb-1">Kadar Air</label>
-                            <input type="text" name="moisture_content" value="12–14%" class="w-full px-3.5 py-2.5 rounded-xl border border-brand-border bg-brand-surface focus:bg-white focus:outline-none focus:border-brand-gold text-sm transition-colors">
+                            <label class="block font-semibold text-brand-espresso mb-1">Jenis Rajangan</label>
+                            <select name="moisture_content" class="w-full px-3.5 py-2.5 rounded-xl border border-brand-border bg-brand-surface focus:bg-white focus:outline-none focus:border-brand-gold text-sm transition-colors">
+                                <option value="Rajang Halus">Rajang Halus</option>
+                                <option value="Rajang Kasar">Rajang Kasar</option>
+                            </select>
                         </div>
                         <div>
                             <label class="block font-semibold text-brand-espresso mb-1">Harga / Kg (Rp) <span class="text-red-500">*</span></label>
@@ -305,8 +308,11 @@
                             <input type="number" id="edit_stock_kg" name="stock_kg" required min="0" class="w-full px-3.5 py-2.5 rounded-xl border border-brand-border bg-brand-surface focus:bg-white focus:outline-none focus:border-brand-gold text-sm transition-colors">
                         </div>
                         <div>
-                            <label class="block font-semibold text-brand-espresso mb-1">Kadar Air</label>
-                            <input type="text" id="edit_moisture" name="moisture_content" class="w-full px-3.5 py-2.5 rounded-xl border border-brand-border bg-brand-surface focus:bg-white focus:outline-none focus:border-brand-gold text-sm transition-colors">
+                            <label class="block font-semibold text-brand-espresso mb-1">Jenis Rajangan</label>
+                            <select id="edit_moisture" name="moisture_content" class="w-full px-3.5 py-2.5 rounded-xl border border-brand-border bg-brand-surface focus:bg-white focus:outline-none focus:border-brand-gold text-sm transition-colors">
+                                <option value="Rajang Halus">Rajang Halus</option>
+                                <option value="Rajang Kasar">Rajang Kasar</option>
+                            </select>
                         </div>
                         <div>
                             <label class="block font-semibold text-brand-espresso mb-1">Harga / Kg (Rp) <span class="text-red-500">*</span></label>
@@ -344,7 +350,7 @@
                 document.getElementById('edit_variety').value = product.variety;
                 document.getElementById('edit_grade').value = product.grade || 'CW';
                 document.getElementById('edit_stock_kg').value = product.stock_kg;
-                document.getElementById('edit_moisture').value = product.moisture_content || '12–14%';
+                document.getElementById('edit_moisture').value = (product.moisture_content === 'Rajang Kasar') ? 'Rajang Kasar' : 'Rajang Halus';
                 document.getElementById('edit_price').value = product.price_per_kg;
                 document.getElementById('edit_origin').value = product.origin || '';
                 document.getElementById('edit_description').value = product.description || '';

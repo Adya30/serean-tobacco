@@ -42,7 +42,7 @@
                                 </svg>
                             </div>
 
-                            <h1 class="font-serif text-2xl sm:text-3xl md:text-[32px] lg:text-[38px] font-extrabold text-[#1a0f07] leading-[1.38] sm:leading-[1.4] lg:leading-[1.42] tracking-tight mb-4 sm:mb-5">
+                            <h1 class="font-serif text-xl sm:text-2xl md:text-[26px] lg:text-[30px] font-extrabold text-[#1a0f07] leading-[1.35] sm:leading-[1.38] lg:leading-[1.4] tracking-tight mb-4 sm:mb-5">
                                 Kualitas Tembakau Pilihan dengan Pengolahan Presisi.
                             </h1>
 
@@ -61,7 +61,7 @@
                                 </svg>
                             </div>
 
-                            <h1 class="font-serif text-2xl sm:text-3xl md:text-[32px] lg:text-[38px] font-extrabold text-[#1a0f07] leading-[1.38] sm:leading-[1.4] lg:leading-[1.42] tracking-tight mb-4 sm:mb-5">
+                            <h1 class="font-serif text-xl sm:text-2xl md:text-[26px] lg:text-[30px] font-extrabold text-[#1a0f07] leading-[1.35] sm:leading-[1.38] lg:leading-[1.4] tracking-tight mb-4 sm:mb-5">
                                 Panen Terbaik dari Tangan Petani Nusantara
                             </h1>
 
@@ -80,7 +80,7 @@
                                 </svg>
                             </div>
 
-                            <h1 class="font-serif text-2xl sm:text-3xl md:text-[32px] lg:text-[38px] font-extrabold text-[#1a0f07] leading-[1.38] sm:leading-[1.4] lg:leading-[1.42] tracking-tight mb-4 sm:mb-5">
+                            <h1 class="font-serif text-xl sm:text-2xl md:text-[26px] lg:text-[30px] font-extrabold text-[#1a0f07] leading-[1.35] sm:leading-[1.38] lg:leading-[1.4] tracking-tight mb-4 sm:mb-5">
                                 Perajangan Halus &amp; Pengeringan Curing 12 - 14%
                             </h1>
 
@@ -164,22 +164,18 @@
     </section>
 
 
-    <section id="tentang" class="w-full py-20 sm:py-28 lg:py-32 border-b border-brand-border bg-white relative">
+    <section id="tentang" class="w-full py-12 sm:py-16 lg:py-20 border-b border-brand-border bg-white relative">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
 
 
-            <div class="max-w-3xl mb-12 sm:mb-16" data-aos="fade-up">
-                <span class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-surface border border-brand-border text-xs sm:text-sm font-semibold text-brand-gold uppercase tracking-wider mb-3 shadow-sm">
-                    <i class="fa-solid fa-leaf text-xs"></i>
-                    <span>Tentang Serean Tobacco</span>
-                </span>
-                <h2 class="font-serif text-2xl sm:text-3xl lg:text-4xl font-extrabold text-[#1a0f07] leading-snug tracking-tight">
+            <div class="max-w-3xl mb-6 sm:mb-8" data-aos="fade-up">
+                <h2 class="font-serif text-xl sm:text-2xl lg:text-[26px] font-extrabold text-[#1a0f07] leading-snug tracking-tight">
                     Dedikasi pada Kualitas Rasa, Kejujuran Timbangan, dan Tradisi Temanggung.
                 </h2>
             </div>
 
 
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center">
 
 
                 <div class="lg:col-span-5" data-aos="fade-right" data-aos-duration="700">
@@ -206,7 +202,7 @@
                                 <span class="px-2.5 py-0.5 rounded-full bg-brand-gold text-brand-dark text-[10px] sm:text-[11px] font-bold uppercase tracking-wider inline-block mb-1 shadow">
                                     Grade Pilihan
                                 </span>
-                                <h4 class="font-serif text-base sm:text-lg font-bold leading-snug">Daun Tembakau Asli Temanggung</h4>
+                                <h4 class="font-serif text-sm sm:text-base font-bold leading-snug">Daun Tembakau Asli Temanggung</h4>
                                 <p class="text-[11px] sm:text-xs text-stone-200 mt-0.5 leading-relaxed">Dipetik pada kematangan optimal di lereng Gunung Sumbing &amp; Sindoro.</p>
                             </div>
                         </div>
@@ -217,7 +213,7 @@
 
                 <div class="lg:col-span-7 space-y-6" data-aos="fade-left" data-aos-duration="700" data-aos-delay="100">
 
-                    <div class="space-y-4 text-sm sm:text-base lg:text-lg text-brand-muted leading-relaxed">
+                    <div class="space-y-4 text-xs sm:text-sm text-brand-muted leading-relaxed">
                         <p>
                             <strong class="text-brand-espresso font-semibold">Serean Tobacco</strong> berakar di Temanggung, Jawa Tengah—daerah yang diakui sebagai sentra tembakau paling berkarakter di Nusantara. Dikelilingi iklim sejuk lereng Gunung Sumbing dan Sindoro, tembakau yang kami hasilkan memiliki getah kental, warna keemasan, dan aroma gurih yang khas.
                         </p>
@@ -231,7 +227,7 @@
                             <div class="w-12 h-12 rounded-xl bg-white border border-brand-border flex items-center justify-center text-brand-gold mb-3 text-lg group-hover:bg-brand-espresso group-hover:text-brand-gold transition-colors shadow-sm">
                                 <i class="fa-solid fa-scissors"></i>
                             </div>
-                            <h3 class="font-serif font-bold text-brand-espresso text-base mb-1.5">Perajangan Mesin</h3>
+                            <h3 class="font-serif font-bold text-brand-espresso text-sm mb-1.5">Perajangan Mesin</h3>
                             <p class="text-xs text-brand-muted leading-relaxed">Potongan seragam dari halus (0.6mm) hingga sedang, menjaga hisapan lintingan halus tanpa debu.</p>
                         </div>
 
@@ -240,7 +236,7 @@
                             <div class="w-12 h-12 rounded-xl bg-white border border-brand-border flex items-center justify-center text-brand-gold mb-3 text-lg group-hover:bg-brand-espresso group-hover:text-brand-gold transition-colors shadow-sm">
                                 <i class="fa-solid fa-sun"></i>
                             </div>
-                            <h3 class="font-serif font-bold text-brand-espresso text-base mb-1.5">Curing Alami</h3>
+                            <h3 class="font-serif font-bold text-brand-espresso text-sm mb-1.5">Curing Alami</h3>
                             <p class="text-xs text-brand-muted leading-relaxed">Pengeringan terukur di atas anyaman bambu widig, menjaga getah asli dan kadar air stabil 12–14%.</p>
                         </div>
 
@@ -249,7 +245,7 @@
                             <div class="w-12 h-12 rounded-xl bg-white border border-brand-border flex items-center justify-center text-brand-gold mb-3 text-lg group-hover:bg-brand-espresso group-hover:text-brand-gold transition-colors shadow-sm">
                                 <i class="fa-solid fa-box-archive"></i>
                             </div>
-                            <h3 class="font-serif font-bold text-brand-espresso text-base mb-1.5">Kemasan Kedap</h3>
+                            <h3 class="font-serif font-bold text-brand-espresso text-sm mb-1.5">Kemasan Kedap</h3>
                             <p class="text-xs text-brand-muted leading-relaxed">Pengemasan berlapis higienis tahan lembap, menjaga kesegaran rasa tembakau hingga ke tangan Anda.</p>
                         </div>
 
@@ -278,17 +274,13 @@
     </section>
 
 
-    <section id="produk" class="w-full py-20 sm:py-28 lg:py-32 border-b border-brand-border bg-white relative">
+    <section id="produk" class="w-full py-12 sm:py-16 lg:py-20 border-b border-brand-border bg-white relative">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
 
 
             <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-8 sm:mb-10" data-aos="fade-up">
                 <div>
-                    <span class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-surface border border-brand-border text-xs sm:text-sm font-semibold text-brand-gold uppercase tracking-wider mb-2 shadow-sm">
-                        <i class="fa-solid fa-box-open text-xs"></i>
-                        <span>Produk Tembakau</span>
-                    </span>
-                    <h2 class="font-serif text-2xl sm:text-3xl lg:text-4xl font-extrabold text-[#1a0f07] tracking-tight">
+                    <h2 class="font-serif text-xl sm:text-2xl lg:text-[26px] font-extrabold text-[#1a0f07] tracking-tight">
                         Varietas Tembakau Siap Kirim
                     </h2>
                 </div>
@@ -320,7 +312,7 @@
                                 Grade CW &amp; Super
                             </span>
                         </div>
-                        <h3 class="font-serif font-bold text-lg sm:text-xl text-brand-espresso mb-1.5">Tembakau Opot (Besuki Na-Oogst)</h3>
+                        <h3 class="font-serif font-bold text-sm sm:text-base text-brand-espresso mb-1.5">Tembakau Opot (Besuki Na-Oogst)</h3>
                         <p class="text-xs sm:text-sm text-brand-muted leading-relaxed mb-5">
                             Daun lentur berurat sangat halus dengan warna cokelat kemerahan rata, aroma gurih legendaris pilihan pabrik cerutu dan rokok ekspor.
                         </p>
@@ -328,7 +320,7 @@
                     <div class="pt-3.5 border-t border-brand-border flex items-center justify-between">
                         <div>
                             <span class="text-[10px] text-brand-muted block uppercase tracking-wider">Harga Mulai</span>
-                            <span class="font-bold text-sm sm:text-base text-brand-espresso">Rp 55.000<span class="text-xs font-normal text-brand-muted">/kg</span></span>
+                            <span class="font-bold text-xs sm:text-sm text-brand-espresso">Rp 55.000<span class="text-xs font-normal text-brand-muted">/kg</span></span>
                         </div>
                         <button type="button" onclick="selectProduct('Tembakau Opot (Besuki Na-Oogst)')" class="px-4 py-2 rounded-full bg-brand-espresso text-white text-xs font-semibold hover:bg-brand-dark transition-colors shadow-sm">
                             Pesan
@@ -348,7 +340,7 @@
                                 Grade CW &amp; Gudangan
                             </span>
                         </div>
-                        <h3 class="font-serif font-bold text-lg sm:text-xl text-brand-espresso mb-1.5">Tembakau Samporis</h3>
+                        <h3 class="font-serif font-bold text-sm sm:text-base text-brand-espresso mb-1.5">Tembakau Samporis</h3>
                         <p class="text-xs sm:text-sm text-brand-muted leading-relaxed mb-5">
                             Rajangan halus dengan getah alami seimbang, pembakaran stabil dan minim panas, sangat digemari penikmat tingwe nusantara.
                         </p>
@@ -356,7 +348,7 @@
                     <div class="pt-3.5 border-t border-brand-border flex items-center justify-between">
                         <div>
                             <span class="text-[10px] text-brand-muted block uppercase tracking-wider">Harga Mulai</span>
-                            <span class="font-bold text-sm sm:text-base text-brand-espresso">Rp 49.000<span class="text-xs font-normal text-brand-muted">/kg</span></span>
+                            <span class="font-bold text-xs sm:text-sm text-brand-espresso">Rp 49.000<span class="text-xs font-normal text-brand-muted">/kg</span></span>
                         </div>
                         <button type="button" onclick="selectProduct('Tembakau Samporis')" class="px-4 py-2 rounded-full bg-brand-espresso text-white text-xs font-semibold hover:bg-brand-dark transition-colors shadow-sm">
                             Pesan
@@ -376,7 +368,7 @@
                                 Rajang Halus
                             </span>
                         </div>
-                        <h3 class="font-serif font-bold text-lg sm:text-xl text-brand-espresso mb-1.5">Tembakau Marakot</h3>
+                        <h3 class="font-serif font-bold text-sm sm:text-base text-brand-espresso mb-1.5">Tembakau Marakot</h3>
                         <p class="text-xs sm:text-sm text-brand-muted leading-relaxed mb-5">
                             Aroma kuat dan rasa gurih berbobot dengan curing tradisional terkontrol, warna daun kuning kecokelatan yang pekat.
                         </p>
@@ -384,7 +376,7 @@
                     <div class="pt-3.5 border-t border-brand-border flex items-center justify-between">
                         <div>
                             <span class="text-[10px] text-brand-muted block uppercase tracking-wider">Harga Mulai</span>
-                            <span class="font-bold text-sm sm:text-base text-brand-espresso">Rp 47.000<span class="text-xs font-normal text-brand-muted">/kg</span></span>
+                            <span class="font-bold text-xs sm:text-sm text-brand-espresso">Rp 47.000<span class="text-xs font-normal text-brand-muted">/kg</span></span>
                         </div>
                         <button type="button" onclick="selectProduct('Tembakau Marakot')" class="px-4 py-2 rounded-full bg-brand-espresso text-white text-xs font-semibold hover:bg-brand-dark transition-colors shadow-sm">
                             Pesan
@@ -404,7 +396,7 @@
                                 Grade AB-1
                             </span>
                         </div>
-                        <h3 class="font-serif font-bold text-lg sm:text-xl text-brand-espresso mb-1.5">Tembakau Baleno</h3>
+                        <h3 class="font-serif font-bold text-sm sm:text-base text-brand-espresso mb-1.5">Tembakau Baleno</h3>
                         <p class="text-xs sm:text-sm text-brand-muted leading-relaxed mb-5">
                             Varietas primadona petani Situbondo dengan potongan rajangan seragam, tarikan sangat lembut dan asap bersih tanpa residu tajam.
                         </p>
@@ -412,7 +404,7 @@
                     <div class="pt-3.5 border-t border-brand-border flex items-center justify-between">
                         <div>
                             <span class="text-[10px] text-brand-muted block uppercase tracking-wider">Harga Mulai</span>
-                            <span class="font-bold text-sm sm:text-base text-brand-espresso">Rp 45.000<span class="text-xs font-normal text-brand-muted">/kg</span></span>
+                            <span class="font-bold text-xs sm:text-sm text-brand-espresso">Rp 45.000<span class="text-xs font-normal text-brand-muted">/kg</span></span>
                         </div>
                         <button type="button" onclick="selectProduct('Tembakau Baleno')" class="px-4 py-2 rounded-full bg-brand-espresso text-white text-xs font-semibold hover:bg-brand-dark transition-colors shadow-sm">
                             Pesan
@@ -434,15 +426,11 @@
     </section>
 
 
-    <section id="testimoni" class="w-full py-20 sm:py-28 lg:py-32 border-b border-brand-border relative">
+    <section id="testimoni" class="w-full py-12 sm:py-16 lg:py-20 border-b border-brand-border relative">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
 
             <div class="text-center max-w-2xl mx-auto mb-10 sm:mb-14" data-aos="fade-up">
-                <span class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-brand-border text-xs sm:text-sm font-semibold text-brand-gold uppercase tracking-wider mb-2 shadow-sm">
-                    <i class="fa-solid fa-comments text-xs"></i>
-                    <span>Testimoni Customer</span>
-                </span>
-                <h2 class="font-serif text-2xl sm:text-3xl lg:text-4xl font-extrabold text-[#1a0f07] tracking-tight">
+                <h2 class="font-serif text-xl sm:text-2xl lg:text-[26px] font-extrabold text-[#1a0f07] tracking-tight">
                     Apa Kata Customer Kami
                 </h2>
             </div>
@@ -512,16 +500,12 @@
     </section>
 
 
-    <section id="faq" class="w-full py-16 sm:py-24 bg-white relative">
+    <section id="faq" class="w-full py-12 sm:py-16 bg-white relative">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
 
 
             <div class="text-center mb-10 sm:mb-14" data-aos="fade-up">
-                <span class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-surface border border-brand-border text-xs sm:text-sm font-semibold text-brand-gold uppercase tracking-wider mb-3 shadow-sm">
-                    <i class="fa-solid fa-circle-question text-xs"></i>
-                    <span>Tanya Jawab (FAQ)</span>
-                </span>
-                <h2 class="font-serif text-2xl sm:text-3xl lg:text-4xl font-extrabold text-[#1a0f07] leading-snug tracking-tight">
+                <h2 class="font-serif text-xl sm:text-2xl lg:text-[26px] font-extrabold text-[#1a0f07] leading-snug tracking-tight">
                     Pertanyaan yang Sering Diajukan
                 </h2>
                 <p class="text-xs sm:text-sm md:text-base text-brand-muted mt-2 max-w-xl mx-auto leading-relaxed">
@@ -534,78 +518,78 @@
 
 
                 <div class="faq-item rounded-3xl border border-brand-border bg-brand-surface overflow-hidden shadow-sm hover:border-brand-gold hover:shadow-md transition-all duration-300">
-                    <button type="button" onclick="toggleFaq(0)" class="w-full py-5 sm:py-6 px-6 sm:px-8 flex items-center justify-between text-left gap-4 font-serif font-extrabold text-base sm:text-lg md:text-xl text-[#1a0f07] hover:text-brand-gold transition-colors focus:outline-none">
+                    <button type="button" onclick="toggleFaq(0)" class="w-full py-4 px-5 sm:px-6 flex items-center justify-between text-left gap-4 font-serif font-bold text-xs sm:text-sm md:text-base text-[#1a0f07] hover:text-brand-gold transition-colors focus:outline-none">
                         <span>Berapa batas minimal pemesanan tembakau di Serean Tobacco?</span>
-                        <div class="w-10 h-10 sm:w-11 sm:h-11 rounded-2xl bg-white border border-brand-border flex items-center justify-center shrink-0 text-brand-gold text-sm shadow-sm transition-transform duration-300" id="faq-icon-0">
+                        <div class="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-white border border-brand-border flex items-center justify-center shrink-0 text-brand-gold text-xs shadow-sm transition-transform duration-300" id="faq-icon-0">
                             <i class="fa-solid fa-chevron-down"></i>
                         </div>
                     </button>
-                    <div id="faq-ans-0" class="hidden px-6 sm:px-8 pb-6 pt-2 text-sm sm:text-base text-brand-muted leading-relaxed border-t border-brand-border/60">
+                    <div id="faq-ans-0" class="hidden px-5 sm:px-6 pb-5 pt-2 text-xs sm:text-sm text-brand-muted leading-relaxed border-t border-brand-border/60">
                         Kami melayani pembelian mulai dari <strong>1 kg</strong> untuk kebutuhan eceran atau toko ritel tingwe, hingga puluhan <strong>bal dan ton</strong> untuk kebutuhan industri pabrik rokok dan gudang tembakau.
                     </div>
                 </div>
 
 
                 <div class="faq-item rounded-3xl border border-brand-border bg-brand-surface overflow-hidden shadow-sm hover:border-brand-gold hover:shadow-md transition-all duration-300">
-                    <button type="button" onclick="toggleFaq(1)" class="w-full py-5 sm:py-6 px-6 sm:px-8 flex items-center justify-between text-left gap-4 font-serif font-extrabold text-base sm:text-lg md:text-xl text-[#1a0f07] hover:text-brand-gold transition-colors focus:outline-none">
+                    <button type="button" onclick="toggleFaq(1)" class="w-full py-4 px-5 sm:px-6 flex items-center justify-between text-left gap-4 font-serif font-bold text-xs sm:text-sm md:text-base text-[#1a0f07] hover:text-brand-gold transition-colors focus:outline-none">
                         <span>Bagaimana jaminan mutu dan kadar air 12–14% saat pengiriman?</span>
-                        <div class="w-10 h-10 sm:w-11 sm:h-11 rounded-2xl bg-white border border-brand-border flex items-center justify-center shrink-0 text-brand-gold text-sm shadow-sm transition-transform duration-300" id="faq-icon-1">
+                        <div class="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-white border border-brand-border flex items-center justify-center shrink-0 text-brand-gold text-xs shadow-sm transition-transform duration-300" id="faq-icon-1">
                             <i class="fa-solid fa-chevron-down"></i>
                         </div>
                     </button>
-                    <div id="faq-ans-1" class="hidden px-6 sm:px-8 pb-6 pt-2 text-sm sm:text-base text-brand-muted leading-relaxed border-t border-brand-border/60">
+                    <div id="faq-ans-1" class="hidden px-5 sm:px-6 pb-5 pt-2 text-xs sm:text-sm text-brand-muted leading-relaxed border-t border-brand-border/60">
                         Setiap daun tembakau diproses melalui pengeringan alami (curing) yang teratur dan diuji menggunakan <em>moisture meter</em> digital sebelum dikemas. Tembakau dibungkus dalam plastik berlapis kedap udara (<em>airtight barrier</em>) tahan lembap sehingga mutunya stabil dan tidak berjamur selama perjalanan jauh.
                     </div>
                 </div>
 
 
                 <div class="faq-item rounded-3xl border border-brand-border bg-brand-surface overflow-hidden shadow-sm hover:border-brand-gold hover:shadow-md transition-all duration-300">
-                    <button type="button" onclick="toggleFaq(2)" class="w-full py-5 sm:py-6 px-6 sm:px-8 flex items-center justify-between text-left gap-4 font-serif font-extrabold text-base sm:text-lg md:text-xl text-[#1a0f07] hover:text-brand-gold transition-colors focus:outline-none">
+                    <button type="button" onclick="toggleFaq(2)" class="w-full py-4 px-5 sm:px-6 flex items-center justify-between text-left gap-4 font-serif font-bold text-xs sm:text-sm md:text-base text-[#1a0f07] hover:text-brand-gold transition-colors focus:outline-none">
                         <span>Apakah bisa meminta paket sampel mutu (tester) terlebih dahulu?</span>
-                        <div class="w-10 h-10 sm:w-11 sm:h-11 rounded-2xl bg-white border border-brand-border flex items-center justify-center shrink-0 text-brand-gold text-sm shadow-sm transition-transform duration-300" id="faq-icon-2">
+                        <div class="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-white border border-brand-border flex items-center justify-center shrink-0 text-brand-gold text-xs shadow-sm transition-transform duration-300" id="faq-icon-2">
                             <i class="fa-solid fa-chevron-down"></i>
                         </div>
                     </button>
-                    <div id="faq-ans-2" class="hidden px-6 sm:px-8 pb-6 pt-2 text-sm sm:text-base text-brand-muted leading-relaxed border-t border-brand-border/60">
-                        Tentu bisa. Kami menyediakan paket sampel tester mulai dari <strong>100 gram sampai 250 gram</strong> bagi mitra baru atau penikmat yang ingin menguji aroma, karakter rasa, dan kehalusan rajangan sebelum memutuskan membeli dalam jumlah partai besar.
+                    <div id="faq-ans-2" class="hidden px-5 sm:px-6 pb-5 pt-2 text-xs sm:text-sm text-brand-muted leading-relaxed border-t border-brand-border/60">
+                        Tentu bisa. Kami menyediakan paket sampel tester mulai dari <strong>100 gram sampai 250 gram</strong> bagi pembeli baru atau penikmat yang ingin menguji aroma, karakter rasa, dan kehalusan rajangan sebelum memutuskan membeli dalam jumlah partai besar.
                     </div>
                 </div>
 
 
                 <div class="faq-item rounded-3xl border border-brand-border bg-brand-surface overflow-hidden shadow-sm hover:border-brand-gold hover:shadow-md transition-all duration-300">
-                    <button type="button" onclick="toggleFaq(3)" class="w-full py-5 sm:py-6 px-6 sm:px-8 flex items-center justify-between text-left gap-4 font-serif font-extrabold text-base sm:text-lg md:text-xl text-[#1a0f07] hover:text-brand-gold transition-colors focus:outline-none">
+                    <button type="button" onclick="toggleFaq(3)" class="w-full py-4 px-5 sm:px-6 flex items-center justify-between text-left gap-4 font-serif font-bold text-xs sm:text-sm md:text-base text-[#1a0f07] hover:text-brand-gold transition-colors focus:outline-none">
                         <span>Varietas tembakau apa saja yang selalu tersedia di gudang?</span>
-                        <div class="w-10 h-10 sm:w-11 sm:h-11 rounded-2xl bg-white border border-brand-border flex items-center justify-center shrink-0 text-brand-gold text-xs shadow-sm transition-transform duration-300" id="faq-icon-3">
+                        <div class="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-white border border-brand-border flex items-center justify-center shrink-0 text-brand-gold text-xs shadow-sm transition-transform duration-300" id="faq-icon-3">
                             <i class="fa-solid fa-chevron-down"></i>
                         </div>
                     </button>
-                    <div id="faq-ans-3" class="hidden px-6 sm:px-8 pb-6 pt-2 text-sm sm:text-base text-brand-muted leading-relaxed border-t border-brand-border/60">
+                    <div id="faq-ans-3" class="hidden px-5 sm:px-6 pb-5 pt-2 text-xs sm:text-sm text-brand-muted leading-relaxed border-t border-brand-border/60">
                         Kami menyediakan Virginia Flue-Cured keemasan (aroma manis lembut), Temanggung Dark lereng Sumbing (karakter mantap berbobot), Besuki Na-Oogst untuk cerutu mutu ekspor, Kasturi Madura (aroma gurih alami), hingga Srintil Super grade koleksi langka.
                     </div>
                 </div>
 
 
                 <div class="faq-item rounded-3xl border border-brand-border bg-brand-surface overflow-hidden shadow-sm hover:border-brand-gold hover:shadow-md transition-all duration-300">
-                    <button type="button" onclick="toggleFaq(4)" class="w-full py-5 sm:py-6 px-6 sm:px-8 flex items-center justify-between text-left gap-4 font-serif font-extrabold text-base sm:text-lg md:text-xl text-[#1a0f07] hover:text-brand-gold transition-colors focus:outline-none">
+                    <button type="button" onclick="toggleFaq(4)" class="w-full py-4 px-5 sm:px-6 flex items-center justify-between text-left gap-4 font-serif font-bold text-xs sm:text-sm md:text-base text-[#1a0f07] hover:text-brand-gold transition-colors focus:outline-none">
                         <span>Ekspedisi apa yang digunakan untuk pengiriman ke luar pulau Jawa?</span>
-                        <div class="w-10 h-10 sm:w-11 sm:h-11 rounded-2xl bg-white border border-brand-border flex items-center justify-center shrink-0 text-brand-gold text-sm shadow-sm transition-transform duration-300" id="faq-icon-4">
+                        <div class="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-white border border-brand-border flex items-center justify-center shrink-0 text-brand-gold text-xs shadow-sm transition-transform duration-300" id="faq-icon-4">
                             <i class="fa-solid fa-chevron-down"></i>
                         </div>
                     </button>
-                    <div id="faq-ans-4" class="hidden px-6 sm:px-8 pb-6 pt-2 text-sm sm:text-base text-brand-muted leading-relaxed border-t border-brand-border/60">
+                    <div id="faq-ans-4" class="hidden px-5 sm:px-6 pb-5 pt-2 text-xs sm:text-sm text-brand-muted leading-relaxed border-t border-brand-border/60">
                         Kami bekerja sama dengan ekspedisi kargo khusus seperti Indah Logistik Kargo, J&amp;T Cargo, Dakota Cargo, dan JNE Trucking untuk menjangkau Sumatera, Kalimantan, Sulawesi, Bali, dan seluruh pelosok Nusantara dengan tarif hemat dan nomor resi transparan.
                     </div>
                 </div>
 
 
                 <div class="faq-item rounded-3xl border border-brand-border bg-brand-surface overflow-hidden shadow-sm hover:border-brand-gold hover:shadow-md transition-all duration-300">
-                    <button type="button" onclick="toggleFaq(5)" class="w-full py-5 sm:py-6 px-6 sm:px-8 flex items-center justify-between text-left gap-4 font-serif font-extrabold text-base sm:text-lg md:text-xl text-[#1a0f07] hover:text-brand-gold transition-colors focus:outline-none">
+                    <button type="button" onclick="toggleFaq(5)" class="w-full py-4 px-5 sm:px-6 flex items-center justify-between text-left gap-4 font-serif font-bold text-xs sm:text-sm md:text-base text-[#1a0f07] hover:text-brand-gold transition-colors focus:outline-none">
                         <span>Bagaimana cara melakukan pemesanan atau konsultasi langsung?</span>
-                        <div class="w-10 h-10 sm:w-11 sm:h-11 rounded-2xl bg-white border border-brand-border flex items-center justify-center shrink-0 text-brand-gold text-sm shadow-sm transition-transform duration-300" id="faq-icon-5">
+                        <div class="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-white border border-brand-border flex items-center justify-center shrink-0 text-brand-gold text-xs shadow-sm transition-transform duration-300" id="faq-icon-5">
                             <i class="fa-solid fa-chevron-down"></i>
                         </div>
                     </button>
-                    <div id="faq-ans-5" class="hidden px-6 sm:px-8 pb-6 pt-2 text-sm sm:text-base text-brand-muted leading-relaxed border-t border-brand-border/60">
+                    <div id="faq-ans-5" class="hidden px-5 sm:px-6 pb-5 pt-2 text-xs sm:text-sm text-brand-muted leading-relaxed border-t border-brand-border/60">
                         Anda dapat langsung menghubungi kontak resmi kami di <a href="https://wa.me/6287855320286" target="_blank" class="text-brand-gold font-bold underline">0878-5532-0286 (Rajif Fakhri / Feri)</a> atau mengunjungi <a href="{{ route('kontak') }}" class="text-brand-gold font-bold underline">Halaman Kontak</a> untuk melihat direktori alamat sentra kami.
                     </div>
                 </div>

@@ -4,7 +4,10 @@ use App\Models\CartItem;
 use App\Models\Harvest;
 use App\Models\PlantingSchedule;
 use App\Models\Product;
+use App\Models\Transaction;
 use App\Models\User;
+use Illuminate\Http\UploadedFile;
+use Illuminate\Support\Facades\Storage;
 
 test('the home page returns a successful response', function () {
     $response = $this->get('/');
@@ -142,7 +145,7 @@ test('petani can create and view harvest data', function () {
         'variety' => 'Tembakau Opot (Besuki Na-Oogst)',
         'grade' => 'Super',
         'harvest_weight_kg' => 600,
-        'moisture_content' => '13%',
+        'moisture_content' => 'Rajang Halus',
         'harvest_date' => now()->toDateString(),
         'farm_location' => 'Kebun Krajan',
         'quality_notes' => 'Aroma harum getah pekat',
@@ -305,4 +308,72 @@ test('guest can see active catalog products on produk page', function () {
     $response = $this->get('/produk');
     $response->assertStatus(200);
     $response->assertSee('Tembakau Katalog Publik');
+});
+
+test('customer admin and petani can upload profile photo', function () {
+    Storage::fake('public');
+
+    foreach (['customer', 'admin', 'petani'] as $role) {
+        $user = User::factory()->create([
+            'role' => $role,
+            'status' => 'active',
+        ]);
+
+        $file = UploadedFile::fake()->image("avatar-{$role}.jpg");
+
+        $response = $this->actingAs($user)->put('/profile', [
+            'name' => $user->name,
+            'email' => $user->email,
+            'profile_photo' => $file,
+        ]);
+
+        $response->assertRedirect();
+        $response->assertSessionHas('status');
+
+        $user->refresh();
+        expect($user->profile_photo)->not->toBeNull();
+        Storage::disk('public')->assertExists($user->profile_photo);
+    }
+});
+
+test('admin sees incoming harvest and transaction notifications in dashboard', function () {
+    $admin = User::factory()->create(['role' => 'admin', 'status' => 'active']);
+    $petani = User::factory()->create(['role' => 'petani', 'status' => 'active', 'name' => 'Pak Tani Notif']);
+    $customer = User::factory()->create(['role' => 'customer', 'status' => 'active']);
+
+    Harvest::create([
+        'farmer_id' => $petani->id,
+        'farmer_name' => $petani->name,
+        'variety' => 'Tembakau Opot',
+        'grade' => 'Super',
+        'harvest_weight_kg' => 250,
+        'moisture_content' => 'Rajang Halus',
+        'harvest_date' => now()->toDateString(),
+        'farm_location' => 'Situbondo',
+        'status' => 'diterima_gudang',
+    ]);
+
+    Transaction::create([
+        'invoice_code' => 'INV-NOTIF-001',
+        'user_id' => $customer->id,
+        'customer_name' => 'Pembeli Notif',
+        'customer_phone' => '08123456789',
+        'kabupaten' => 'Surabaya',
+        'kecamatan' => 'Genteng',
+        'desa' => 'Embong',
+        'customer_address' => 'Jl. Pemuda',
+        'total_weight_kg' => 100,
+        'items_subtotal' => 5000000,
+        'shipping_cost' => 0,
+        'total_price' => 5000000,
+        'fleet_type' => 'pick_up',
+        'fleet_name' => 'Armada Standar Pick Up (< 300 Kg)',
+        'shipping_status' => 'menunggu_konfirmasi',
+        'payment_status' => 'menunggu_pembayaran',
+    ]);
+
+    $response = $this->actingAs($admin)->get('/dashboard');
+    $response->assertStatus(200);
+    $response->assertSee('Transaksi Masuk: INV-NOTIF-001');
+    $response->assertSee('Hasil Panen Masuk: Tembakau Opot');
 });

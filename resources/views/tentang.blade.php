@@ -15,15 +15,11 @@
         </div>
 
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center sm:text-left">
-            <span class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-surface border border-brand-border text-xs sm:text-sm font-semibold text-brand-gold uppercase tracking-wider mb-3 shadow-sm">
-                <i class="fa-solid fa-leaf text-xs"></i>
-                <span>Dedikasi &amp; Tradisi Temanggung</span>
-            </span>
 
-            <h1 class="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-brand-espresso leading-tight max-w-4xl">
+            <h1 class="font-serif text-2xl sm:text-3xl lg:text-[32px] font-bold text-brand-espresso leading-tight max-w-4xl">
                 Menjaga Kualitas Rasa, Kejujuran Timbangan, dan Tradisi Tembakau Nusantara.
             </h1>
-            <p class="text-sm sm:text-base lg:text-lg text-brand-muted mt-4 max-w-2xl leading-relaxed">
+            <p class="text-xs sm:text-sm text-brand-muted mt-3 max-w-2xl leading-relaxed">
                 Berakar di lereng sejuk Gunung Sumbing dan Sindoro, kami mendedikasikan diri menghadirkan daun tembakau berkualitas murni langsung dari tangan petani untuk penikmat dan pengrajin di seluruh Indonesia.
             </p>
         </div>
@@ -57,7 +53,7 @@
                                 <span class="px-2.5 py-0.5 rounded-full bg-brand-gold text-brand-dark text-[10px] font-bold uppercase tracking-wider inline-block mb-1 shadow">
                                     Sentra Temanggung
                                 </span>
-                                <h3 class="font-serif text-lg font-bold">Gunung Sumbing &amp; Sindoro</h3>
+                                <h3 class="font-serif text-sm sm:text-base font-bold">Gunung Sumbing &amp; Sindoro</h3>
                                 <p class="text-xs text-stone-200 mt-0.5">Karakter rasa gurih kental berkat tanah vulkanik subur dan udara sejuk pegunungan.</p>
                             </div>
                         </div>
@@ -67,16 +63,12 @@
 
                 
                 <div class="lg:col-span-7 space-y-6" data-aos="fade-left">
-                    <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-brand-surface border border-brand-border text-xs font-semibold text-brand-gold uppercase tracking-wider">
-                        <i class="fa-solid fa-history text-xs"></i>
-                        <span>Kisah &amp; Dedikasi Kami</span>
-                    </span>
 
-                    <h2 class="font-serif text-2xl sm:text-3xl font-bold text-brand-espresso leading-snug">
+                    <h2 class="font-serif text-xl sm:text-2xl font-bold text-brand-espresso leading-snug">
                         Menghubungkan Kerja Keras Petani dengan Penikmat Tembakau Sejati.
                     </h2>
 
-                    <div class="space-y-4 text-sm sm:text-base text-brand-muted leading-relaxed">
+                    <div class="space-y-4 text-xs sm:text-sm text-brand-muted leading-relaxed">
                         <p>
                             <strong class="text-brand-espresso font-semibold">Serean Tobacco</strong> lahir dari kecintaan mendalam terhadap kekayaan tradisi tembakau di Temanggung, Jawa Tengah—kawasan yang sejak berabad-abad diakui sebagai jantung penghasil tembakau terbaik di Nusantara.
                         </p>
@@ -91,15 +83,15 @@
                     
                     <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 pt-2">
                         <div class="p-3 rounded-2xl bg-brand-surface border border-brand-border text-center">
-                            <span class="font-serif font-bold text-lg sm:text-xl text-brand-gold block">100%</span>
+                            <span class="font-serif font-bold text-base sm:text-lg text-brand-gold block">100%</span>
                             <span class="text-xs text-brand-espresso font-semibold block mt-0.5">Timbangan Jujur</span>
                         </div>
                         <div class="p-3 rounded-2xl bg-brand-surface border border-brand-border text-center">
-                            <span class="font-serif font-bold text-lg sm:text-xl text-brand-gold block">12–14%</span>
+                            <span class="font-serif font-bold text-base sm:text-lg text-brand-gold block">12–14%</span>
                             <span class="text-xs text-brand-espresso font-semibold block mt-0.5">Kadar Air Terjaga</span>
                         </div>
                         <div class="p-3 rounded-2xl bg-brand-surface border border-brand-border text-center col-span-2 sm:col-span-1">
-                            <span class="font-serif font-bold text-lg sm:text-xl text-brand-gold block">Murni</span>
+                            <span class="font-serif font-bold text-base sm:text-lg text-brand-gold block">Murni</span>
                             <span class="text-xs text-brand-espresso font-semibold block mt-0.5">Tanpa Saus Kimia</span>
                         </div>
                     </div>
@@ -114,11 +106,7 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             
             <div class="text-center max-w-2xl mx-auto mb-12 sm:mb-16" data-aos="fade-up">
-                <span class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-brand-border text-xs sm:text-sm font-semibold text-brand-gold uppercase tracking-wider mb-2.5 shadow-sm">
-                    <i class="fa-solid fa-star text-xs"></i>
-                    <span>Prinsip Kerja Kami</span>
-                </span>
-                <h2 class="font-serif text-2xl sm:text-3xl lg:text-4xl font-bold text-brand-espresso">
+                <h2 class="font-serif text-xl sm:text-2xl lg:text-[26px] font-bold text-brand-espresso">
                     Empat Pilar Keunggulan Serean Tobacco
                 </h2>
                 <p class="text-xs sm:text-sm text-brand-muted mt-2 max-w-lg mx-auto">
@@ -133,7 +121,7 @@
                     <div class="w-12 h-12 rounded-2xl bg-brand-surface border border-brand-border flex items-center justify-center text-brand-gold text-xl mb-4 group-hover:bg-brand-espresso group-hover:text-brand-gold transition-colors shadow-sm">
                         <i class="fa-solid fa-scale-balanced"></i>
                     </div>
-                    <h3 class="font-serif font-bold text-lg text-brand-espresso mb-2">Timbangan Digital Presisi</h3>
+                    <h3 class="font-serif font-bold text-sm sm:text-base text-brand-espresso mb-2">Timbangan Digital Presisi</h3>
                     <p class="text-xs sm:text-sm text-brand-muted leading-relaxed">
                         Pengukuran berat digital transparan tanpa pengurangan sedikit pun. Anda mendapatkan bobot bersih persis sesuai dengan yang Anda pesan.
                     </p>
@@ -144,7 +132,7 @@
                     <div class="w-12 h-12 rounded-2xl bg-brand-surface border border-brand-border flex items-center justify-center text-brand-gold text-xl mb-4 group-hover:bg-brand-espresso group-hover:text-brand-gold transition-colors shadow-sm">
                         <i class="fa-solid fa-sun"></i>
                     </div>
-                    <h3 class="font-serif font-bold text-lg text-brand-espresso mb-2">Curing Bambu Alami</h3>
+                    <h3 class="font-serif font-bold text-sm sm:text-base text-brand-espresso mb-2">Curing Bambu Alami</h3>
                     <p class="text-xs sm:text-sm text-brand-muted leading-relaxed">
                         Pengeringan di atas anyaman bambu widig di bawah sinar matahari pegunungan menjaga keaslian getah dan mencegah timbulnya aroma gosong.
                     </p>
@@ -155,7 +143,7 @@
                     <div class="w-12 h-12 rounded-2xl bg-brand-surface border border-brand-border flex items-center justify-center text-brand-gold text-xl mb-4 group-hover:bg-brand-espresso group-hover:text-brand-gold transition-colors shadow-sm">
                         <i class="fa-solid fa-scissors"></i>
                     </div>
-                    <h3 class="font-serif font-bold text-lg text-brand-espresso mb-2">Perajangan Mesin Halus</h3>
+                    <h3 class="font-serif font-bold text-sm sm:text-base text-brand-espresso mb-2">Perajangan Mesin Halus</h3>
                     <p class="text-xs sm:text-sm text-brand-muted leading-relaxed">
                         Pisau mekanis berkecepatan teratur menghasilkan irisan rajangan seragam mulai 0.6mm, bebas dari serbuk dan gumpalan batang kasar.
                     </p>
@@ -166,7 +154,7 @@
                     <div class="w-12 h-12 rounded-2xl bg-brand-surface border border-brand-border flex items-center justify-center text-brand-gold text-xl mb-4 group-hover:bg-brand-espresso group-hover:text-brand-gold transition-colors shadow-sm">
                         <i class="fa-solid fa-box-archive"></i>
                     </div>
-                    <h3 class="font-serif font-bold text-lg text-brand-espresso mb-2">Kemasan Kedap Higienis</h3>
+                    <h3 class="font-serif font-bold text-sm sm:text-base text-brand-espresso mb-2">Kemasan Kedap Higienis</h3>
                     <p class="text-xs sm:text-sm text-brand-muted leading-relaxed">
                         Penyegelan berlapis kedap udara menjaga kestabilan kadar air dan aroma murni tetap terkunci aman selama perjalanan ke seluruh Nusantara.
                     </p>
@@ -182,11 +170,7 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             
             <div class="text-center max-w-2xl mx-auto mb-12 sm:mb-16" data-aos="fade-up">
-                <span class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-surface border border-brand-border text-xs sm:text-sm font-semibold text-brand-gold uppercase tracking-wider mb-2.5 shadow-sm">
-                    <i class="fa-solid fa-gears text-xs"></i>
-                    <span>Alur Kerja Kami</span>
-                </span>
-                <h2 class="font-serif text-2xl sm:text-3xl lg:text-4xl font-bold text-brand-espresso">
+                <h2 class="font-serif text-xl sm:text-2xl lg:text-[26px] font-bold text-brand-espresso">
                     Dari Kebun Pegunungan Hingga Siap Nikmat
                 </h2>
                 <p class="text-xs sm:text-sm text-brand-muted mt-2 max-w-lg mx-auto">
@@ -201,7 +185,7 @@
                     <div class="w-8 h-8 rounded-full bg-brand-gold text-brand-dark text-xs font-bold flex items-center justify-center mb-3 shadow">
                         01
                     </div>
-                    <h4 class="font-serif font-bold text-base text-brand-espresso mb-1.5">Sortir &amp; Panen Daun Emas</h4>
+                    <h4 class="font-serif font-bold text-sm text-brand-espresso mb-1.5">Sortir &amp; Panen Daun Emas</h4>
                     <p class="text-xs text-brand-muted leading-relaxed">
                         Daun tembakau dipetik bertahap berdasarkan tingkat kematangan getah alami di lereng pegunungan.
                     </p>
@@ -212,7 +196,7 @@
                     <div class="w-8 h-8 rounded-full bg-brand-gold text-brand-dark text-xs font-bold flex items-center justify-center mb-3 shadow">
                         02
                     </div>
-                    <h4 class="font-serif font-bold text-base text-brand-espresso mb-1.5">Pemeraman &amp; Fermentasi</h4>
+                    <h4 class="font-serif font-bold text-sm text-brand-espresso mb-1.5">Pemeraman &amp; Fermentasi</h4>
                     <p class="text-xs text-brand-muted leading-relaxed">
                         Daun digulung rapi dan diperam selama beberapa hari untuk memunculkan aroma gurih manis khas tembakau.
                     </p>
@@ -223,7 +207,7 @@
                     <div class="w-8 h-8 rounded-full bg-brand-gold text-brand-dark text-xs font-bold flex items-center justify-center mb-3 shadow">
                         03
                     </div>
-                    <h4 class="font-serif font-bold text-base text-brand-espresso mb-1.5">Perajangan Mesin Presisi</h4>
+                    <h4 class="font-serif font-bold text-sm text-brand-espresso mb-1.5">Perajangan Mesin Presisi</h4>
                     <p class="text-xs text-brand-muted leading-relaxed">
                         Proses perajangan halus dengan pisau khusus berstandar ekspor untuk menghasilkan rajangan yang seragam.
                     </p>
@@ -234,7 +218,7 @@
                     <div class="w-8 h-8 rounded-full bg-brand-gold text-brand-dark text-xs font-bold flex items-center justify-center mb-3 shadow">
                         04
                     </div>
-                    <h4 class="font-serif font-bold text-base text-brand-espresso mb-1.5">Curing Alami &amp; Uji Mutu</h4>
+                    <h4 class="font-serif font-bold text-sm text-brand-espresso mb-1.5">Curing Alami &amp; Uji Mutu</h4>
                     <p class="text-xs text-brand-muted leading-relaxed">
                         Pengeringan di widig bambu hingga mencapai kadar air ideal 12–14%, kemudian disegel dalam kemasan kedap.
                     </p>
@@ -248,14 +232,10 @@
     
     <section class="py-14 sm:py-20 bg-brand-dark text-white relative overflow-hidden">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
-            <span class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 border border-brand-gold/40 text-xs sm:text-sm font-semibold text-brand-gold uppercase tracking-wider mb-4 shadow">
-                <i class="fa-solid fa-box-open text-xs"></i>
-                <span>Jelajahi Produk Kami</span>
-            </span>
-            <h2 class="font-serif text-2xl sm:text-3xl lg:text-4xl font-bold text-white max-w-2xl mx-auto leading-snug">
+            <h2 class="font-serif text-xl sm:text-2xl lg:text-[26px] font-bold text-white max-w-2xl mx-auto leading-snug">
                 Siap Menemukan Karakter Tembakau Pilihan untuk Racikan Anda?
             </h2>
-            <p class="text-xs sm:text-sm md:text-base text-stone-300 max-w-xl mx-auto mt-3 leading-relaxed">
+            <p class="text-xs sm:text-sm text-stone-300 max-w-xl mx-auto mt-3 leading-relaxed">
                 Dari Virginia Flue-Cured yang harum lembut hingga Srintil kasta tertinggi lereng Sumbing, kami siap melayani pesanan eceran maupun partai besar.
             </p>
             <div class="flex flex-wrap items-center justify-center gap-3 pt-6">

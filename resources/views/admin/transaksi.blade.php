@@ -9,7 +9,7 @@
         <div class="p-5 rounded-2xl bg-white border border-brand-border shadow-sm flex items-center justify-between">
             <div>
                 <span class="text-xs text-brand-muted block font-medium">Total Tonase Terjual</span>
-                <span class="font-serif font-extrabold text-2xl text-brand-espresso mt-1 block">{{ number_format($totalTonaseKg) }} Kg</span>
+                <span class="font-serif font-extrabold text-lg sm:text-xl text-brand-espresso mt-1 block">{{ number_format($totalTonaseKg) }} Kg</span>
             </div>
             <div class="w-10 h-10 rounded-xl bg-amber-50 text-brand-gold flex items-center justify-center text-base">
                 <i class="fa-solid fa-weight-scale"></i>
@@ -19,7 +19,7 @@
         <div class="p-5 rounded-2xl bg-white border border-brand-border shadow-sm flex items-center justify-between">
             <div>
                 <span class="text-xs text-brand-muted block font-medium">Armada Pick Up (&lt;300 Kg)</span>
-                <span class="font-serif font-extrabold text-2xl text-amber-700 mt-1 block">{{ $pickUpCount }} Pengantaran</span>
+                <span class="font-serif font-extrabold text-lg sm:text-xl text-amber-700 mt-1 block">{{ $pickUpCount }} Pengantaran</span>
             </div>
             <div class="w-10 h-10 rounded-xl bg-amber-50 text-amber-600 flex items-center justify-center text-base">
                 <i class="fa-solid fa-truck-pickup"></i>
@@ -29,7 +29,7 @@
         <div class="p-5 rounded-2xl bg-white border border-brand-border shadow-sm flex items-center justify-between">
             <div>
                 <span class="text-xs text-brand-muted block font-medium">Tambahan Armada (&ge;300 Kg)</span>
-                <span class="font-serif font-extrabold text-2xl text-emerald-700 mt-1 block">{{ $tambahanArmadaCount }} Pengantaran</span>
+                <span class="font-serif font-extrabold text-lg sm:text-xl text-emerald-700 mt-1 block">{{ $tambahanArmadaCount }} Pengantaran</span>
             </div>
             <div class="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-700 flex items-center justify-center text-base">
                 <i class="fa-solid fa-truck-moving"></i>
@@ -116,7 +116,7 @@
                     @if (Auth::user()->isAdmin())
                         <div class="pt-2 border-t border-brand-border/60 flex justify-end">
                             <button type="button" onclick="openEditTransaksiModal({{ json_encode($trx) }})" class="px-4 py-1.5 rounded-full border border-brand-border hover:border-brand-gold bg-brand-surface text-brand-espresso text-xs font-bold transition-all inline-flex items-center gap-1 cursor-pointer">
-                                <i class="fa-regular fa-pen-to-square text-xs text-brand-gold"></i>
+                                <i class="fa-regular fa-pen-to-square text-xs text-amber-500"></i>
                                 <span>Kelola Status &amp; Armada</span>
                             </button>
                         </div>
@@ -130,24 +130,24 @@
         </div>
 
         <div class="hidden sm:block overflow-x-auto no-scrollbar">
-            <table class="w-full text-left text-xs min-w-[760px]">
+            <table class="w-full text-left text-xs">
                 <thead class="bg-brand-surface border-b border-brand-border text-brand-muted font-bold uppercase tracking-wider text-[11px]">
                     <tr>
-                        <th class="py-3.5 px-5 sm:px-6">Invoice &amp; Pembeli</th>
-                        <th class="py-3.5 px-5 sm:px-6">Detail Item Pesanan</th>
-                        <th class="py-3.5 px-5 sm:px-6 text-center">Tonase (Kg)</th>
-                        <th class="py-3.5 px-5 sm:px-6">Rekomendasi Armada</th>
-                        <th class="py-3.5 px-5 sm:px-6 text-right">Total Biaya</th>
-                        <th class="py-3.5 px-5 sm:px-6 text-center">Status Kirim</th>
+                        <th class="py-3 px-3 sm:px-4">Invoice &amp; Pembeli</th>
+                        <th class="py-3 px-3 sm:px-4">Detail Item Pesanan</th>
+                        <th class="py-3 px-3 sm:px-4 text-center">Tonase (Kg)</th>
+                        <th class="py-3 px-3 sm:px-4">Rekomendasi Armada</th>
+                        <th class="py-3 px-3 sm:px-4 text-right">Total Biaya</th>
+                        <th class="py-3 px-3 sm:px-4 text-center">Status Kirim</th>
                         @if (Auth::user()->isAdmin())
-                            <th class="py-3.5 px-5 sm:px-6 text-center">Aksi</th>
+                            <th class="py-3 px-3 sm:px-4 text-center">Aksi</th>
                         @endif
                     </tr>
                 </thead>
                 <tbody class="divide-y divide-brand-border">
                     @forelse ($transactions as $trx)
                         <tr class="hover:bg-brand-surface/60 transition-colors">
-                            <td class="py-4 px-5 sm:px-6">
+                            <td class="py-3.5 px-3 sm:px-4">
                                 <div>
                                     <span class="font-mono font-bold text-xs text-brand-gold block">{{ $trx->invoice_code }}</span>
                                     <span class="font-bold text-brand-espresso text-xs block mt-0.5">{{ $trx->customer_name }}</span>
@@ -157,7 +157,7 @@
                                     </span>
                                 </div>
                             </td>
-                            <td class="py-4 px-5 sm:px-6">
+                            <td class="py-3.5 px-3 sm:px-4">
                                 <div class="space-y-1">
                                     @foreach ($trx->items as $item)
                                         <div class="text-[11px]">
@@ -167,10 +167,10 @@
                                     @endforeach
                                 </div>
                             </td>
-                            <td class="py-4 px-5 sm:px-6 text-center font-serif font-bold text-sm text-brand-espresso">
+                            <td class="py-3.5 px-3 sm:px-4 text-center font-serif font-bold text-sm text-brand-espresso">
                                 {{ number_format($trx->total_weight_kg) }} Kg
                             </td>
-                            <td class="py-4 px-5 sm:px-6">
+                            <td class="py-3.5 px-3 sm:px-4">
                                 @if ($trx->fleet_type === 'tambahan_armada')
                                     <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[10px] font-bold bg-emerald-50 text-emerald-800 border border-emerald-300">
                                         <i class="fa-solid fa-truck-moving text-emerald-600"></i>
@@ -184,7 +184,7 @@
                                 @endif
                                 <span class="block text-[10px] text-stone-500 mt-0.5">Resi: {{ $trx->tracking_number ?? 'Menunggu Alokasi' }}</span>
                             </td>
-                            <td class="py-4 px-5 sm:px-6 text-right font-serif font-bold text-brand-espresso">
+                            <td class="py-3.5 px-3 sm:px-4 text-right font-serif font-bold text-brand-espresso">
                                 Rp {{ number_format($trx->total_price, 0, ',', '.') }}
                                 @if ($trx->fleet_type === 'pick_up' && $trx->shipping_cost > 0)
                                     <span class="block text-[10px] text-amber-800 font-sans">
@@ -199,7 +199,7 @@
                                     {{ $trx->payment_status === 'lunas' ? 'Lunas' : 'Belum Lunas' }}
                                 </span>
                             </td>
-                            <td class="py-4 px-5 sm:px-6 text-center">
+                            <td class="py-3.5 px-3 sm:px-4 text-center">
                                 @php
                                     $badgeClass = match($trx->shipping_status) {
                                         'terkirim' => 'bg-emerald-50 text-emerald-700 border-emerald-200',
@@ -221,9 +221,9 @@
                                 </span>
                             </td>
                             @if (Auth::user()->isAdmin())
-                                <td class="py-4 px-5 sm:px-6 text-center">
-                                    <button type="button" onclick="openEditTransaksiModal({{ json_encode($trx) }})" class="px-3 py-1.5 rounded-full border border-brand-border hover:border-brand-gold bg-brand-surface text-brand-espresso text-xs font-bold transition-all inline-flex items-center gap-1 cursor-pointer">
-                                        <i class="fa-regular fa-pen-to-square text-xs text-brand-gold"></i>
+                                <td class="py-3.5 px-3 sm:px-4 text-center">
+                                    <button type="button" onclick="openEditTransaksiModal({{ json_encode($trx) }})" class="px-3 py-1.5 rounded-full border border-amber-200 bg-amber-50 hover:bg-amber-100 text-amber-600 text-xs font-bold transition-all inline-flex items-center gap-1 cursor-pointer">
+                                        <i class="fa-regular fa-pen-to-square text-xs"></i>
                                         <span>Update</span>
                                     </button>
                                 </td>

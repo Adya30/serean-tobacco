@@ -101,50 +101,34 @@
     </main>
 
     
-    <footer class="w-full bg-brand-dark text-stone-300 pt-16 pb-12 border-t border-brand-gold/20 relative z-10 text-sm">
+    <footer class="w-full bg-brand-dark text-stone-300 pt-12 pb-8 border-t border-brand-gold/20 relative z-10 text-xs">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
-            <div class="grid grid-cols-1 md:grid-cols-12 gap-10 pb-12 border-b border-brand-gold/15">
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-8 pb-8 border-b border-brand-gold/15">
 
                 
-                <div class="md:col-span-6 space-y-4">
+                <div class="md:col-span-6 space-y-3">
                     <div class="flex items-center gap-3">
-                        <img src="{{ asset('logo.png') }}" alt="Logo Serean Tobacco" class="h-11 w-auto object-contain bg-white rounded-xl p-1">
+                        <img src="{{ asset('logo.png') }}" alt="Logo Serean Tobacco" class="h-10 w-auto object-contain bg-white rounded-xl p-1">
                         <div class="flex flex-col">
-                            <span class="font-serif font-bold text-lg sm:text-xl text-white leading-none">
+                            <span class="font-serif font-bold text-base sm:text-lg text-white leading-none">
                                 Serean Tobacco
                             </span>
-                            <span class="text-xs text-stone-400 tracking-wider uppercase mt-1">
+                            <span class="text-[10px] text-stone-400 tracking-wider uppercase mt-1">
                                 Sentra Tembakau Nusantara
                             </span>
                         </div>
                     </div>
 
-                    <p class="text-stone-300 text-sm sm:text-base leading-relaxed max-w-lg">
-                        Sentra pengolahan dan perdagangan daun tembakau pilihan Nusantara. Menyediakan perajangan presisi, pengeringan teratur, dan kemitraan panen transparan dari sentra Temanggung dan nusantara.
+                    <p class="text-stone-300 text-xs sm:text-sm leading-relaxed max-w-lg">
+                        Sentra pengolahan dan perdagangan daun tembakau pilihan Nusantara. Menyediakan perajangan presisi, pengeringan teratur, dan hasil panen berkualitas dari sentra Temanggung dan nusantara.
                     </p>
-
-                    
-                    <div class="flex items-center gap-3 pt-2">
-                        <a href="mailto:kemitraan@sereantobacco.co.id" class="w-10 h-10 rounded-full bg-white/10 hover:bg-brand-gold hover:text-white flex items-center justify-center transition-colors text-stone-200" aria-label="Email">
-                            <i class="fa-solid fa-envelope text-base"></i>
-                        </a>
-                        <a href="https://instagram.com" target="_blank" class="w-10 h-10 rounded-full bg-white/10 hover:bg-brand-gold hover:text-white flex items-center justify-center transition-colors text-stone-200" aria-label="Instagram">
-                            <i class="fa-brands fa-instagram text-base"></i>
-                        </a>
-                        <a href="https://facebook.com" target="_blank" class="w-10 h-10 rounded-full bg-white/10 hover:bg-brand-gold hover:text-white flex items-center justify-center transition-colors text-stone-200" aria-label="Facebook">
-                            <i class="fa-brands fa-facebook-f text-base"></i>
-                        </a>
-                        <a href="https://youtube.com" target="_blank" class="w-10 h-10 rounded-full bg-white/10 hover:bg-brand-gold hover:text-white flex items-center justify-center transition-colors text-stone-200" aria-label="YouTube">
-                            <i class="fa-brands fa-youtube text-base"></i>
-                        </a>
-                    </div>
                 </div>
 
                 
-                <div class="md:col-span-3 space-y-4">
-                    <h4 class="font-serif font-bold text-base sm:text-lg text-white">Navigasi</h4>
-                    <ul class="space-y-2.5 text-stone-300 text-sm sm:text-base">
+                <div class="md:col-span-3 space-y-3">
+                    <h4 class="font-serif font-bold text-sm sm:text-base text-white">Navigasi</h4>
+                    <ul class="space-y-2 text-stone-300 text-xs sm:text-sm">
                         <li><a href="{{ route('home') }}" class="hover:text-brand-gold transition-colors">Beranda</a></li>
                         <li><a href="{{ route('tentang') }}" class="hover:text-brand-gold transition-colors">Tentang</a></li>
                         <li><a href="{{ route('produk') }}" class="hover:text-brand-gold transition-colors">Produk</a></li>
@@ -153,18 +137,17 @@
                 </div>
 
                 
-                <div class="md:col-span-3 space-y-4">
-                    <h4 class="font-serif font-bold text-base sm:text-lg text-white">Kantor &amp; Sentra</h4>
-                    <div class="space-y-2 text-stone-300 text-sm sm:text-base">
+                <div class="md:col-span-3 space-y-3">
+                    <h4 class="font-serif font-bold text-sm sm:text-base text-white">Kantor &amp; Sentra</h4>
+                    <div class="space-y-1.5 text-stone-300 text-xs sm:text-sm">
                         <p class="leading-relaxed">Desa Kalisari, Kec. Banyuglugur, Kab. Situbondo, Jawa Timur</p>
-                        <p><a href="mailto:kemitraan@sereantobacco.co.id" class="hover:text-brand-gold transition-colors">kemitraan@sereantobacco.co.id</a></p>
                     </div>
                 </div>
 
             </div>
 
             
-            <div class="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left text-stone-400 text-xs sm:text-sm">
+            <div class="pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left text-stone-400 text-[11px] sm:text-xs">
                 <p>© 2026 Serean Tobacco. Seluruh Hak Cipta Dilindungi.</p>
                 <p>Situbondo • Jawa Timur • Indonesia</p>
             </div>

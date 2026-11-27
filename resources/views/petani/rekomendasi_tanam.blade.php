@@ -4,22 +4,6 @@
 @section('page_title', 'Rekomendasi Tanam Tembakau')
 
 @section('content')
-
-    <div class="p-6 sm:p-8 rounded-3xl bg-gradient-to-r from-brand-dark via-brand-espresso to-[#2b170c] text-white shadow-sm relative overflow-hidden border border-brand-gold/25">
-        <div class="relative z-10 max-w-2xl space-y-2">
-            <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-brand-gold/20 text-brand-gold border border-brand-gold/30">
-                <i class="fa-solid fa-leaf text-[10px]"></i>
-                <span>Panduan Budidaya Petani Sentra</span>
-            </span>
-            <h2 class="font-serif font-extrabold text-2xl sm:text-3xl text-white tracking-tight">
-                Kalender &amp; Rekomendasi Agroteknologi Tembakau
-            </h2>
-            <p class="text-stone-300 text-xs sm:text-sm leading-relaxed">
-                Rekomendasi siklus tanam, pemilihan varietas unggul rajangan halus, teknik pemupukan berimbang, dan manajemen curing agar panen menghasilkan mutu Grade Super dengan kadar air ideal.
-            </p>
-        </div>
-    </div>
-
     <div class="space-y-4">
         <div class="flex items-center justify-between">
             <div>
@@ -27,7 +11,7 @@
                 <p class="text-xs text-brand-muted">Siklus bulanan optimal untuk varietas Rajangan Halus &amp; Na-Oogst.</p>
             </div>
             <a href="{{ route('dashboard.jadwal') }}" class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-brand-surface hover:bg-stone-100 border border-brand-border text-brand-espresso text-xs font-bold transition-all shadow-xs shrink-0">
-                <i class="fa-solid fa-calendar-plus text-brand-gold"></i>
+                <i class="fa-solid fa-calendar-plus text-amber-500"></i>
                 <span>Buat Jadwal Tanam</span>
             </a>
         </div>
@@ -107,7 +91,7 @@
         <div class="lg:col-span-7 bg-white rounded-3xl border border-brand-border shadow-sm p-6 sm:p-7 space-y-5">
             <div class="border-b border-brand-border pb-3">
                 <h3 class="font-serif font-extrabold text-lg text-brand-espresso">Karakter Varietas Unggulan Sentra</h3>
-                <p class="text-xs text-brand-muted mt-0.5">Karakteristik kultivar tembakau yang memiliki serapan serapan tertinggi oleh mitra pabrikan.</p>
+                <p class="text-xs text-brand-muted mt-0.5">Karakteristik kultivar tembakau yang memiliki serapan tertinggi oleh pabrikan.</p>
             </div>
 
             <div class="space-y-4">

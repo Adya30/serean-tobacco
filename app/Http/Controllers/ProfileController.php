@@ -6,6 +6,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\View\View;
 
 class ProfileController extends Controller
@@ -31,6 +32,8 @@ class ProfileController extends Controller
             'phone' => ['nullable', 'string', 'max:30'],
             'address' => ['nullable', 'string', 'max:500'],
             'farm_location' => ['nullable', 'string', 'max:255'],
+            'profile_photo' => ['nullable', 'image', 'mimes:jpeg,png,jpg,webp', 'max:2048'],
+            'password' => ['nullable', 'string', 'min:6', 'confirmed'],
         ], [
             'name.required' => 'Nama lengkap wajib diisi.',
             'name.min' => 'Nama lengkap minimal 3 karakter.',
@@ -41,15 +44,33 @@ class ProfileController extends Controller
             'phone.max' => 'Nomor WhatsApp/telepon maksimal 30 karakter.',
             'address.max' => 'Alamat tinggal maksimal 500 karakter.',
             'farm_location.max' => 'Lokasi kebun/ladang maksimal 255 karakter.',
+            'profile_photo.image' => 'Foto profil harus berupa file gambar.',
+            'profile_photo.mimes' => 'Format foto profil harus jpeg, png, jpg, atau webp.',
+            'profile_photo.max' => 'Ukuran foto profil maksimal 2 MB.',
+            'password.min' => 'Kata sandi baru minimal 6 karakter.',
+            'password.confirmed' => 'Konfirmasi kata sandi baru tidak cocok.',
         ]);
 
-        $user->update([
+        $data = [
             'name' => $validated['name'],
             'email' => $validated['email'],
             'phone' => $validated['phone'] ?? $user->phone,
             'address' => $validated['address'] ?? $user->address,
             'farm_location' => $validated['farm_location'] ?? $user->farm_location,
-        ]);
+        ];
+
+        if ($request->hasFile('profile_photo')) {
+            if ($user->profile_photo) {
+                Storage::disk('public')->delete($user->profile_photo);
+            }
+            $data['profile_photo'] = $request->file('profile_photo')->store('avatars', 'public');
+        }
+
+        if (! empty($validated['password'])) {
+            $data['password'] = Hash::make($validated['password']);
+        }
+
+        $user->update($data);
 
         return back()->with('status', 'Data profil Anda berhasil diperbarui.');
     }

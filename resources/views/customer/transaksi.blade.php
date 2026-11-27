@@ -100,54 +100,54 @@
                 </div>
 
                 <div class="hidden sm:block overflow-x-auto no-scrollbar">
-                    <table class="w-full text-left text-xs min-w-[760px]">
+                    <table class="w-full text-left text-xs">
                         <thead class="bg-brand-surface border-b border-brand-border text-brand-muted font-bold uppercase tracking-wider text-[11px]">
                             <tr>
-                                <th class="py-3.5 px-5 sm:px-6">Invoice</th>
-                                <th class="py-3.5 px-5 sm:px-6">Varietas &amp; Item Pesanan</th>
-                                <th class="py-3.5 px-5 sm:px-6 text-center">Tonase (Kg)</th>
-                                <th class="py-3.5 px-5 sm:px-6">Rekomendasi Armada</th>
-                                <th class="py-3.5 px-5 sm:px-6 text-right">Total Tagihan</th>
-                                <th class="py-3.5 px-5 sm:px-6 text-center">Status Kirim</th>
-                                <th class="py-3.5 px-5 sm:px-6 text-center">Aksi</th>
+                                <th class="py-3 px-3 sm:px-4 whitespace-nowrap">Invoice</th>
+                                <th class="py-3 px-3 sm:px-4">Varietas &amp; Item</th>
+                                <th class="py-3 px-3 sm:px-4 text-center whitespace-nowrap">Tonase</th>
+                                <th class="py-3 px-3 sm:px-4 whitespace-nowrap">Armada</th>
+                                <th class="py-3 px-3 sm:px-4 text-right whitespace-nowrap">Total Tagihan</th>
+                                <th class="py-3 px-3 sm:px-4 text-center whitespace-nowrap">Status Kirim</th>
+                                <th class="py-3 px-3 sm:px-4 text-center whitespace-nowrap">Aksi</th>
                             </tr>
                         </thead>
                         <tbody class="divide-y divide-brand-border">
                             @forelse ($transactions as $trx)
                                 <tr class="hover:bg-brand-surface/60 transition-colors">
-                                    <td class="py-4 px-5 sm:px-6">
+                                    <td class="py-3.5 px-3 sm:px-4 whitespace-nowrap">
                                         <span class="font-mono font-bold text-xs text-brand-gold block">{{ $trx->invoice_code }}</span>
                                         <span class="text-[10px] text-brand-muted block">{{ date('d M Y, H:i', strtotime($trx->created_at)) }}</span>
                                         @if ($trx->kabupaten)
                                             <span class="text-[10px] text-stone-500 block mt-0.5">Tujuan: {{ $trx->kabupaten }}</span>
                                         @endif
                                     </td>
-                                    <td class="py-4 px-5 sm:px-6">
+                                    <td class="py-3.5 px-3 sm:px-4">
                                         @foreach ($trx->items as $item)
                                             <div class="text-[11px]">
                                                 <strong class="text-brand-espresso">{{ $item->product_name }}</strong>
-                                                <span class="text-brand-muted">({{ $item->quantity_kg }} Kg @ Rp {{ number_format($item->price_per_kg) }})</span>
+                                                <span class="text-brand-muted block sm:inline">({{ $item->quantity_kg }} Kg @ Rp {{ number_format($item->price_per_kg) }})</span>
                                             </div>
                                         @endforeach
                                     </td>
-                                    <td class="py-4 px-5 sm:px-6 text-center font-serif font-bold text-sm text-brand-espresso">
+                                    <td class="py-3.5 px-3 sm:px-4 text-center font-serif font-bold text-xs text-brand-espresso whitespace-nowrap">
                                         {{ number_format($trx->total_weight_kg) }} Kg
                                     </td>
-                                    <td class="py-4 px-5 sm:px-6">
+                                    <td class="py-3.5 px-3 sm:px-4 whitespace-nowrap">
                                         @if ($trx->fleet_type === 'tambahan_armada')
-                                            <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-emerald-50 text-emerald-800 border border-emerald-300">
+                                            <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-emerald-50 text-emerald-800 border border-emerald-300 whitespace-nowrap">
                                                 <i class="fa-solid fa-truck-moving text-emerald-600"></i>
                                                 <span>Tambahan Armada (&ge;300 Kg)</span>
                                             </span>
                                         @else
-                                            <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-amber-50 text-amber-800 border border-amber-300">
+                                            <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-amber-50 text-amber-800 border border-amber-300 whitespace-nowrap">
                                                 <i class="fa-solid fa-truck-pickup text-amber-600"></i>
                                                 <span>Pick Up (&lt;300 Kg)</span>
                                             </span>
                                         @endif
                                         <span class="block text-[10px] text-stone-500 mt-0.5">Resi: {{ $trx->tracking_number ?? '-' }}</span>
                                     </td>
-                                    <td class="py-4 px-5 sm:px-6 text-right font-serif font-bold text-brand-espresso">
+                                    <td class="py-3.5 px-3 sm:px-4 text-right font-serif font-bold text-brand-espresso whitespace-nowrap">
                                         Rp {{ number_format($trx->total_price, 0, ',', '.') }}
                                         @if ($trx->fleet_type === 'pick_up' && $trx->shipping_cost > 0)
                                             <span class="block text-[10px] text-amber-800 font-sans">
@@ -158,7 +158,7 @@
                                             {{ $trx->payment_status === 'lunas' ? 'Lunas' : 'Menunggu Bayar' }}
                                         </span>
                                     </td>
-                                    <td class="py-4 px-5 sm:px-6 text-center">
+                                    <td class="py-3.5 px-3 sm:px-4 text-center whitespace-nowrap">
                                         @php
                                             $badgeClass = match($trx->shipping_status) {
                                                 'terkirim' => 'bg-emerald-50 text-emerald-700 border-emerald-200',
@@ -175,12 +175,12 @@
                                                 default => 'Menunggu Konfirmasi'
                                             };
                                         @endphp
-                                        <span class="px-2.5 py-1 rounded-full text-[10px] font-bold border {{ $badgeClass }}">
+                                        <span class="inline-block px-2.5 py-1 rounded-full text-[10px] font-bold border whitespace-nowrap {{ $badgeClass }}">
                                             {{ $statusLabel }}
                                         </span>
                                     </td>
-                                    <td class="py-4 px-5 sm:px-6 text-center">
-                                        <a href="{{ route('customer.transaksi.show', $trx->id) }}" class="px-3.5 py-1.5 rounded-full bg-brand-espresso text-white text-xs font-bold hover:bg-brand-dark transition-all inline-flex items-center gap-1 shadow-sm">
+                                    <td class="py-3.5 px-3 sm:px-4 text-center whitespace-nowrap">
+                                        <a href="{{ route('customer.transaksi.show', $trx->id) }}" class="px-3.5 py-1.5 rounded-full bg-brand-espresso text-white text-xs font-bold hover:bg-brand-dark transition-all inline-flex items-center gap-1 shadow-sm whitespace-nowrap">
                                             <span>Detail &amp; Lacak</span>
                                         </a>
                                     </td>

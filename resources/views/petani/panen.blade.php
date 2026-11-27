@@ -21,7 +21,7 @@
         <div class="p-5 rounded-2xl bg-white border border-brand-border shadow-sm flex items-center justify-between">
             <div>
                 <span class="text-xs text-brand-muted block font-medium">Total Akumulasi Panen</span>
-                <span class="font-serif font-extrabold text-2xl text-brand-espresso mt-1 block">{{ number_format($totalPanenKg) }} Kg</span>
+                <span class="font-serif font-extrabold text-lg sm:text-xl text-brand-espresso mt-1 block">{{ number_format($totalPanenKg) }} Kg</span>
             </div>
             <div class="w-10 h-10 rounded-xl bg-amber-50 text-brand-gold flex items-center justify-center text-base">
                 <i class="fa-solid fa-wheat-awn"></i>
@@ -31,7 +31,7 @@
         <div class="p-5 rounded-2xl bg-white border border-brand-border shadow-sm flex items-center justify-between">
             <div>
                 <span class="text-xs text-brand-muted block font-medium">Setoran Panen Tercatat</span>
-                <span class="font-serif font-extrabold text-2xl text-brand-espresso mt-1 block">{{ $harvests->count() }} Data</span>
+                <span class="font-serif font-extrabold text-lg sm:text-xl text-brand-espresso mt-1 block">{{ $harvests->count() }} Data</span>
             </div>
             <div class="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-700 flex items-center justify-center text-base">
                 <i class="fa-solid fa-clipboard-check"></i>
@@ -40,11 +40,11 @@
 
         <div class="p-5 rounded-2xl bg-white border border-brand-border shadow-sm flex items-center justify-between">
             <div>
-                <span class="text-xs text-brand-muted block font-medium">Kadar Air Rata-rata</span>
-                <span class="font-serif font-extrabold text-2xl text-brand-espresso mt-1 block">12.5%</span>
+                <span class="text-xs text-brand-muted block font-medium">Dominan Rajangan</span>
+                <span class="font-serif font-extrabold text-lg sm:text-xl text-brand-espresso mt-1 block">Rajang Halus</span>
             </div>
             <div class="w-10 h-10 rounded-xl bg-amber-50 text-brand-gold flex items-center justify-center text-base">
-                <i class="fa-solid fa-droplet"></i>
+                <i class="fa-solid fa-scissors"></i>
             </div>
         </div>
     </div>
@@ -71,8 +71,8 @@
                             </span>
                         </div>
                         <div>
-                            <span class="text-[10px] text-brand-muted block">Kadar Air</span>
-                            <span class="font-mono text-xs text-stone-700">
+                            <span class="text-[10px] text-brand-muted block">Jenis Rajangan</span>
+                            <span class="text-xs font-medium text-stone-700">
                                 {{ $h->moisture_content }}
                             </span>
                         </div>
@@ -111,48 +111,48 @@
         </div>
 
         <div class="hidden sm:block overflow-x-auto no-scrollbar">
-            <table class="w-full text-left text-xs min-w-[700px]">
+            <table class="w-full text-left text-xs">
                 <thead class="bg-brand-surface border-b border-brand-border text-brand-muted font-bold uppercase tracking-wider text-[11px]">
                     <tr>
-                        <th class="py-3.5 px-5 sm:px-6 whitespace-nowrap">Tanggal &amp; Petani</th>
-                        <th class="py-3.5 px-5 sm:px-6">Varietas Tembakau</th>
-                        <th class="py-3.5 px-5 sm:px-6 whitespace-nowrap">Grade</th>
-                        <th class="py-3.5 px-5 sm:px-6 text-center whitespace-nowrap">Berat Panen</th>
-                        <th class="py-3.5 px-5 sm:px-6 text-center whitespace-nowrap">Kadar Air</th>
-                        <th class="py-3.5 px-5 sm:px-6">Lokasi Ladang / Kebun</th>
-                        <th class="py-3.5 px-5 sm:px-6 text-center whitespace-nowrap">Status Sentra</th>
+                        <th class="py-3 px-3 sm:px-4 whitespace-nowrap">Tanggal &amp; Petani</th>
+                        <th class="py-3 px-3 sm:px-4">Varietas Tembakau</th>
+                        <th class="py-3 px-3 sm:px-4 whitespace-nowrap">Grade</th>
+                        <th class="py-3 px-3 sm:px-4 text-center whitespace-nowrap">Berat Panen</th>
+                        <th class="py-3 px-3 sm:px-4 text-center whitespace-nowrap">Jenis Rajangan</th>
+                        <th class="py-3 px-3 sm:px-4">Lokasi Ladang / Kebun</th>
+                        <th class="py-3 px-3 sm:px-4 text-center whitespace-nowrap">Status Sentra</th>
                     </tr>
                 </thead>
                 <tbody class="divide-y divide-brand-border">
                     @forelse ($harvests as $h)
                         <tr class="hover:bg-brand-surface/60 transition-colors">
-                            <td class="py-4 px-5 sm:px-6 whitespace-nowrap">
+                            <td class="py-3.5 px-3 sm:px-4 whitespace-nowrap">
                                 <div>
                                     <span class="font-bold text-brand-espresso text-xs block">{{ $h->farmer_name }}</span>
                                     <span class="text-[11px] text-brand-muted">{{ date('d M Y', strtotime($h->harvest_date)) }}</span>
                                 </div>
                             </td>
-                            <td class="py-4 px-5 sm:px-6 font-serif font-bold text-sm text-brand-espresso">
+                            <td class="py-3.5 px-3 sm:px-4 font-serif font-bold text-sm text-brand-espresso">
                                 {{ $h->variety }}
                             </td>
-                            <td class="py-4 px-5 sm:px-6 whitespace-nowrap">
+                            <td class="py-3.5 px-3 sm:px-4 whitespace-nowrap">
                                 <span class="inline-flex items-center justify-center px-3 py-1 rounded-full text-xs font-bold bg-amber-50/90 border border-brand-gold/35 text-brand-espresso whitespace-nowrap shadow-2xs">
                                     {{ $h->grade }}
                                 </span>
                             </td>
-                            <td class="py-4 px-5 sm:px-6 text-center font-serif font-bold text-sm text-emerald-700 whitespace-nowrap">
+                            <td class="py-3.5 px-3 sm:px-4 text-center font-serif font-bold text-sm text-emerald-700 whitespace-nowrap">
                                 {{ number_format($h->harvest_weight_kg) }} Kg
                             </td>
-                            <td class="py-4 px-5 sm:px-6 text-center font-mono text-stone-600 whitespace-nowrap">
+                            <td class="py-3.5 px-3 sm:px-4 text-center font-mono text-stone-600 whitespace-nowrap">
                                 {{ $h->moisture_content }}
                             </td>
-                            <td class="py-4 px-5 sm:px-6 text-stone-600">
+                            <td class="py-3.5 px-3 sm:px-4 text-stone-600">
                                 {{ $h->farm_location }}
                                 @if ($h->quality_notes)
                                     <span class="block text-[11px] text-stone-400 mt-0.5 italic">{{ $h->quality_notes }}</span>
                                 @endif
                             </td>
-                            <td class="py-4 px-5 sm:px-6 text-center whitespace-nowrap">
+                            <td class="py-3.5 px-3 sm:px-4 text-center whitespace-nowrap">
                                 @php
                                     $badge = match($h->status) {
                                         'siap_distribusi' => 'bg-emerald-50 text-emerald-700 border-emerald-200',
@@ -232,8 +232,11 @@
 
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
-                        <label class="block font-semibold text-brand-espresso mb-1">Kadar Air (%)</label>
-                        <input type="text" name="moisture_content" value="12–14%" placeholder="Contoh: 12-14%" class="w-full px-3.5 py-2.5 rounded-xl border border-brand-border bg-brand-surface focus:bg-white focus:border-brand-gold focus:outline-none text-sm transition-colors">
+                        <label class="block font-semibold text-brand-espresso mb-1">Jenis Rajangan</label>
+                        <select name="moisture_content" class="w-full px-3.5 py-2.5 rounded-xl border border-brand-border bg-brand-surface focus:bg-white focus:border-brand-gold focus:outline-none text-sm transition-colors">
+                            <option value="Rajang Halus">Rajang Halus</option>
+                            <option value="Rajang Kasar">Rajang Kasar</option>
+                        </select>
                     </div>
 
                     <div>

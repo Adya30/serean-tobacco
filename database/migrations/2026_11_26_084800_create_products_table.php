@@ -21,7 +21,7 @@ return new class extends Migration
             $table->text('description')->nullable();
             $table->unsignedInteger('price_per_kg');
             $table->unsignedInteger('stock_kg')->default(100);
-            $table->string('moisture_content')->default('12–14%');
+            $table->string('moisture_content')->default('Rajang Halus');
             $table->string('image')->nullable();
             $table->boolean('is_featured')->default(true);
             $table->boolean('is_active')->default(true);

@@ -51,7 +51,7 @@
                     @if (Auth::user()->isAdmin())
                         <div class="flex items-center justify-end gap-2 pt-2 border-t border-brand-border/60">
                             <button type="button" onclick="openEditPetaniModal({{ json_encode($petani) }})" class="px-3 py-1.5 rounded-full border border-brand-border hover:border-brand-gold bg-brand-surface text-brand-espresso text-xs font-semibold transition-colors inline-flex items-center gap-1.5 cursor-pointer">
-                                <i class="fa-regular fa-pen-to-square text-[10px] text-brand-gold"></i>
+                                <i class="fa-regular fa-pen-to-square text-[10px] text-amber-500"></i>
                                 <span>Ubah Data</span>
                             </button>
                             <form action="{{ route('dashboard.petani.delete', $petani->id) }}" method="POST" onsubmit="return confirm('Apakah Anda yakin ingin menghapus akun petani ini?')">
@@ -67,29 +67,29 @@
                 </div>
             @empty
                 <div class="p-8 text-center text-brand-muted text-xs">
-                    Belum ada akun petani mitra terdaftar.
+                    Belum ada akun petani terdaftar.
                 </div>
             @endforelse
         </div>
 
         <div class="hidden sm:block overflow-x-auto no-scrollbar">
-            <table class="w-full text-left text-xs min-w-[650px]">
+            <table class="w-full text-left text-xs">
                 <thead class="bg-brand-surface border-b border-brand-border text-brand-muted font-bold uppercase tracking-wider text-[11px]">
                     <tr>
-                        <th class="py-3.5 px-5 sm:px-6">Nama Petani</th>
-                        <th class="py-3.5 px-5 sm:px-6">Email Login</th>
-                        <th class="py-3.5 px-5 sm:px-6">Wilayah / Nama Ladang</th>
-                        <th class="py-3.5 px-5 sm:px-6">Kontak WhatsApp</th>
-                        <th class="py-3.5 px-5 sm:px-6 text-center">Status</th>
+                        <th class="py-3 px-3 sm:px-4">Nama Petani</th>
+                        <th class="py-3 px-3 sm:px-4">Email Login</th>
+                        <th class="py-3 px-3 sm:px-4">Wilayah / Nama Ladang</th>
+                        <th class="py-3 px-3 sm:px-4">Kontak WhatsApp</th>
+                        <th class="py-3 px-3 sm:px-4 text-center">Status</th>
                         @if (Auth::user()->isAdmin())
-                            <th class="py-3.5 px-5 sm:px-6 text-right">Aksi</th>
+                            <th class="py-3 px-3 sm:px-4 text-right">Aksi</th>
                         @endif
                     </tr>
                 </thead>
                 <tbody class="divide-y divide-brand-border">
                     @forelse ($petanis as $petani)
                         <tr class="hover:bg-brand-surface/60 transition-colors">
-                            <td class="py-4 px-5 sm:px-6">
+                            <td class="py-3.5 px-3 sm:px-4">
                                 <div class="flex items-center gap-3">
                                     <div class="w-9 h-9 rounded-full bg-amber-50 border border-brand-gold/30 text-brand-gold font-bold flex items-center justify-center font-serif text-xs shrink-0 shadow-sm">
                                         {{ strtoupper(substr($petani->name, 0, 2)) }}
@@ -97,9 +97,9 @@
                                     <span class="font-serif font-bold text-sm text-brand-espresso">{{ $petani->name }}</span>
                                 </div>
                             </td>
-                            <td class="py-4 px-5 sm:px-6 text-brand-muted font-mono text-[11px]">{{ $petani->email }}</td>
-                            <td class="py-4 px-5 sm:px-6 text-brand-muted text-xs">{{ $petani->farm_location ?? 'Situbondo, Jawa Timur' }}</td>
-                            <td class="py-4 px-5 sm:px-6">
+                            <td class="py-3.5 px-3 sm:px-4 text-brand-muted font-mono text-[11px]">{{ $petani->email }}</td>
+                            <td class="py-3.5 px-3 sm:px-4 text-brand-muted text-xs">{{ $petani->farm_location ?? 'Situbondo, Jawa Timur' }}</td>
+                            <td class="py-3.5 px-3 sm:px-4">
                                 @if ($petani->phone)
                                     <a href="https://wa.me/{{ preg_replace('/[^0-9]/', '', $petani->phone) }}" target="_blank" class="text-emerald-700 font-semibold hover:underline inline-flex items-center gap-1.5">
                                         <i class="fa-brands fa-whatsapp text-emerald-600 text-sm"></i>
@@ -109,21 +109,21 @@
                                     <span class="text-stone-400">-</span>
                                 @endif
                             </td>
-                            <td class="py-4 px-5 sm:px-6 text-center">
+                            <td class="py-3.5 px-3 sm:px-4 text-center">
                                 <span class="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-emerald-50 text-emerald-700 border border-emerald-200">
                                     Aktif
                                 </span>
                             </td>
                             @if (Auth::user()->isAdmin())
-                                <td class="py-4 px-5 sm:px-6 text-right whitespace-nowrap">
+                                <td class="py-3.5 px-3 sm:px-4 text-right whitespace-nowrap">
                                     <div class="flex items-center justify-end gap-1.5">
-                                        <button type="button" onclick="openEditPetaniModal({{ json_encode($petani) }})" class="w-8 h-8 rounded-full border border-brand-border hover:border-brand-gold hover:bg-amber-50 text-stone-500 hover:text-brand-espresso transition-colors inline-flex items-center justify-center cursor-pointer" title="Ubah Data Petani">
-                                            <i class="fa-regular fa-pen-to-square text-xs text-brand-gold"></i>
+                                        <button type="button" onclick="openEditPetaniModal({{ json_encode($petani) }})" class="w-8 h-8 rounded-full border border-amber-200 bg-amber-50 hover:bg-amber-100 text-amber-600 transition-colors inline-flex items-center justify-center cursor-pointer" title="Ubah Data Petani">
+                                            <i class="fa-regular fa-pen-to-square text-xs"></i>
                                         </button>
                                         <form action="{{ route('dashboard.petani.delete', $petani->id) }}" method="POST" onsubmit="return confirm('Apakah Anda yakin ingin menghapus akun petani ini?')">
                                             @csrf
                                             @method('DELETE')
-                                            <button type="submit" class="w-8 h-8 rounded-full border border-brand-border hover:border-red-300 hover:bg-red-50 text-stone-400 hover:text-red-600 transition-colors inline-flex items-center justify-center cursor-pointer" title="Hapus Petani">
+                                            <button type="submit" class="w-8 h-8 rounded-full border border-red-200 bg-red-50 hover:bg-red-100 text-red-600 transition-colors inline-flex items-center justify-center cursor-pointer" title="Hapus Petani">
                                                 <i class="fa-regular fa-trash-can text-xs"></i>
                                             </button>
                                         </form>

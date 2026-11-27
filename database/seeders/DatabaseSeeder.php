@@ -53,8 +53,10 @@ class DatabaseSeeder extends Seeder
             ]
         );
 
+        $this->call(ProductSeeder::class);
+
         if ($this->command) {
-            $this->command->info('Database berhasil di-seed! 1 akun admin, 1 akun petani, dan 1 akun customer siap digunakan.');
+            $this->command->info('Database berhasil di-seed! 1 akun admin, 1 akun petani, 1 akun customer, dan 4 produk siap digunakan.');
         }
     }
 }

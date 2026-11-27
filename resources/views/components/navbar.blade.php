@@ -19,27 +19,36 @@
                 <a href="{{ route('tentang') }}" class="hover:text-brand-espresso transition-colors {{ request()->routeIs('tentang') ? 'text-brand-gold font-bold' : '' }}">Tentang</a>
                 <a href="{{ route('produk') }}" class="hover:text-brand-espresso transition-colors {{ request()->routeIs('produk') ? 'text-brand-gold font-bold' : '' }}">Produk</a>
                 <a href="{{ route('kontak') }}" class="hover:text-brand-espresso transition-colors {{ request()->routeIs('kontak') ? 'text-brand-gold font-bold' : '' }}">Kontak</a>
-                @auth
-                    <a href="{{ route('keranjang') }}" class="hover:text-brand-espresso transition-colors flex items-center gap-1.5 {{ request()->routeIs('keranjang') ? 'text-brand-gold font-bold' : '' }}">
-                        <i class="fa-solid fa-cart-shopping text-brand-gold text-xs"></i>
-                        <span>Keranjang</span>
-                        <span class="w-4 h-4 rounded-full bg-brand-gold text-white text-[9px] font-bold flex items-center justify-center">3</span>
-                    </a>
-                @endauth
             </nav>
 
-            <div class="hidden md:flex items-center">
+            <div class="hidden md:flex items-center gap-2.5">
                 @auth
-                    <div class="relative group">
-                        <button type="button" class="inline-flex items-center gap-2 px-3.5 py-1.5 sm:py-2 rounded-full bg-brand-surface border border-brand-border text-brand-espresso text-xs font-bold hover:border-brand-gold transition-all shadow-sm">
-                            <div class="w-6 h-6 rounded-full bg-brand-espresso text-brand-gold text-[10px] font-serif flex items-center justify-center font-bold">
-                                {{ strtoupper(substr(Auth::user()->name, 0, 1)) }}
-                            </div>
+                    @php
+                        $navCartCount = \App\Models\CartItem::where('user_id', Auth::id())->count();
+                    @endphp
+                    <a href="{{ route('keranjang') }}" class="relative w-9 h-9 rounded-full bg-brand-surface border border-brand-border hover:border-brand-gold text-brand-espresso flex items-center justify-center transition-all shadow-sm {{ request()->routeIs('keranjang') ? 'border-brand-gold text-brand-gold' : '' }}" aria-label="Keranjang Belanja" title="Keranjang Belanja">
+                        <i class="fa-solid fa-cart-shopping text-xs text-brand-gold"></i>
+                        @if ($navCartCount > 0)
+                            <span class="absolute -top-1 -right-1 min-w-4 h-4 px-1 rounded-full bg-brand-gold text-white text-[9px] font-bold flex items-center justify-center">
+                                {{ $navCartCount }}
+                            </span>
+                        @endif
+                    </a>
+
+                    <div class="relative" id="profileDropdownWrapper">
+                        <button id="profileDropdownBtn" type="button" class="inline-flex items-center gap-2 px-3.5 py-1.5 sm:py-2 rounded-full bg-brand-surface border border-brand-border text-brand-espresso text-xs font-bold hover:border-brand-gold transition-all shadow-sm cursor-pointer">
+                            @if (Auth::user()->profilePhotoUrl())
+                                <img src="{{ Auth::user()->profilePhotoUrl() }}" alt="{{ Auth::user()->name }}" class="w-6 h-6 rounded-full object-cover border border-brand-border">
+                            @else
+                                <div class="w-6 h-6 rounded-full bg-brand-espresso text-brand-gold text-[10px] font-serif flex items-center justify-center font-bold">
+                                    {{ strtoupper(substr(Auth::user()->name, 0, 1)) }}
+                                </div>
+                            @endif
                             <span class="max-w-[110px] truncate">{{ Auth::user()->name }}</span>
-                            <i class="fa-solid fa-chevron-down text-[9px] text-brand-muted group-hover:rotate-180 transition-transform"></i>
+                            <i id="profileDropdownChevron" class="fa-solid fa-chevron-down text-[9px] text-brand-muted transition-transform duration-200"></i>
                         </button>
 
-                        <div class="absolute right-0 mt-2 w-48 rounded-2xl bg-white border border-brand-border shadow-xl py-2 hidden group-hover:block transition-all z-50">
+                        <div id="profileDropdownMenu" class="absolute right-0 mt-2 w-48 rounded-2xl bg-white border border-brand-border shadow-xl py-2 hidden transition-all z-50">
                             <div class="px-4 py-2 border-b border-stone-100">
                                 <p class="text-xs font-bold text-brand-espresso truncate">{{ Auth::user()->name }}</p>
                                 <span class="text-[10px] text-brand-gold uppercase tracking-wider font-semibold">
@@ -65,11 +74,6 @@
                                     <span>Riwayat Pesanan</span>
                                 </a>
                             @endif
-
-                            <a href="{{ route('keranjang') }}" class="flex items-center gap-2.5 px-4 py-2 text-xs font-semibold text-brand-espresso hover:bg-stone-50 hover:text-brand-gold transition-colors">
-                                <i class="fa-solid fa-cart-shopping text-brand-gold text-xs"></i>
-                                <span>Keranjang Belanja</span>
-                            </a>
 
                             <div class="border-t border-stone-100 my-1"></div>
 
@@ -165,5 +169,30 @@
 
         window.addEventListener('scroll', handleScroll, { passive: true });
         handleScroll();
+
+        const dropdownWrapper = document.getElementById('profileDropdownWrapper');
+        const dropdownBtn = document.getElementById('profileDropdownBtn');
+        const dropdownMenu = document.getElementById('profileDropdownMenu');
+        const dropdownChevron = document.getElementById('profileDropdownChevron');
+
+        if (dropdownBtn && dropdownMenu) {
+            dropdownBtn.addEventListener('click', function (e) {
+                e.stopPropagation();
+                const isHidden = dropdownMenu.classList.contains('hidden');
+                dropdownMenu.classList.toggle('hidden', !isHidden);
+                if (dropdownChevron) {
+                    dropdownChevron.classList.toggle('rotate-180', isHidden);
+                }
+            });
+
+            document.addEventListener('click', function (e) {
+                if (dropdownWrapper && !dropdownWrapper.contains(e.target)) {
+                    dropdownMenu.classList.add('hidden');
+                    if (dropdownChevron) {
+                        dropdownChevron.classList.remove('rotate-180');
+                    }
+                }
+            });
+        }
     })();
 </script>

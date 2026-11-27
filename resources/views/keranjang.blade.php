@@ -135,18 +135,18 @@
                                         <input type="tel" name="customer_phone" value="{{ Auth::user()->phone ?? '081234567890' }}" required class="w-full px-3 py-2 text-xs rounded-xl border border-brand-border bg-brand-surface focus:bg-white focus:outline-none focus:border-brand-gold">
                                     </div>
 
-                                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-2">
+                                    <div class="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-1 gap-2.5">
                                         <div>
                                             <label class="block font-semibold text-brand-espresso text-[11px] mb-1">Kabupaten/Kota</label>
-                                            <input type="text" name="kabupaten" value="{{ Auth::user()->kabupaten ?? '' }}" required placeholder="cth: Situbondo" class="w-full px-2.5 py-2 text-xs rounded-xl border border-brand-border bg-brand-surface focus:bg-white focus:outline-none focus:border-brand-gold">
+                                            <input type="text" name="kabupaten" value="{{ Auth::user()->kabupaten ?? '' }}" required placeholder="cth: Situbondo" class="w-full px-3 py-2 text-xs rounded-xl border border-brand-border bg-brand-surface focus:bg-white focus:outline-none focus:border-brand-gold">
                                         </div>
                                         <div>
                                             <label class="block font-semibold text-brand-espresso text-[11px] mb-1">Kecamatan</label>
-                                            <input type="text" name="kecamatan" value="{{ Auth::user()->kecamatan ?? '' }}" required placeholder="cth: Panji" class="w-full px-2.5 py-2 text-xs rounded-xl border border-brand-border bg-brand-surface focus:bg-white focus:outline-none focus:border-brand-gold">
+                                            <input type="text" name="kecamatan" value="{{ Auth::user()->kecamatan ?? '' }}" required placeholder="cth: Panji" class="w-full px-3 py-2 text-xs rounded-xl border border-brand-border bg-brand-surface focus:bg-white focus:outline-none focus:border-brand-gold">
                                         </div>
                                         <div>
                                             <label class="block font-semibold text-brand-espresso text-[11px] mb-1">Desa/Kelurahan</label>
-                                            <input type="text" name="desa" value="{{ Auth::user()->desa ?? '' }}" required placeholder="cth: Curah Jeru" class="w-full px-2.5 py-2 text-xs rounded-xl border border-brand-border bg-brand-surface focus:bg-white focus:outline-none focus:border-brand-gold">
+                                            <input type="text" name="desa" value="{{ Auth::user()->desa ?? '' }}" required placeholder="cth: Curah Jeru" class="w-full px-3 py-2 text-xs rounded-xl border border-brand-border bg-brand-surface focus:bg-white focus:outline-none focus:border-brand-gold">
                                         </div>
                                     </div>
 
@@ -160,14 +160,14 @@
                                         <div class="space-y-2">
                                             <label class="flex items-start gap-2.5 p-3 rounded-xl border border-brand-border bg-brand-surface hover:bg-stone-50 cursor-pointer has-[:checked]:border-brand-gold has-[:checked]:bg-amber-50/50 transition-all">
                                                 <input type="radio" name="fleet_type" value="pick_up" {{ $totalWeight < 300 ? 'checked' : '' }} onchange="updateDeliveryCalculation('pick_up')" class="mt-0.5 text-brand-espresso focus:ring-brand-gold">
-                                                <div class="text-[11px] flex-1">
-                                                    <div class="flex items-center justify-between">
+                                                <div class="text-[11px] flex-1 min-w-0">
+                                                    <div class="flex flex-wrap items-center justify-between gap-1.5">
                                                         <strong class="text-brand-espresso">Armada Pick Up (&lt;300 Kg)</strong>
-                                                        <span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-amber-100 text-amber-800">
+                                                        <span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-amber-100 text-amber-800 whitespace-nowrap shrink-0">
                                                             Ongkir 10% Belanja
                                                         </span>
                                                     </div>
-                                                    <p class="text-brand-muted mt-0.5 text-[10px] leading-relaxed">
+                                                    <p class="text-brand-muted mt-1 text-[10px] leading-relaxed">
                                                         Biaya ongkir 10% dari total belanjaan tembakau (Rp {{ number_format(round($totalPrice * 0.10)) }}). Alokasi mobil pick up standar sentra pengolahan.
                                                     </p>
                                                 </div>
@@ -175,10 +175,10 @@
 
                                             <label class="flex items-start gap-2.5 p-3 rounded-xl border border-brand-border bg-brand-surface hover:bg-stone-50 cursor-pointer has-[:checked]:border-brand-gold has-[:checked]:bg-emerald-50/40 transition-all">
                                                 <input type="radio" name="fleet_type" value="tambahan_armada" {{ $totalWeight >= 300 ? 'checked' : '' }} onchange="updateDeliveryCalculation('tambahan_armada')" class="mt-0.5 text-brand-espresso focus:ring-brand-gold">
-                                                <div class="text-[11px] flex-1">
-                                                    <div class="flex items-center justify-between">
+                                                <div class="text-[11px] flex-1 min-w-0">
+                                                    <div class="flex flex-wrap items-center justify-between gap-1.5">
                                                         <strong class="text-brand-espresso">Tambahan Armada Truk Kargo (&ge;300 Kg)</strong>
-                                                        <span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-100 text-emerald-800">
+                                                        <span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-100 text-emerald-800 whitespace-nowrap shrink-0">
                                                             Bebas Ongkir Kargo
                                                         </span>
                                                     </div>

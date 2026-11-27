@@ -55,7 +55,7 @@
 
                     @if (Auth::user()->isAdmin())
                         <button type="button" onclick="openEditKatalogModal({{ json_encode($product) }})" class="px-3.5 py-1.5 rounded-full border border-brand-border hover:border-brand-gold bg-brand-surface text-brand-espresso text-xs font-bold transition-all inline-flex items-center gap-1.5 cursor-pointer">
-                            <i class="fa-regular fa-pen-to-square text-[11px] text-brand-gold"></i>
+                            <i class="fa-regular fa-pen-to-square text-[11px] text-amber-500"></i>
                             <span>Ubah Barang</span>
                         </button>
                     @endif

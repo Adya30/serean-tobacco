@@ -50,7 +50,7 @@ return new class extends Migration
             $table->string('variety');
             $table->string('grade');
             $table->unsignedInteger('harvest_weight_kg');
-            $table->string('moisture_content')->default('12–14%');
+            $table->string('moisture_content')->default('Rajang Halus');
             $table->date('harvest_date');
             $table->string('farm_location');
             $table->text('quality_notes')->nullable();
