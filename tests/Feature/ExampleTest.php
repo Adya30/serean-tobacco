@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\BankAccount;
 use App\Models\CartItem;
 use App\Models\Harvest;
 use App\Models\PlantingSchedule;
@@ -376,4 +377,167 @@ test('admin sees incoming harvest and transaction notifications in dashboard', f
     $response->assertStatus(200);
     $response->assertSee('Transaksi Masuk: INV-NOTIF-001');
     $response->assertSee('Hasil Panen Masuk: Tembakau Opot');
+});
+
+test('admin can manage bank accounts and customer sees transfer payment notification with wa proof reminder', function () {
+    $admin = User::factory()->create(['role' => 'admin', 'status' => 'active']);
+    $customer = User::factory()->create(['role' => 'customer', 'status' => 'active']);
+
+    $createBank = $this->actingAs($admin)->post('/dashboard/transaksi/bank', [
+        'bank_name' => 'BCA',
+        'account_number' => '8899001122',
+        'account_holder' => 'Serean Tobacco',
+        'is_active' => 1,
+    ]);
+    $createBank->assertRedirect();
+
+    $bank = BankAccount::where('account_number', '8899001122')->first();
+    expect($bank)->not->toBeNull();
+
+    $product = Product::create([
+        'name' => 'Tembakau Transfer Test',
+        'slug' => 'tembakau-transfer-test',
+        'variety' => 'Opot',
+        'category' => 'rajang',
+        'origin' => 'Situbondo',
+        'price_per_kg' => 50000,
+        'stock_kg' => 100,
+        'is_active' => true,
+    ]);
+
+    CartItem::create([
+        'user_id' => $customer->id,
+        'product_id' => $product->id,
+        'quantity_kg' => 2,
+    ]);
+
+    $cartResponse = $this->actingAs($customer)->get('/keranjang');
+    $cartResponse->assertStatus(200);
+    $cartResponse->assertSee('Bayar Sekarang');
+
+    $checkout = $this->actingAs($customer)->post('/customer/transaksi', [
+        'customer_name' => 'Budi Pembeli',
+        'customer_phone' => '081234567890',
+        'kabupaten' => 'Surabaya',
+        'kecamatan' => 'Genteng',
+        'desa' => 'Embong',
+        'customer_address' => 'Jl. Pemuda 10',
+        'fleet_type' => 'pick_up',
+    ]);
+
+    $trx = Transaction::where('user_id', $customer->id)->first();
+    expect($trx)->not->toBeNull();
+    $checkout->assertRedirect('/customer/transaksi/'.$trx->id);
+
+    $detailResponse = $this->actingAs($customer)->get('/customer/transaksi/'.$trx->id);
+    $detailResponse->assertStatus(200);
+    $detailResponse->assertSee('8899001122');
+    $detailResponse->assertSee('Kirim Pesanan &amp; Bukti Bayar via WA', false);
+    $detailResponse->assertSee('wa.me/6287855320286');
+});
+
+test('customer can checkout directly from profile with automatic shipping calculation for 300kg or more', function () {
+    $customer = User::factory()->create([
+        'role' => 'customer',
+        'name' => 'Siti Pembeli',
+        'phone' => '081999888777',
+        'kabupaten' => 'Situbondo',
+        'kecamatan' => 'Panji',
+        'desa' => 'Curah Jeru',
+        'address' => 'Jl. Raya Panji 5',
+        'status' => 'active',
+    ]);
+
+    $product = Product::create([
+        'name' => 'Tembakau Partai Besar',
+        'slug' => 'tembakau-partai-besar',
+        'variety' => 'Samporis',
+        'category' => 'rajang',
+        'origin' => 'Situbondo',
+        'price_per_kg' => 50000,
+        'stock_kg' => 500,
+        'is_active' => true,
+    ]);
+
+    CartItem::create([
+        'user_id' => $customer->id,
+        'product_id' => $product->id,
+        'quantity_kg' => 300,
+    ]);
+
+    $checkout = $this->actingAs($customer)->post('/customer/transaksi');
+
+    $trx = Transaction::where('user_id', $customer->id)->first();
+    expect($trx)->not->toBeNull();
+    expect($trx->customer_name)->toBe('Siti Pembeli');
+    expect($trx->fleet_type)->toBe('tambahan_armada');
+    expect($trx->shipping_cost)->toBe(0);
+    expect($trx->total_price)->toBe(15000000);
+    $checkout->assertRedirect('/customer/transaksi/'.$trx->id);
+});
+
+test('petani only has allowed features and cannot access admin routes or delete jadwal', function () {
+    $petani = User::factory()->create(['role' => 'petani', 'status' => 'active']);
+    $jadwal = PlantingSchedule::create([
+        'user_id' => $petani->id,
+        'farmer_name' => $petani->name,
+        'variety' => 'Tembakau Opot',
+        'land_area_ha' => 1.0,
+        'location' => 'Situbondo',
+        'planting_date' => now()->toDateString(),
+        'estimated_harvest_date' => now()->addDays(60)->toDateString(),
+        'target_yield_kg' => 500,
+        'phase' => 'persemaian',
+    ]);
+
+    $this->actingAs($petani)->get('/dashboard/stok')->assertStatus(403);
+    $this->actingAs($petani)->get('/dashboard/katalog')->assertStatus(403);
+    $this->actingAs($petani)->get('/dashboard/transaksi')->assertStatus(403);
+    $this->actingAs($petani)->get('/dashboard/petani')->assertStatus(403);
+    $this->actingAs($petani)->delete('/dashboard/jadwal-tanam/'.$jadwal->id)->assertStatus(403);
+});
+
+test('ajax add to cart returns json without redirecting', function () {
+    $customer = User::factory()->create(['role' => 'customer', 'status' => 'active']);
+    $product = Product::create([
+        'name' => 'Tembakau Ajax Test',
+        'slug' => 'tembakau-ajax-test',
+        'variety' => 'Opot',
+        'category' => 'rajang',
+        'origin' => 'Situbondo',
+        'price_per_kg' => 60000,
+        'stock_kg' => 50,
+        'is_active' => true,
+    ]);
+
+    $response = $this->actingAs($customer)->postJson('/keranjang/tambah', [
+        'product_id' => $product->id,
+        'quantity_kg' => 5,
+    ]);
+
+    $response->assertStatus(200)->assertJson([
+        'status' => 'Barang berhasil masuk keranjang.',
+        'cart_count' => 1,
+    ]);
+    expect(CartItem::where('user_id', $customer->id)->where('product_id', $product->id)->first()->quantity_kg)->toBe(5);
+});
+
+test('user can view dedicated product detail page by slug', function () {
+    $product = Product::create([
+        'name' => 'Tembakau Detail Page',
+        'slug' => 'tembakau-detail-page',
+        'variety' => 'Samporis',
+        'grade' => 'Super',
+        'moisture_content' => 'Rajang Halus',
+        'category' => 'rajang',
+        'origin' => 'Situbondo',
+        'price_per_kg' => 85000,
+        'stock_kg' => 200,
+        'is_active' => true,
+    ]);
+
+    $response = $this->get('/produk/tembakau-detail-page');
+    $response->assertStatus(200);
+    $response->assertSee('Tembakau Detail Page');
+    $response->assertSee('Jumlah Pesanan (Kg)');
 });

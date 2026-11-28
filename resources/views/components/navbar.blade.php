@@ -1,4 +1,4 @@
-<header id="site-header" class="fixed top-3 sm:top-4 inset-x-0 z-50 px-3 sm:px-6 pointer-events-none transition-all duration-300">
+<header id="site-header" class="fixed top-3 sm:top-4 inset-x-0 z-40 px-3 sm:px-6 pointer-events-none transition-all duration-300">
     <div class="max-w-7xl mx-auto pointer-events-auto">
         <div id="navbar-inner" class="flex items-center justify-between px-5 sm:px-7 h-14 sm:h-16 rounded-2xl sm:rounded-full bg-white/90 backdrop-blur-md border border-brand-border/90 shadow-md sm:shadow-lg shadow-brand-espresso/5 transition-all duration-300">
 
@@ -28,11 +28,9 @@
                     @endphp
                     <a href="{{ route('keranjang') }}" class="relative w-9 h-9 rounded-full bg-brand-surface border border-brand-border hover:border-brand-gold text-brand-espresso flex items-center justify-center transition-all shadow-sm {{ request()->routeIs('keranjang') ? 'border-brand-gold text-brand-gold' : '' }}" aria-label="Keranjang Belanja" title="Keranjang Belanja">
                         <i class="fa-solid fa-cart-shopping text-xs text-brand-gold"></i>
-                        @if ($navCartCount > 0)
-                            <span class="absolute -top-1 -right-1 min-w-4 h-4 px-1 rounded-full bg-brand-gold text-white text-[9px] font-bold flex items-center justify-center">
-                                {{ $navCartCount }}
-                            </span>
-                        @endif
+                        <span id="navbar-cart-badge" class="{{ $navCartCount > 0 ? 'flex' : 'hidden' }} absolute -top-1 -right-1 min-w-4 h-4 px-1 rounded-full bg-brand-gold text-white text-[9px] font-bold items-center justify-center">
+                            {{ $navCartCount }}
+                        </span>
                     </a>
 
                     <div class="relative" id="profileDropdownWrapper">

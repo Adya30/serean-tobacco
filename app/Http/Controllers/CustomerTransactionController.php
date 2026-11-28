@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\BankAccount;
 use App\Models\CartItem;
 use App\Models\Product;
 use App\Models\Transaction;
@@ -51,8 +52,9 @@ class CustomerTransactionController extends Controller
         }
 
         $transaction->load('items.product');
+        $bankAccounts = BankAccount::where('is_active', true)->latest()->get();
 
-        return view('customer.detail_transaksi', compact('user', 'transaction'));
+        return view('customer.detail_transaksi', compact('user', 'transaction', 'bankAccounts'));
     }
 
     public function store(Request $request): RedirectResponse
@@ -60,25 +62,19 @@ class CustomerTransactionController extends Controller
         $user = Auth::user();
 
         $validated = $request->validate([
-            'customer_name' => ['required', 'string', 'min:3', 'max:255'],
-            'customer_phone' => ['required', 'string', 'max:30'],
-            'kabupaten' => ['required', 'string', 'max:100'],
-            'kecamatan' => ['required', 'string', 'max:100'],
-            'desa' => ['required', 'string', 'max:100'],
-            'customer_address' => ['required', 'string', 'max:500'],
+            'customer_name' => ['nullable', 'string', 'min:3', 'max:255'],
+            'customer_phone' => ['nullable', 'string', 'max:30'],
+            'kabupaten' => ['nullable', 'string', 'max:100'],
+            'kecamatan' => ['nullable', 'string', 'max:100'],
+            'desa' => ['nullable', 'string', 'max:100'],
+            'customer_address' => ['nullable', 'string', 'max:500'],
             'fleet_type' => ['nullable', 'string', 'in:pick_up,tambahan_armada'],
             'product_id' => ['nullable', 'exists:products,id'],
             'quantity_kg' => ['nullable', 'integer', 'min:1'],
         ], [
-            'customer_name.required' => 'Nama lengkap penerima wajib diisi.',
             'customer_name.min' => 'Nama penerima minimal 3 karakter.',
             'customer_name.max' => 'Nama penerima maksimal 255 karakter.',
-            'customer_phone.required' => 'Nomor WhatsApp / telepon wajib diisi.',
             'customer_phone.max' => 'Nomor telepon maksimal 30 karakter.',
-            'kabupaten.required' => 'Kabupaten / Kota tujuan wajib diisi.',
-            'kecamatan.required' => 'Kecamatan tujuan wajib diisi.',
-            'desa.required' => 'Desa / Kelurahan tujuan wajib diisi.',
-            'customer_address.required' => 'Alamat lengkap pengiriman wajib diisi.',
             'customer_address.max' => 'Alamat lengkap maksimal 500 karakter.',
             'fleet_type.in' => 'Pilihan armada pengantaran tidak valid.',
             'product_id.exists' => 'Produk tembakau yang dipilih tidak ditemukan.',
@@ -86,13 +82,22 @@ class CustomerTransactionController extends Controller
             'quantity_kg.min' => 'Jumlah tonase pesanan minimal 1 Kg.',
         ]);
 
-        $user->update([
-            'phone' => $validated['customer_phone'],
-            'kabupaten' => $validated['kabupaten'],
-            'kecamatan' => $validated['kecamatan'],
-            'desa' => $validated['desa'],
-            'address' => $validated['customer_address'],
-        ]);
+        $customerName = $validated['customer_name'] ?? $user->name;
+        $customerPhone = $validated['customer_phone'] ?? ($user->phone ?: '-');
+        $kabupaten = $validated['kabupaten'] ?? ($user->kabupaten ?: 'Situbondo');
+        $kecamatan = $validated['kecamatan'] ?? ($user->kecamatan ?: '-');
+        $desa = $validated['desa'] ?? ($user->desa ?: '-');
+        $customerAddress = $validated['customer_address'] ?? ($user->address ?: '-');
+
+        if (! empty($validated['customer_phone']) || ! empty($validated['customer_address'])) {
+            $user->update([
+                'phone' => $customerPhone,
+                'kabupaten' => $kabupaten,
+                'kecamatan' => $kecamatan,
+                'desa' => $desa,
+                'address' => $customerAddress,
+            ]);
+        }
 
         $cartItems = CartItem::with('product')->where('user_id', $user->id)->get();
 
@@ -105,7 +110,7 @@ class CustomerTransactionController extends Controller
 
             $recommendedFleet = Transaction::determineFleet($totalWeightKg);
             $fleetType = $validated['fleet_type'] ?? $recommendedFleet['type'];
-            $fleetName = $fleetType === 'pick_up' ? 'Armada Standar Pick Up (< 300 Kg)' : 'Tambahan Armada Truk Kargo (>= 300 Kg)';
+            $fleetName = $fleetType === 'pick_up' ? 'Armada Standar Pick Up' : 'Tambahan Armada Truk Kargo';
 
             $shippingCost = Transaction::calculateShippingCost($fleetType, $itemsSubtotal);
             $totalPrice = $itemsSubtotal + $shippingCost;
@@ -115,12 +120,12 @@ class CustomerTransactionController extends Controller
             $transaction = Transaction::create([
                 'invoice_code' => $invoiceCode,
                 'user_id' => $user->id,
-                'customer_name' => $validated['customer_name'],
-                'customer_phone' => $validated['customer_phone'],
-                'kabupaten' => $validated['kabupaten'],
-                'kecamatan' => $validated['kecamatan'],
-                'desa' => $validated['desa'],
-                'customer_address' => $validated['customer_address'],
+                'customer_name' => $customerName,
+                'customer_phone' => $customerPhone,
+                'kabupaten' => $kabupaten,
+                'kecamatan' => $kecamatan,
+                'desa' => $desa,
+                'customer_address' => $customerAddress,
                 'total_weight_kg' => $totalWeightKg,
                 'items_subtotal' => $itemsSubtotal,
                 'shipping_cost' => $shippingCost,
@@ -160,7 +165,7 @@ class CustomerTransactionController extends Controller
 
         $recommendedFleet = Transaction::determineFleet($totalWeightKg);
         $fleetType = $validated['fleet_type'] ?? $recommendedFleet['type'];
-        $fleetName = $fleetType === 'pick_up' ? 'Armada Standar Pick Up (< 300 Kg)' : 'Tambahan Armada Truk Kargo (>= 300 Kg)';
+        $fleetName = $fleetType === 'pick_up' ? 'Armada Standar Pick Up' : 'Tambahan Armada Truk Kargo';
 
         $shippingCost = Transaction::calculateShippingCost($fleetType, $itemsSubtotal);
         $totalPrice = $itemsSubtotal + $shippingCost;
@@ -170,12 +175,12 @@ class CustomerTransactionController extends Controller
         $transaction = Transaction::create([
             'invoice_code' => $invoiceCode,
             'user_id' => $user->id,
-            'customer_name' => $validated['customer_name'],
-            'customer_phone' => $validated['customer_phone'],
-            'kabupaten' => $validated['kabupaten'],
-            'kecamatan' => $validated['kecamatan'],
-            'desa' => $validated['desa'],
-            'customer_address' => $validated['customer_address'],
+            'customer_name' => $customerName,
+            'customer_phone' => $customerPhone,
+            'kabupaten' => $kabupaten,
+            'kecamatan' => $kecamatan,
+            'desa' => $desa,
+            'customer_address' => $customerAddress,
             'total_weight_kg' => $totalWeightKg,
             'items_subtotal' => $itemsSubtotal,
             'shipping_cost' => $shippingCost,
@@ -244,7 +249,7 @@ class CustomerTransactionController extends Controller
 
         if (! empty($validated['fleet_type'])) {
             $fleetType = $validated['fleet_type'];
-            $fleetName = $fleetType === 'pick_up' ? 'Armada Standar Pick Up (< 300 Kg)' : 'Tambahan Armada Truk Kargo (>= 300 Kg)';
+            $fleetName = $fleetType === 'pick_up' ? 'Armada Standar Pick Up' : 'Tambahan Armada Truk Kargo';
             $itemsSubtotal = $transaction->items_subtotal > 0 ? $transaction->items_subtotal : $transaction->total_price;
             $shippingCost = Transaction::calculateShippingCost($fleetType, $itemsSubtotal);
 

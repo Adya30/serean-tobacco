@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\BankAccount;
 use App\Models\Harvest;
 use App\Models\PlantingSchedule;
 use App\Models\Product;
@@ -366,17 +367,71 @@ class DashboardController extends Controller
     public function transaksiIndex(): View|RedirectResponse
     {
         $user = Auth::user();
-        if ($user->isCustomer()) {
-            return redirect()->route('home');
+        if (! $user->isAdmin()) {
+            abort(403);
         }
 
         $transactions = Transaction::with(['items', 'user'])->latest()->get();
+        $bankAccounts = BankAccount::latest()->get();
 
         $totalTonaseKg = (int) $transactions->sum('total_weight_kg');
         $pickUpCount = $transactions->where('fleet_type', 'pick_up')->count();
         $tambahanArmadaCount = $transactions->where('fleet_type', 'tambahan_armada')->count();
 
-        return view('admin.transaksi', compact('user', 'transactions', 'totalTonaseKg', 'pickUpCount', 'tambahanArmadaCount'));
+        return view('admin.transaksi', compact('user', 'transactions', 'bankAccounts', 'totalTonaseKg', 'pickUpCount', 'tambahanArmadaCount'));
+    }
+
+    public function storeBank(Request $request): RedirectResponse
+    {
+        $validated = $request->validate([
+            'bank_name' => ['required', 'string', 'max:100'],
+            'account_number' => ['required', 'string', 'max:50'],
+            'account_holder' => ['required', 'string', 'max:150'],
+            'is_active' => ['nullable', 'boolean'],
+        ], [
+            'bank_name.required' => 'Jenis / nama bank wajib diisi.',
+            'account_number.required' => 'Nomor rekening wajib diisi.',
+            'account_holder.required' => 'Nama pemilik rekening wajib diisi.',
+        ]);
+
+        BankAccount::create([
+            'bank_name' => $validated['bank_name'],
+            'account_number' => $validated['account_number'],
+            'account_holder' => $validated['account_holder'],
+            'is_active' => $request->boolean('is_active', true),
+        ]);
+
+        return back()->with('status', 'Rekening bank pembayaran berhasil ditambahkan.');
+    }
+
+    public function updateBank(Request $request, BankAccount $bankAccount): RedirectResponse
+    {
+        $validated = $request->validate([
+            'bank_name' => ['required', 'string', 'max:100'],
+            'account_number' => ['required', 'string', 'max:50'],
+            'account_holder' => ['required', 'string', 'max:150'],
+            'is_active' => ['nullable', 'boolean'],
+        ], [
+            'bank_name.required' => 'Jenis / nama bank wajib diisi.',
+            'account_number.required' => 'Nomor rekening wajib diisi.',
+            'account_holder.required' => 'Nama pemilik rekening wajib diisi.',
+        ]);
+
+        $bankAccount->update([
+            'bank_name' => $validated['bank_name'],
+            'account_number' => $validated['account_number'],
+            'account_holder' => $validated['account_holder'],
+            'is_active' => $request->boolean('is_active'),
+        ]);
+
+        return back()->with('status', 'Data rekening bank berhasil diperbarui.');
+    }
+
+    public function deleteBank(BankAccount $bankAccount): RedirectResponse
+    {
+        $bankAccount->delete();
+
+        return back()->with('status', 'Rekening bank berhasil dihapus.');
     }
 
     public function updateTransaksi(Request $request, Transaction $transaction): RedirectResponse

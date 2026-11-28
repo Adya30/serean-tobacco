@@ -96,7 +96,7 @@
     <x-navbar />
 
     
-    <main class="flex-grow w-full overflow-x-hidden relative z-10">
+    <main class="flex-grow w-full overflow-x-hidden">
         @yield('content')
     </main>
 

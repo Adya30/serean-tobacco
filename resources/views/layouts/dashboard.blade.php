@@ -180,23 +180,23 @@
                             'url' => route('dashboard.transaksi'),
                         ];
                     }
-                }
+                    $incomingHarvests = \App\Models\Harvest::where('status', 'diterima_gudang')
+                        ->latest()
+                        ->take(10)
+                        ->get();
 
-                $incomingHarvests = \App\Models\Harvest::when(Auth::user()->isPetani(), function ($q) {
-                    return $q->where('farmer_id', Auth::id());
-                })->where('status', 'diterima_gudang')->latest()->take(10)->get();
-
-                foreach ($incomingHarvests as $hv) {
-                    $notifItems[] = [
-                        'id' => 'harvest-in-' . $hv->id,
-                        'persistent' => true,
-                        'title' => 'Hasil Panen Masuk: ' . $hv->variety,
-                        'desc' => $hv->farmer_name . ' menyetor ' . number_format($hv->harvest_weight_kg) . ' Kg (Grade ' . $hv->grade . ').',
-                        'badge' => 'Panen Masuk',
-                        'badgeColor' => 'bg-emerald-100 text-emerald-800',
-                        'icon' => 'fa-solid fa-wheat-awn text-emerald-600',
-                        'url' => route('dashboard.panen'),
-                    ];
+                    foreach ($incomingHarvests as $hv) {
+                        $notifItems[] = [
+                            'id' => 'harvest-in-' . $hv->id,
+                            'persistent' => true,
+                            'title' => 'Hasil Panen Masuk: ' . $hv->variety,
+                            'desc' => $hv->farmer_name . ' menyetor ' . number_format($hv->harvest_weight_kg) . ' Kg (Grade ' . $hv->grade . ').',
+                            'badge' => 'Panen Masuk',
+                            'badgeColor' => 'bg-emerald-100 text-emerald-800',
+                            'icon' => 'fa-solid fa-wheat-awn text-emerald-600',
+                            'url' => route('dashboard.panen'),
+                        ];
+                    }
                 }
 
                 foreach ($notifSchedules as $ns) {

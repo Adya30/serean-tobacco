@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\BankAccount;
 use App\Models\CartItem;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -30,13 +32,22 @@ class CartController extends Controller
             return $item->quantity_kg * ($item->product->price_per_kg ?? 0);
         });
 
-        return view('keranjang', compact('cartItems', 'totalWeight', 'totalPrice'));
+        $bankAccounts = BankAccount::where('is_active', true)->latest()->get();
+
+        return view('keranjang', compact('cartItems', 'totalWeight', 'totalPrice', 'bankAccounts'));
     }
 
-    public function add(Request $request): RedirectResponse
+    public function add(Request $request): RedirectResponse|JsonResponse
     {
         if (! Auth::check()) {
             session()->put('url.intended', route('produk'));
+
+            if ($request->expectsJson()) {
+                return response()->json([
+                    'message' => 'Silakan masuk atau daftar akun terlebih dahulu.',
+                    'redirect' => route('login'),
+                ], 401);
+            }
 
             return redirect()->route('login')->with('error', 'Silakan masuk atau daftar akun terlebih dahulu untuk memesan produk tembakau.');
         }
@@ -67,6 +78,15 @@ class CartController extends Controller
                 'session_id' => null,
                 'product_id' => $productId,
                 'quantity_kg' => $qty,
+            ]);
+        }
+
+        if ($request->expectsJson()) {
+            $cartCount = CartItem::where('user_id', $userId)->count();
+
+            return response()->json([
+                'status' => 'Barang berhasil masuk keranjang.',
+                'cart_count' => $cartCount,
             ]);
         }
 

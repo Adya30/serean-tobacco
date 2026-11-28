@@ -25,6 +25,12 @@ Route::get('/produk', function () {
     return view('produk', compact('products'));
 })->name('produk');
 
+Route::get('/produk/{product:slug}', function (Product $product) {
+    abort_unless($product->is_active, 404);
+
+    return view('detail_produk', compact('product'));
+})->name('produk.show');
+
 Route::get('/kontak', function () {
     return view('kontak');
 })->name('kontak');
@@ -61,32 +67,36 @@ Route::middleware('auth')->group(function () {
 
     Route::middleware('role:admin,petani')->group(function () {
         Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
-        Route::get('/dashboard/stok', [DashboardController::class, 'stokIndex'])->name('dashboard.stok');
-        Route::get('/dashboard/katalog', [DashboardController::class, 'katalogIndex'])->name('dashboard.katalog');
-        Route::get('/dashboard/transaksi', [DashboardController::class, 'transaksiIndex'])->name('dashboard.transaksi');
         Route::get('/dashboard/panen', [DashboardController::class, 'panenIndex'])->name('dashboard.panen');
         Route::post('/dashboard/panen', [DashboardController::class, 'storePanen'])->name('dashboard.panen.store');
         Route::get('/dashboard/rekomendasi-tanam', [DashboardController::class, 'rekomendasiTanamIndex'])->name('dashboard.rekomendasi-tanam');
         Route::get('/dashboard/jadwal-tanam', [DashboardController::class, 'jadwalIndex'])->name('dashboard.jadwal');
         Route::post('/dashboard/jadwal-tanam', [DashboardController::class, 'storeJadwal'])->name('dashboard.jadwal.store');
         Route::put('/dashboard/jadwal-tanam/{jadwal}', [DashboardController::class, 'updateJadwal'])->name('dashboard.jadwal.update');
-        Route::delete('/dashboard/jadwal-tanam/{jadwal}', [DashboardController::class, 'deleteJadwal'])->name('dashboard.jadwal.delete');
-        Route::get('/dashboard/petani', [DashboardController::class, 'petaniIndex'])->name('dashboard.petani');
     });
 
     Route::middleware('role:admin')->group(function () {
+        Route::delete('/dashboard/jadwal-tanam/{jadwal}', [DashboardController::class, 'deleteJadwal'])->name('dashboard.jadwal.delete');
+
+        Route::get('/dashboard/petani', [DashboardController::class, 'petaniIndex'])->name('dashboard.petani');
         Route::post('/dashboard/petani', [DashboardController::class, 'storePetani'])->name('dashboard.petani.store');
         Route::put('/dashboard/petani/{petani}', [DashboardController::class, 'updatePetani'])->name('dashboard.petani.update');
         Route::delete('/dashboard/petani/{petani}', [DashboardController::class, 'deletePetani'])->name('dashboard.petani.delete');
 
+        Route::get('/dashboard/stok', [DashboardController::class, 'stokIndex'])->name('dashboard.stok');
         Route::post('/dashboard/stok', [DashboardController::class, 'storeStok'])->name('dashboard.stok.store');
         Route::put('/dashboard/stok/{product}', [DashboardController::class, 'updateStok'])->name('dashboard.stok.update');
         Route::delete('/dashboard/stok/{product}', [DashboardController::class, 'deleteStok'])->name('dashboard.stok.delete');
 
+        Route::get('/dashboard/katalog', [DashboardController::class, 'katalogIndex'])->name('dashboard.katalog');
         Route::post('/dashboard/katalog', [DashboardController::class, 'storeKatalog'])->name('dashboard.katalog.store');
         Route::put('/dashboard/katalog/{product}', [DashboardController::class, 'updateKatalog'])->name('dashboard.katalog.update');
 
+        Route::get('/dashboard/transaksi', [DashboardController::class, 'transaksiIndex'])->name('dashboard.transaksi');
         Route::put('/dashboard/transaksi/{transaction}', [DashboardController::class, 'updateTransaksi'])->name('dashboard.transaksi.update');
+        Route::post('/dashboard/transaksi/bank', [DashboardController::class, 'storeBank'])->name('dashboard.transaksi.bank.store');
+        Route::put('/dashboard/transaksi/bank/{bankAccount}', [DashboardController::class, 'updateBank'])->name('dashboard.transaksi.bank.update');
+        Route::delete('/dashboard/transaksi/bank/{bankAccount}', [DashboardController::class, 'deleteBank'])->name('dashboard.transaksi.bank.delete');
     });
 
     Route::middleware('role:customer')->group(function () {

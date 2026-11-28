@@ -109,16 +109,18 @@
                         </div>
 
                         <div class="flex items-center gap-2">
-                            <button type="button" onclick="openModalEditJadwal({{ json_encode($j) }})" class="px-3 py-1 rounded-lg border border-brand-border bg-brand-surface hover:bg-stone-100 text-brand-espresso text-xs font-bold transition-colors cursor-pointer">
+                            <button type="button" onclick="openModalEditJadwal({{ json_encode($j) }})" class="px-3 py-1 rounded-lg border border-amber-200 bg-amber-50 hover:bg-amber-100 text-amber-600 text-xs font-bold transition-colors cursor-pointer">
                                 <i class="fa-regular fa-pen-to-square text-[11px] mr-1"></i> Ubah
                             </button>
-                            <form action="{{ route('dashboard.jadwal.delete', $j->id) }}" method="POST" onsubmit="return confirm('Apakah Anda yakin ingin menghapus jadwal tanam ini?');">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="p-1.5 text-stone-400 hover:text-red-600 rounded-lg hover:bg-red-50 transition-colors cursor-pointer">
-                                    <i class="fa-regular fa-trash-can text-xs"></i>
-                                </button>
-                            </form>
+                            @if (Auth::user()->isAdmin())
+                                <form action="{{ route('dashboard.jadwal.delete', $j->id) }}" method="POST" onsubmit="return confirm('Apakah Anda yakin ingin menghapus jadwal tanam ini?');">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="p-1.5 border border-red-200 bg-red-50 text-red-600 rounded-lg hover:bg-red-100 transition-colors cursor-pointer">
+                                        <i class="fa-regular fa-trash-can text-xs"></i>
+                                    </button>
+                                </form>
+                            @endif
                         </div>
                     </div>
 
@@ -195,13 +197,15 @@
                                     <button type="button" onclick="openModalEditJadwal({{ json_encode($j) }})" class="w-8 h-8 rounded-full border border-amber-200 bg-amber-50 hover:bg-amber-100 text-amber-600 transition-colors cursor-pointer inline-flex items-center justify-center" title="Ubah Jadwal">
                                         <i class="fa-regular fa-pen-to-square text-xs"></i>
                                     </button>
-                                    <form action="{{ route('dashboard.jadwal.delete', $j->id) }}" method="POST" onsubmit="return confirm('Apakah Anda yakin ingin menghapus jadwal tanam ini?');">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit" class="w-8 h-8 rounded-full border border-red-200 bg-red-50 hover:bg-red-100 text-red-600 transition-colors cursor-pointer inline-flex items-center justify-center" title="Hapus Jadwal">
-                                            <i class="fa-regular fa-trash-can text-xs"></i>
-                                        </button>
-                                    </form>
+                                    @if (Auth::user()->isAdmin())
+                                        <form action="{{ route('dashboard.jadwal.delete', $j->id) }}" method="POST" onsubmit="return confirm('Apakah Anda yakin ingin menghapus jadwal tanam ini?');">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="w-8 h-8 rounded-full border border-red-200 bg-red-50 hover:bg-red-100 text-red-600 transition-colors cursor-pointer inline-flex items-center justify-center" title="Hapus Jadwal">
+                                                <i class="fa-regular fa-trash-can text-xs"></i>
+                                            </button>
+                                        </form>
+                                    @endif
                                 </div>
                             </td>
                         </tr>

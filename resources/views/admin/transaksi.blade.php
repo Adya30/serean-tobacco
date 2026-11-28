@@ -46,6 +46,57 @@
         </div>
     </div>
 
+    <div class="bg-white rounded-3xl border border-brand-border shadow-sm p-5 sm:p-6 space-y-4">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-brand-border pb-4">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-xl bg-amber-50 border border-brand-gold/25 text-brand-gold flex items-center justify-center text-base shrink-0">
+                    <i class="fa-solid fa-building-columns"></i>
+                </div>
+                <div>
+                    <h3 class="font-serif font-bold text-base text-brand-espresso">Rekening Pembayaran Transfer</h3>
+                    <p class="text-xs text-brand-muted">Kelola jenis bank dan nomor rekening tujuan transfer untuk ditampilkan ke pembeli saat checkout.</p>
+                </div>
+            </div>
+            <button type="button" onclick="document.getElementById('modalTambahBank').classList.remove('hidden')" class="px-4 py-2 rounded-full bg-brand-espresso hover:bg-brand-dark text-white text-xs font-bold transition-all inline-flex items-center gap-1.5 cursor-pointer shadow-sm shrink-0">
+                <i class="fa-solid fa-plus text-[11px] text-brand-gold"></i>
+                <span>Tambah Rekening Bank</span>
+            </button>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 text-xs">
+            @forelse ($bankAccounts as $bank)
+                <div class="p-4 rounded-2xl bg-brand-surface border border-brand-border flex items-start justify-between gap-3">
+                    <div>
+                        <div class="flex items-center gap-2">
+                            <span class="font-bold text-sm text-brand-espresso">{{ $bank->bank_name }}</span>
+                            <span class="px-2 py-0.5 rounded-full text-[10px] font-bold {{ $bank->is_active ? 'bg-emerald-50 text-emerald-700 border border-emerald-200' : 'bg-stone-100 text-stone-500 border border-stone-200' }}">
+                                {{ $bank->is_active ? 'Aktif' : 'Nonaktif' }}
+                            </span>
+                        </div>
+                        <span class="font-mono font-bold text-sm text-brand-gold block mt-1">{{ $bank->account_number }}</span>
+                        <span class="text-[11px] text-brand-muted block mt-0.5">a.n. {{ $bank->account_holder }}</span>
+                    </div>
+                    <div class="flex items-center gap-1.5 shrink-0">
+                        <button type="button" onclick="openEditBankModal({{ json_encode($bank) }})" class="w-8 h-8 rounded-full border border-amber-200 bg-amber-50 hover:bg-amber-100 text-amber-600 transition-colors inline-flex items-center justify-center cursor-pointer" title="Ubah Rekening">
+                            <i class="fa-regular fa-pen-to-square text-xs"></i>
+                        </button>
+                        <form action="{{ route('dashboard.transaksi.bank.delete', $bank->id) }}" method="POST" onsubmit="return confirm('Hapus rekening bank ini?')">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="w-8 h-8 rounded-full border border-red-200 bg-red-50 hover:bg-red-100 text-red-600 transition-colors inline-flex items-center justify-center cursor-pointer" title="Hapus Rekening">
+                                <i class="fa-regular fa-trash-can text-xs"></i>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            @empty
+                <div class="sm:col-span-2 lg:col-span-3 py-6 text-center text-brand-muted text-xs">
+                    Belum ada rekening bank terdaftar. Klik "Tambah Rekening Bank" untuk menambahkan.
+                </div>
+            @endforelse
+        </div>
+    </div>
+
     <div class="bg-white rounded-3xl border border-brand-border shadow-sm overflow-hidden">
         <div class="block sm:hidden divide-y divide-brand-border">
             @forelse ($transactions as $trx)
@@ -330,6 +381,87 @@
                 document.getElementById('trx_tracking_notes').value = trx.tracking_notes || '';
                 document.getElementById('modalEditTransaksi').classList.remove('hidden');
             }
+
+            function openEditBankModal(bank) {
+                const form = document.getElementById('formEditBank');
+                form.action = '/dashboard/transaksi/bank/' + bank.id;
+                document.getElementById('edit_bank_name').value = bank.bank_name;
+                document.getElementById('edit_account_number').value = bank.account_number;
+                document.getElementById('edit_account_holder').value = bank.account_holder;
+                document.getElementById('edit_bank_active').checked = !!bank.is_active;
+                document.getElementById('modalEditBank').classList.remove('hidden');
+            }
         </script>
+
+        <div id="modalTambahBank" class="fixed inset-0 bg-black/60 backdrop-blur-xs z-50 flex items-center justify-center p-4 hidden">
+            <div class="bg-white rounded-3xl max-w-md w-full p-6 sm:p-7 shadow-2xl border border-brand-border relative">
+                <div class="flex items-center justify-between pb-4 border-b border-brand-border">
+                    <h3 class="font-serif font-bold text-lg text-[#1a0f07]">Tambah Rekening Bank</h3>
+                    <button type="button" onclick="document.getElementById('modalTambahBank').classList.add('hidden')" class="w-8 h-8 rounded-full border border-brand-border text-stone-400 hover:text-brand-dark flex items-center justify-center cursor-pointer">
+                        <i class="fa-solid fa-xmark text-sm"></i>
+                    </button>
+                </div>
+
+                <form action="{{ route('dashboard.transaksi.bank.store') }}" method="POST" class="space-y-4 pt-4 text-xs">
+                    @csrf
+                    <div>
+                        <label class="block font-semibold text-brand-espresso mb-1">Jenis / Nama Bank <span class="text-red-500">*</span></label>
+                        <input type="text" name="bank_name" required placeholder="Contoh: BCA, BRI, Mandiri" class="w-full px-3.5 py-2.5 rounded-xl border border-brand-border bg-brand-surface focus:bg-white focus:outline-none focus:border-brand-gold text-sm">
+                    </div>
+                    <div>
+                        <label class="block font-semibold text-brand-espresso mb-1">Nomor Rekening <span class="text-red-500">*</span></label>
+                        <input type="text" name="account_number" required placeholder="Contoh: 1234567890" class="w-full px-3.5 py-2.5 rounded-xl border border-brand-border bg-brand-surface focus:bg-white focus:outline-none focus:border-brand-gold text-sm font-mono">
+                    </div>
+                    <div>
+                        <label class="block font-semibold text-brand-espresso mb-1">Atas Nama Pemilik <span class="text-red-500">*</span></label>
+                        <input type="text" name="account_holder" required placeholder="Contoh: Serean Tobacco" class="w-full px-3.5 py-2.5 rounded-xl border border-brand-border bg-brand-surface focus:bg-white focus:outline-none focus:border-brand-gold text-sm">
+                    </div>
+                    <label class="inline-flex items-center gap-2 cursor-pointer">
+                        <input type="checkbox" name="is_active" value="1" checked class="rounded text-brand-espresso focus:ring-brand-gold">
+                        <span class="font-semibold text-brand-espresso">Tampilkan rekening ini ke pembeli</span>
+                    </label>
+                    <div class="pt-2 flex items-center justify-end gap-2">
+                        <button type="button" onclick="document.getElementById('modalTambahBank').classList.add('hidden')" class="px-4 py-2 rounded-full border border-brand-border text-brand-muted hover:bg-stone-50 font-semibold cursor-pointer">Batal</button>
+                        <button type="submit" class="px-5 py-2 rounded-full bg-brand-espresso text-white hover:bg-brand-dark font-semibold cursor-pointer">Simpan Rekening</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div id="modalEditBank" class="fixed inset-0 bg-black/60 backdrop-blur-xs z-50 flex items-center justify-center p-4 hidden">
+            <div class="bg-white rounded-3xl max-w-md w-full p-6 sm:p-7 shadow-2xl border border-brand-border relative">
+                <div class="flex items-center justify-between pb-4 border-b border-brand-border">
+                    <h3 class="font-serif font-bold text-lg text-[#1a0f07]">Ubah Rekening Bank</h3>
+                    <button type="button" onclick="document.getElementById('modalEditBank').classList.add('hidden')" class="w-8 h-8 rounded-full border border-brand-border text-stone-400 hover:text-brand-dark flex items-center justify-center cursor-pointer">
+                        <i class="fa-solid fa-xmark text-sm"></i>
+                    </button>
+                </div>
+
+                <form id="formEditBank" method="POST" class="space-y-4 pt-4 text-xs">
+                    @csrf
+                    @method('PUT')
+                    <div>
+                        <label class="block font-semibold text-brand-espresso mb-1">Jenis / Nama Bank <span class="text-red-500">*</span></label>
+                        <input type="text" id="edit_bank_name" name="bank_name" required class="w-full px-3.5 py-2.5 rounded-xl border border-brand-border bg-brand-surface focus:bg-white focus:outline-none focus:border-brand-gold text-sm">
+                    </div>
+                    <div>
+                        <label class="block font-semibold text-brand-espresso mb-1">Nomor Rekening <span class="text-red-500">*</span></label>
+                        <input type="text" id="edit_account_number" name="account_number" required class="w-full px-3.5 py-2.5 rounded-xl border border-brand-border bg-brand-surface focus:bg-white focus:outline-none focus:border-brand-gold text-sm font-mono">
+                    </div>
+                    <div>
+                        <label class="block font-semibold text-brand-espresso mb-1">Atas Nama Pemilik <span class="text-red-500">*</span></label>
+                        <input type="text" id="edit_account_holder" name="account_holder" required class="w-full px-3.5 py-2.5 rounded-xl border border-brand-border bg-brand-surface focus:bg-white focus:outline-none focus:border-brand-gold text-sm">
+                    </div>
+                    <label class="inline-flex items-center gap-2 cursor-pointer">
+                        <input type="checkbox" id="edit_bank_active" name="is_active" value="1" class="rounded text-brand-espresso focus:ring-brand-gold">
+                        <span class="font-semibold text-brand-espresso">Tampilkan rekening ini ke pembeli</span>
+                    </label>
+                    <div class="pt-2 flex items-center justify-end gap-2">
+                        <button type="button" onclick="document.getElementById('modalEditBank').classList.add('hidden')" class="px-4 py-2 rounded-full border border-brand-border text-brand-muted hover:bg-stone-50 font-semibold cursor-pointer">Batal</button>
+                        <button type="submit" class="px-5 py-2 rounded-full bg-brand-espresso text-white hover:bg-brand-dark font-semibold cursor-pointer">Perbarui Rekening</button>
+                    </div>
+                </form>
+            </div>
+        </div>
     @endif
 @endpush
